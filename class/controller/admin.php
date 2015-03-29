@@ -21,14 +21,8 @@ abstract class Admin extends \Core\Controller
     // Navs
     public $nav = array(
         '' => array('首页', '/admin'),
-        'news' => array('资讯管理', '/admin/news'),
-        'tag' => array('标签管理', '/admin/tag'),
-        'area' => array('地区管理', '/admin/area'),
-        'cate' => array('分类管理', '/admin/cate'),
-        'fetch' => array('数据抓取', '/admin/fetch'),
-        'avosuser' => array('avos用户管理', '/admin/avosuser'),
-        'clan' => array('部落', '/admin/clan'),
-        'recommend' => array('推荐', '/admin/recommend'),
+        'member' => array('登协成员管理', '/admin/member'),
+        'team' => array('登协队伍管理', '/admin/team'),
         'user' => array('用户管理', '/admin/user'),
     );
 

@@ -33,6 +33,11 @@ $config['domain'] = getenv('HTTP_HOST');
 $config['routes'] = array(
     ''                        => '\Controller\Front\Page404',
     '404'                     => '\Controller\Front\Page404',
+
+    'admin/member/delete'     => '\Controller\Admin\Member\Delete',
+    'admin/member/edit'     => '\Controller\Admin\Member\Edit',
+    'admin/member'             => '\Controller\Admin\Member\Page',
+
     'admin/news/delete'     => '\Controller\Admin\News\Delete',
     'admin/news/update'     => '\Controller\Admin\News\Update',
     'admin/news/localupdate'=> '\Controller\Admin\News\Localupdate',
