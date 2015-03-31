@@ -34,9 +34,21 @@ $config['routes'] = array(
     ''                        => '\Controller\Front\Page404',
     '404'                     => '\Controller\Front\Page404',
 
+    //人员
     'admin/member/delete'     => '\Controller\Admin\Member\Delete',
     'admin/member/edit'     => '\Controller\Admin\Member\Edit',
     'admin/member'             => '\Controller\Admin\Member\Page',
+
+    //线
+    'admin/line/delete'     => '\Controller\Admin\Line\Delete',
+    'admin/line/edit'     => '\Controller\Admin\Line\Edit',
+    'admin/line'             => '\Controller\Admin\Line\Page',
+
+
+    //点
+    'admin/point/delete'     => '\Controller\Admin\Point\Delete',
+    'admin/point/edit'     => '\Controller\Admin\Point\Edit',
+    'admin/point'             => '\Controller\Admin\Point\Page',
 
     'admin/news/delete'     => '\Controller\Admin\News\Delete',
     'admin/news/update'     => '\Controller\Admin\News\Update',

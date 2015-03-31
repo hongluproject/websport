@@ -1,19 +1,18 @@
 <?php
 
-namespace Controller\Admin\Member;
+namespace Controller\Admin\Line;
 
-class Delete extends \Controller\Admin\Member
+class Delete extends \Controller\Admin\Line
 {
     public $data;
-    public $path = array('member', 'member.list');
+    public $path = array('line', 'line.list');
     public function get($id)
     {
         try
         {
-
-            $result = new \Model\Member();
+            $result = new \Model\Line();
             $result->delete($id);
-            redirect('/admin/member');
+            redirect('/admin/line');
         }
         catch (\Exception $e)
         {

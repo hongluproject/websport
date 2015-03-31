@@ -16,9 +16,9 @@ namespace Model;
  * @property string $background
  * @property User $user
  */
-class Member extends Core
+class Line extends Core
 {
-    public static $table = 'ma_member';
+    public static $table = 'ma_line';
 /*    public static $foreign_key = 'match_id';*/
 
     public static $belongs_to = array(

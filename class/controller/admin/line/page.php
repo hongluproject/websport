@@ -1,16 +1,14 @@
 <?php
-
-namespace Controller\Admin\Member;
-
-class Page extends \Controller\Admin\Member
+namespace Controller\Admin\Line;
+class Page extends \Controller\Admin\Line
 {
     public $data;
-    public $path = array('member', 'member.list');
-    protected $_tpl = 'admin/member/list';
+    public $path = array('line', 'line.list');
+    protected $_tpl = 'admin/line/list';
 
     public function get()
     {
-        $members = new \Model\Member();
+        $members = new \Model\Line();
         $where = array();
         $path = $this->getPath();
         $order = array('create_time' => 'desc');

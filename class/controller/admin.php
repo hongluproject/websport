@@ -21,8 +21,9 @@ abstract class Admin extends \Core\Controller
     // Navs
     public $nav = array(
         '' => array('首页', '/admin'),
-        'member' => array('登协成员管理', '/admin/member'),
-        'team' => array('登协队伍管理', '/admin/team'),
+        'member' => array('成员管理', '/admin/member'),
+        'line' => array('报名管理', '/admin/line'),
+        'point' => array('站点管理', '/admin/point'),
         'user' => array('用户管理', '/admin/user'),
     );
 
