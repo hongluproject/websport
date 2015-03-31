@@ -141,7 +141,7 @@ class XUrl {
      * 获取头部信息
      * @param string $url           要获取的URL
      */
-    public function fetch_header() {
+    public function fetch_header($url) {
         $result = $this->request($url);
         return $result['header'];
     }

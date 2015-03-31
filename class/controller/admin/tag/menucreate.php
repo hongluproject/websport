@@ -37,9 +37,7 @@ class Menucreate extends \Controller\Admin\Tag
         $savePost['title'] = $_POST['title'];
         $savePost['tagSort'] = (int)$_POST['tagSort'];
         $savePost['status'] = (int)$_POST['status'];
-        $savePost['cover'] = $_POST['cover'];
-
-
+        $savePost['color'] = $_POST['color'];
 
         if($id){
             $result = json_decode($acurl->setOption(array('method' => 'post', 'class' => 'TagDirectory', 'field' => $savePost,'objectId'=>$id))->getCurlResult(), true);

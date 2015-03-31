@@ -16,7 +16,5 @@ class Member extends \Controller\Admin
     public function get()
     {
 
-
-
     }
 }
