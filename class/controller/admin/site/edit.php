@@ -22,13 +22,13 @@ class Edit extends \Controller\Admin\Site
     {
         $data = $_POST;
         if ($id) {
-            $member = \Model\Site::find($id);
-            $member->set($data);
-            $member->save();
+            $site = \Model\Site::find($id);
+            $site->set($data);
+            $site->save();
         }else{
-            $member = new \Model\Site();
-            $member->set($data);
-            $member->save();
+            $site = new \Model\Site();
+            $site->set($data);
+            $site->save();
         }
         redirect('/admin/site');
 

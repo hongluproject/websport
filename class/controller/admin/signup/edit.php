@@ -19,13 +19,13 @@ class Edit extends \Controller\Admin\Signup
     {
         $data = $_POST;
         if ($id) {
-            $line = \Model\Signup::find($id);
-            $line->set($data);
-            $line->save();
+            $sign = \Model\Signup::find($id);
+            $sign->set($data);
+            $sign->save();
         } else {
-            $line = new \Model\Signup();
-            $line->set($data);
-            $line->save();
+            $sign = new \Model\Signup();
+            $sign->set($data);
+            $sign->save();
         }
         redirect('/admin/signup');
     }

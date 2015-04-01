@@ -8,13 +8,12 @@ class Page extends \Controller\Admin\Signup
 
     public function get()
     {
-
-        $lines = new \Model\Signup();
+        $sign = new \Model\Signup();
         $where = array();
         $path = $this->getPath();
 
         $order = array('create_time' => 'desc');
-        $this->result = $lines->fetchAsPage($where, $_GET['page'], 1, $order, $path);
+        $this->result = $sign->fetchAsPage($where, $_GET['page'], 1, $order, $path);
     }
 
     public function getPath()

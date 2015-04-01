@@ -10,11 +10,11 @@ class Page extends \Controller\Admin\Site
 
     public function get()
     {
-        $members = new \Model\Site();
+        $site = new \Model\Site();
         $where = array();
         $path = $this->getPath();
         $order = array('create_time' => 'desc');
-        $this->result = $members->fetchAsPage($where, $_GET['page'], 1, $order, $path);
+        $this->result = $site->fetchAsPage($where, $_GET['page'], 1, $order, $path);
     }
 
     public function getPath()

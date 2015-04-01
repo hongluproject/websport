@@ -31,8 +31,8 @@
                         <td><?php echo $item->phone; ?></td>
                         <td><?php echo $item->status; ?></td>
                         <td>
-                            <a href="/admin/line/edit/<?php echo $item->id; ?>" target="_blank"><i class="icon-ok" alt="更新" title="更新"></i></a>&nbsp;&nbsp;&nbsp;
-                            <a href="/admin/line/delete/<?php echo $item->id; ?>" ><i class="icon-remove" alt="删除" title="删除"></i></a>&nbsp;&nbsp;&nbsp;
+                            <a href="/admin/signup/edit/<?php echo $item->id; ?>" target="_blank"><i class="icon-ok" alt="更新" title="更新"></i></a>&nbsp;&nbsp;&nbsp;
+                            <a href="/admin/signup/delete/<?php echo $item->id; ?>" ><i class="icon-remove" alt="删除" title="删除"></i></a>&nbsp;&nbsp;&nbsp;
 
                         </td>
                     </tr>
