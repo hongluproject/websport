@@ -39,16 +39,22 @@ $config['routes'] = array(
     'admin/member/edit'     => '\Controller\Admin\Member\Edit',
     'admin/member'             => '\Controller\Admin\Member\Page',
 
-    //线
+    //报名
     'admin/line/delete'     => '\Controller\Admin\Line\Delete',
     'admin/line/edit'     => '\Controller\Admin\Line\Edit',
     'admin/line'             => '\Controller\Admin\Line\Page',
 
 
     //点
-    'admin/point/delete'     => '\Controller\Admin\Point\Delete',
-    'admin/point/edit'     => '\Controller\Admin\Point\Edit',
-    'admin/point'             => '\Controller\Admin\Point\Page',
+    'admin/site/delete'     => '\Controller\Admin\Site\Delete',
+    'admin/site/edit'     => '\Controller\Admin\Site\Edit',
+    'admin/site'             => '\Controller\Admin\Site\Page',
+
+
+    //报名
+    'admin/signup/delete'     => '\Controller\Admin\Signup\Delete',
+    'admin/signup/edit'     => '\Controller\Admin\Signup\Edit',
+    'admin/signup'             => '\Controller\Admin\Signup\Page',
 
     'admin/news/delete'     => '\Controller\Admin\News\Delete',
     'admin/news/update'     => '\Controller\Admin\News\Update',

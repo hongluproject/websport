@@ -1,15 +1,15 @@
 <?php
 
-namespace Controller\Admin\Line;
-class Edit extends \Controller\Admin\Line
+namespace Controller\Admin\Signup;
+class Edit extends \Controller\Admin\Signup
 {
     public $data;
-    public $path = array('line', 'line.edit');
-    protected $_tpl = 'admin/line/edit';
+    public $path = array('signup', 'signup.edit');
+    protected $_tpl = 'admin/signup/edit';
     public function get($id)
     {
         if ($id) {
-            $this->result = \Model\Line::find($id);
+            $this->result = \Model\Signup::find($id);
         } else {
             $this->result = array();
         }
@@ -19,14 +19,14 @@ class Edit extends \Controller\Admin\Line
     {
         $data = $_POST;
         if ($id) {
-            $line = \Model\Line::find($id);
+            $line = \Model\Signup::find($id);
             $line->set($data);
             $line->save();
         } else {
-            $line = new \Model\Line();
+            $line = new \Model\Signup();
             $line->set($data);
             $line->save();
         }
-        redirect('/admin/line');
+        redirect('/admin/signup');
     }
 }

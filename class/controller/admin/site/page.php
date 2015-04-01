@@ -1,18 +1,20 @@
 <?php
-namespace Controller\Admin\Line;
-class Page extends \Controller\Admin\Line
+
+namespace Controller\Admin\Site;
+
+class Page extends \Controller\Admin\Site
 {
     public $data;
-    public $path = array('line', 'line.list');
-    protected $_tpl = 'admin/line/list';
+    public $path = array('site', 'site.list');
+    protected $_tpl = 'admin/site/list';
 
     public function get()
     {
-        $lines = new \Model\Line();
+        $members = new \Model\Site();
         $where = array();
         $path = $this->getPath();
         $order = array('create_time' => 'desc');
-        $this->result = $lines->fetchAsPage($where, $_GET['page'], 1, $order, $path);
+        $this->result = $members->fetchAsPage($where, $_GET['page'], 1, $order, $path);
     }
 
     public function getPath()

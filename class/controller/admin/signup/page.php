@@ -1,16 +1,18 @@
 <?php
-namespace Controller\Admin\Line;
-class Page extends \Controller\Admin\Line
+namespace Controller\Admin\Signup;
+class Page extends \Controller\Admin\Signup
 {
     public $data;
-    public $path = array('line', 'line.list');
-    protected $_tpl = 'admin/line/list';
+    public $path = array('signup', 'signup.list');
+    protected $_tpl = 'admin/signup/list';
 
     public function get()
     {
-        $lines = new \Model\Line();
+
+        $lines = new \Model\Signup();
         $where = array();
         $path = $this->getPath();
+
         $order = array('create_time' => 'desc');
         $this->result = $lines->fetchAsPage($where, $_GET['page'], 1, $order, $path);
     }
