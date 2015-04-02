@@ -9,8 +9,8 @@ class Member extends \Controller\Admin
 
     public $menu = array(
         '_h1'           => array('队伍'),
-        'member.list'   => array('队伍列表', '/admin/member'),
-        'member.edit'   => array('新建队伍', '/admin/member/edit'),
+        'member.list'   => array('队伍成员', '/admin/member'),
+        'member.edit'   => array('新建成员', '/admin/member/edit'),
     );
 
     public function get()

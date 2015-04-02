@@ -14,13 +14,20 @@ class Edit extends \Controller\Admin\Site
             $this->result = \Model\Site::find($id);
         } else {
             $this->result = array();
-
         }
     }
 
     public function post($id)
     {
+
         $data = $_POST;
+        $mission =array();
+        if($data['passInfo']==2){
+            $mission = array_combine($_POST['missionTitle'],$_POST['missionUrl']);
+        }
+        $data['mission']  = json_encode($mission);
+        unset($data['missionTitle']);
+        unset($data['missionUrl']);
         if ($id) {
             $site = \Model\Site::find($id);
             $site->set($data);

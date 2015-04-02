@@ -1,20 +1,20 @@
 <?php
 
-namespace Controller\Admin\Site;
+namespace Controller\Admin\Team;
 
-class Page extends \Controller\Admin\Site
+class Page extends \Controller\Admin\Team
 {
     public $data;
-    public $path = array('site', 'site.list');
-    protected $_tpl = 'admin/site/list';
+    public $path = array('team', 'team.list');
+    protected $_tpl = 'admin/team/list';
 
     public function get()
     {
-        $site = new \Model\Site();
+        $team = new \Model\Team();
         $where = array();
         $path = $this->getPath();
         $order = array('create_time' => 'desc');
-        $this->result = $site->fetchAsPage($where, $_GET['page'], 20, $order, $path);
+        $this->result = $team->fetchAsPage($where, $_GET['page'], 1, $order, $path);
     }
 
     public function getPath()

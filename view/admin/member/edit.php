@@ -1,6 +1,6 @@
 <div class="well">
     <form class="form-horizontal validate" action="" method="post">
-        <fieldset>新建队伍</fieldset>
+        <fieldset>队员详情</fieldset>
 
         <div class="control-group">
             <label class="control-label">队员编号</label>

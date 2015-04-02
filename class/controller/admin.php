@@ -22,9 +22,11 @@ abstract class Admin extends \Core\Controller
     public $nav = array(
         '' => array('首页', '/admin'),
         'member' => array('成员管理', '/admin/member'),
+        'team' => array('队伍管理', '/admin/team'),
         'line' => array('线路管理', '/admin/line'),
         'signup' => array('报名管理', '/admin/signup'),
         'site' => array('站点管理', '/admin/site'),
+        'mission' => array('任务管理', '/admin/mission'),
         'user' => array('用户管理', '/admin/user'),
     );
 

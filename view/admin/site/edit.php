@@ -39,19 +39,27 @@
         <div class="control-group">
             <label class="control-label">通关方式</label>
             <div class="controls">
-                <input type="text" name="passInfo"  class="span3" value="<?php echo $result->passInfo; ?>"/>
+                <select class="span3" id="passInfo" name="passInfo">
+                    <option value="1" <?php if($result->passInfo == 1){ echo 'selected="selected"';}?> >一般性-直接通过</option>
+                    <option value="2" <?php if($result->passInfo == 2){ echo 'selected="selected"';}?>>特殊性-任务书</option>
+                </select>
                 <span class="help-inline">必填</span>
             </div>
         </div>
 
-        <div class="control-group">
+        <div class="control-group"  id="missionShow" <?php if($result->passInfo!=2): ?>style="display: none;" <?php endif;?>>
             <label class="control-label">任务书</label>
             <div class="controls">
-                <input type="text" name="mission"  class="span3" value="<?php echo $result->mission; ?>"/>
-                <span class="help-inline">必填</span>
+                <button class="btn btn-primary" type="button" id="addMission">新增任务书</button>
             </div>
         </div>
 
+
+        <div class="control-group" id="missionList">
+            <?php  $mission = json_decode($result->mission,true);foreach($mission as $key=>$item):?>
+             <div class="controls controls-row">任务标题<input class="span2"  type="text" name="missionTitle[]" value="<?php echo $key?>">任务H5链接<input class="span4"  type="text" name="missionUrl[]" value="<?php echo $item;?>"><button class="btn btn-danger delete" type="button">删除</button></div>
+           <?php endforeach;?>
+        </div>
 
         <div class="control-group">
             <label class="control-label"> 点长</label>
@@ -71,3 +79,28 @@
 </div>
 
 
+<script language="javascript">
+
+
+    //添加任务书
+    $("#addMission").click(function(){
+        var html = '<div class="controls controls-row">任务标题<input class="span2"  type="text" name="missionTitle[]">任务H5链接<input class="span4"  type="text" name="missionUrl[]"><button class="btn btn-danger delete" type="button">删除<\/button><\/div>';
+        $("#missionList").append(html);
+    });
+    $(".delete").live("click",function(){
+         $(this).parent().html("");
+　　})
+
+
+    //删除任务书
+    $("#passInfo").change(function(){
+        if($(this).val()==1){
+            $("#missionList").html('');
+            $("#missionShow").hide();
+        }else if ($(this).val()==2){
+            $("#missionShow").show();
+        }
+    })
+
+
+</script>

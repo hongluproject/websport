@@ -56,6 +56,20 @@ $config['routes'] = array(
     'admin/signup/edit'     => '\Controller\Admin\Signup\Edit',
     'admin/signup'             => '\Controller\Admin\Signup\Page',
 
+
+    //团队
+    'admin/team/delete'     => '\Controller\Admin\Team\Delete',
+    'admin/team/edit'     => '\Controller\Admin\Team\Edit',
+    'admin/team'             => '\Controller\Admin\Team\Page',
+
+
+
+    //任务
+    'admin/mission/delete'     => '\Controller\Admin\Mission\Delete',
+    'admin/mission/edit'     => '\Controller\Admin\Mission\Edit',
+    'admin/mission'             => '\Controller\Admin\Mission\Page',
+
+
     'admin/news/delete'     => '\Controller\Admin\News\Delete',
     'admin/news/update'     => '\Controller\Admin\News\Update',
     'admin/news/localupdate'=> '\Controller\Admin\News\Localupdate',
