@@ -8,13 +8,18 @@ class Page extends \Controller\Admin\Site
     public $path = array('site', 'site.list');
     protected $_tpl = 'admin/site/list';
 
-    public function get()
+    public function get($id)
     {
         $site = new \Model\Site();
-        $where = array();
+        if ($id) {
+            $where = array('lineId' => $id);
+
+        } else {
+            $where = array();
+        }
         $path = $this->getPath();
         $order = array('create_time' => 'desc');
-        $this->result = $site->fetchAsPage($where, $_GET['page'], 20, $order, $path);
+        $this->result = $site->fetchAsPage($where, $_GET['page'], 10, $order, $path);
     }
 
     public function getPath()

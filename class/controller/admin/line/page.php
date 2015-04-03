@@ -12,7 +12,7 @@ class Page extends \Controller\Admin\Line
         $where = array();
         $path = $this->getPath();
         $order = array('create_time' => 'desc');
-        $this->result = $lines->fetchAsPage($where, $_GET['page'], 1, $order, $path);
+        $this->result = $lines->fetchAsPage($where, $_GET['page'], 10, $order, $path);
     }
 
     public function getPath()

@@ -3,6 +3,11 @@
 <script src="/assets/js/lang/en.js" type="text/javascript"></script>
 <script src="/assets/js/lang/en-us.js" type="text/javascript"></script>
 <div class="container-fluid">
+    <form class="well form-search" name="searchform" id="searchform" action="/admin/team" method="post">
+        <input type="text" placeholder="按团队名称、队伍号搜索团队" class="span3"  name="searchParam" value="<?php if($searchParam){echo $searchParam;}?>">
+        <button class="btn" type="submit">Search</button>
+    </form>
+
     <form  name="editform" id="editform" action="" method="post">
         <input type="hidden" name="pb_stat" id="pb_stat" value="">
         <table class="table table-bordered table-striped" >
@@ -26,15 +31,15 @@
                         <td><?php echo $item->id; ?></td>
                         <td><?php echo $item->teamId; ?></td>
                         <td><?php echo $item->teamName; ?></td>
-                        <td><?php echo $item->status; ?></td>
-                        <td><?php echo $item->nowLine; ?></td>
+                        <td><?php  if($item->status ==2){echo '弃权';}elseif($item->status==3){echo '取消成绩';}else{ echo "正常";} ?></td>
+                        <td><?php echo $item->lineId; ?></td>
                         <td><?php echo $item->nowSite; ?></td>
                         <td><?php echo $item->passSiteNum; ?></td>
                         <td><?php echo $item->startSignUp; ?></td>
                         <td><?php echo $item->lastSignUp; ?></td>
                         <td>
-                            <a href="/admin/member/edit/<?php echo $item->id; ?>" target="_blank"><i class="icon-ok" alt="更新" title="更新"></i></a>&nbsp;&nbsp;&nbsp;
-                            <a href="/admin/member/delete/<?php echo $item->id; ?>" class="delete"><i class="icon-remove" alt="删除" title="删除"></i></a>&nbsp;&nbsp;&nbsp;
+                            <a href="/admin/team/edit/<?php echo $item->id; ?>" target="_blank"><i class="icon-ok" alt="更新" title="更新"></i></a>&nbsp;&nbsp;&nbsp;
+                            <a href="/admin/team/delete/<?php echo $item->id; ?>" class="delete"><i class="icon-remove" alt="删除" title="删除"></i></a>&nbsp;&nbsp;&nbsp;
                         </td>
                     </tr>
                 <?php endforeach; ?>

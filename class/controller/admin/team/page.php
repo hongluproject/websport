@@ -8,13 +8,30 @@ class Page extends \Controller\Admin\Team
     public $path = array('team', 'team.list');
     protected $_tpl = 'admin/team/list';
 
-    public function get()
+    public function get($searchParam)
     {
-        $team = new \Model\Team();
-        $where = array();
-        $path = $this->getPath();
-        $order = array('create_time' => 'desc');
-        $this->result = $team->fetchAsPage($where, $_GET['page'], 1, $order, $path);
+        if($searchParam){
+            $db = \Model\Team::db();
+            $table = 'ma_team';
+            $this->result->list= $db->fetch('select * from `'.$table.'` where `teamId` = "'.$searchParam.'"  or `teamName`="'.$searchParam.'" ');
+            $this->searchParam = $searchParam;
+        }else{
+            $team = new \Model\Team();
+            $where = array();
+            $path = $this->getPath();
+            $order = array('create_time' => 'desc');
+            $this->result = $team->fetchAsPage($where, $_GET['page'], 10, $order, $path);
+        }
+
+    }
+
+
+
+
+    public function  post(){
+        $searchParam = $_POST['searchParam'];
+         $this->get($searchParam);
+
     }
 
     public function getPath()

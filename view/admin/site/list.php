@@ -19,6 +19,10 @@
                 <th width="50">操作</th>
             </tr>
             </thead>
+
+
+
+
             <tbody>
                 <?php foreach ($result->list as $item): ?>
                     <tr>
@@ -28,7 +32,7 @@
                         <td><?php echo $item->siteName; ?></td>
                         <td><?php echo $item->lineId; ?></td>
                         <td><?php echo $item->position; ?></td>
-                        <td><?php echo $item->passInfo; ?></td>
+                        <td><?php  if($item->passInfo ==2){echo '特殊性-任务书';}else{echo '一般性-直接通过';}; ?></td>
                         <td><?php  foreach(json_decode($item->mission,true) as $key => $temp){ echo $key."#";}; ?></td>
                         <td><?php echo $item->siteManager; ?></td>
                         <td>

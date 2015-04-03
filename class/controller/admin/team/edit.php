@@ -10,6 +10,11 @@ class Edit extends \Controller\Admin\Team
 
     public function get($id)
     {
+
+
+        $db = \Model\Line::db();
+        $table = 'ma_line';
+        $this->lineList= $db->fetch('select * from  `ma_line` ');
         if ($id) {
             $this->result = \Model\Team::find($id);
         } else {

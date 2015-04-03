@@ -24,16 +24,16 @@
         </div>
 
 
-
+<!--
 
         <div class="control-group">
             <label class="control-label">站点情况</label>
             <div class="controls">
-                <input type="text" name="siteInfo"  class="span2" value="<?php echo $result->siteInfo; ?>"/>
+                <input type="text" name="siteInfo"  class="span2" value="<?php /*echo $result->siteInfo; */?>"/>
                 <span class="help-inline">必填</span>
             </div>
         </div>
-
+-->
 
 
 

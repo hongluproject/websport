@@ -20,12 +20,17 @@
         </div>
 
         <div class="control-group">
-            <label class="control-label">分配到线路</label>
+            <label class="control-label">分配线路</label>
             <div class="controls">
-                <input type="text" name="lineId"  class="span4" value="<?php echo $result->lineId; ?>"/>
-                <span class="help-inline">必填</span>
+                <select class="span3" id="status" name="lineId">
+
+                    <?php foreach($lineList as $item):?>
+                        <option value="<?php echo $item->lineId?>" <?php if($result->lineId == $item->lineId){ echo 'selected="selected"';}?> ><?php echo $item->lineName?></option>
+                    <?php endforeach;?>
+                </select>
             </div>
         </div>
+
 
         <div class="control-group">
             <label class="control-label">位置信息</label>
@@ -57,7 +62,7 @@
 
         <div class="control-group" id="missionList">
             <?php  $mission = json_decode($result->mission,true);foreach($mission as $key=>$item):?>
-             <div class="controls controls-row">任务标题<input class="span2"  type="text" name="missionTitle[]" value="<?php echo $key?>">任务H5链接<input class="span4"  type="text" name="missionUrl[]" value="<?php echo $item;?>"><button class="btn btn-danger delete" type="button">删除</button></div>
+             <div class="controls controls-row"><input  placeholder="任务标题" class="span2"  type="text" name="missionTitle[]" value="<?php echo $key?>"><input class="span4"  placeholder="任务H5链接" type="text" name="missionUrl[]" value="<?php echo $item;?>"><button class="btn btn-danger delete" type="button">删除</button></div>
            <?php endforeach;?>
         </div>
 
@@ -84,7 +89,7 @@
 
     //添加任务书
     $("#addMission").click(function(){
-        var html = '<div class="controls controls-row">任务标题<input class="span2"  type="text" name="missionTitle[]">任务H5链接<input class="span4"  type="text" name="missionUrl[]"><button class="btn btn-danger delete" type="button">删除<\/button><\/div>';
+        var html = '<div class="controls controls-row"><input class="span2"  placeholder="任务标题"  type="text" name="missionTitle[]"><input class="span4"  placeholder="任务H5链接"  type="text" name="missionUrl[]"><button class="btn btn-danger delete" type="button">删除<\/button><\/div>';
         $("#missionList").append(html);
     });
     $(".delete").live("click",function(){
