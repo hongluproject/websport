@@ -29,7 +29,7 @@ $db = new Database($config['database']['default']);
 // 获取配置信息
 $table = 'dp_horn_conf';
 
-
+/*
 http://client.aplus.pptv.com/static_page/v33_user_panel/
 
 
@@ -37,7 +37,7 @@ http://client.aplus.pptv.com/static_page/v33_user_panel/
 
 
 
-客户端3.3用户面板 	v33_user_panel
+客户端3.3用户面板 	v33_user_panel*/
 
 //获取喇叭处理个数配置
 $hornnum = $db->fetch('select * from `'.$table.'` where `key` = "hornnum"');
