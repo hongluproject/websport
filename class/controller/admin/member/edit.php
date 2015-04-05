@@ -31,7 +31,7 @@ class Edit extends \Controller\Admin\Member
             $db->delete('delete  from  `ma_team` ');
 
             //上传
-            $file_dir =  SP . "public/assets/test.xls";
+         //   $file_dir =  SP . "public/assets/test.xls";
             $result = $this->importExcel($file_dir);
             unset($result[0]);
             unset($result[1]);
