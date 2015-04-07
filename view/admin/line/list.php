@@ -11,7 +11,7 @@
                 <th width="20">Id</th>
                 <th width="100">线路号</th>
                 <th width="100">线路名称</th>
-                <th width="100">站点情况</th>
+                <th width="100">点标情况</th>
                 <th width="100">线长</th>
                 <th width="50">操作</th>
             </tr>
@@ -35,7 +35,7 @@
                 <th width="20">Id</th>
                 <th width="100">线路号</th>
                 <th width="100">线路名称</th>
-                <th width="100">站点情况</th>
+                <th width="100">点标情况</th>
                 <th width="100">线长</th>
                 <th width="50">操作</th>
             </tr>

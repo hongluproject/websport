@@ -9,8 +9,8 @@
             <thead>
             <tr>
                 <th width="20">Id</th>
-                <th width="100">站点号</th>
-                <th width="100">站点名称</th>
+                <th width="100">点标号</th>
+                <th width="100">点标名称</th>
                 <th width="100">分配到线路</th>
                 <th width="100">位置信息</th>
                 <th width="100">通关方式</th>
@@ -44,8 +44,8 @@
                 <?php endforeach; ?>
             <tr>
                 <th width="20">Id</th>
-                <th width="100">站点号</th>
-                <th width="100">站点名称</th>
+                <th width="100">点标号</th>
+                <th width="100">点标名称</th>
                 <th width="100">分配到线路</th>
                 <th width="100">位置信息</th>
                 <th width="100">通关方式</th>

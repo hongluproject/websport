@@ -1,9 +1,9 @@
 <div class="well">
     <form class="form-horizontal validate" action="" method="post">
-        <fieldset>新建站点</fieldset>
+        <fieldset>新建点标</fieldset>
 
         <div class="control-group">
-            <label class="control-label">站点号</label>
+            <label class="control-label">点标号</label>
             <div class="controls">
                 <input type="text" name="siteId"  class="span2" value="<?php echo $result->siteId; ?>"/>
                 <span class="help-inline">必填</span>
@@ -12,7 +12,7 @@
 
 
         <div class="control-group">
-            <label class="control-label">站点名称</label>
+            <label class="control-label">点标名称</label>
             <div class="controls">
                 <input type="text" name="siteName"  class="span4" value="<?php echo $result->siteName; ?>"/>
                 <span class="help-inline">必填</span>

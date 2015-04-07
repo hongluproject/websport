@@ -85,14 +85,14 @@
  -->
 <!--
         <div class="control-group">
-            <label class="control-label">已完成站点个数</label>
+            <label class="control-label">已完成点标个数</label>
             <div class="controls">
                 <input type="text" name="passSiteNum"  class="span2" value="<?php /*echo $result->passSiteNum; */?>"/>
             </div>
         </div>-->
 
       <!--  <div class="control-group">
-            <label class="control-label">当前站点</label>
+            <label class="control-label">当前点标</label>
             <div class="controls">
                 <input type="text" name="nowSite"  class="span2" value="<?php /*echo $result->nowSite; */?>"/>
             </div>

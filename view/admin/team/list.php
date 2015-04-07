@@ -18,8 +18,8 @@
                 <th width="100">团队名称</th>
                 <th width="100">状态</th>
                 <th width="100">分配线路</th>
-                <th width="100">当前站点</th>
-                <th width="100">已完成站点个数</th>
+                <th width="100">当前点标</th>
+                <th width="100">已完成点标个数</th>
                 <th width="100">比赛开始时间</th>
                 <th width="100">最后一次签到时间</th>
                 <th width="50">操作</th>
@@ -49,8 +49,8 @@
                 <th width="100">团队名称</th>
                 <th width="100">状态</th>
                 <th width="100">分配线路</th>
-                <th width="100">当前站点</th>
-                <th width="100">已完成站点个数</th>
+                <th width="100">当前点标</th>
+                <th width="100">已完成点标个数</th>
                 <th width="100">比赛开始时间</th>
                 <th width="100">最后一次签到时间</th>
                 <th width="50">操作</th>

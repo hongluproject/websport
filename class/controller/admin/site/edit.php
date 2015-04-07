@@ -59,7 +59,7 @@ class Edit extends \Controller\Admin\Site
         {
             echo $e->getMessage();
             echo '</br>';
-            echo '没有这个站点';
+            echo '没有这个点标';
             exit;
         }
         redirect('/admin/site');
