@@ -17,7 +17,7 @@ abstract class Api extends \Core\Controller
 {
     public $data = array();
 
-    protected $format = 'xml';
+    protected $format = 'json';
     protected $callback = '';
     protected $cb = '';
 

@@ -69,7 +69,14 @@
         <div class="control-group">
             <label class="control-label"> 点长</label>
             <div class="controls">
-                <input type="text" name="siteManager"  class="span2" value="<?php echo $result->siteManager; ?>"/>
+                <input type="text"  name="siteManager"   disabled class="span2" value="<?php echo $result->siteManager; ?>"/>
+             </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label">联系电话</label>
+            <div class="controls">
+                <input type="text" name="phone"  class="span2" value="<?php echo $result->phone; ?>"/>
                 <span class="help-inline">必填</span>
             </div>
         </div>

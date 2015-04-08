@@ -3,7 +3,7 @@
         <fieldset>新建队伍</fieldset>
 
         <div class="control-group">
-            <label class="control-label">团队编号</label>
+            <label class="control-label">队伍号</label>
             <div class="controls">
                 <input type="text" name="teamId"  class="span4" value="<?php echo $result->teamId; ?>"/>
                 <span class="help-inline">必填</span>
@@ -11,7 +11,7 @@
         </div>
 
         <div class="control-group">
-            <label class="control-label">团队名称</label>
+            <label class="control-label">队伍名称</label>
             <div class="controls">
                 <input type="text" name="teamName"  class="span2" value="<?php echo $result->teamName; ?>"/>
                 <span class="help-inline">必填</span>
@@ -26,12 +26,10 @@
             </div>
         </div>-->
 
-
-
         <div class="control-group">
-            <label class="control-label">队长</label>
+            <label class="control-label" disabled>队长</label>
             <div class="controls">
-                <input type="text" name="teamLeader"  class="span2" value="<?php echo $result->teamLeader; ?>"/>
+                <input type="text"    name="teamLeader"  class="span2" value="<?php echo $result->teamLeader; ?>"/>
             </div>
         </div>
 
@@ -71,6 +69,8 @@
                 </select>
             </div>
         </div>
+
+
 
 
 

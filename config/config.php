@@ -70,6 +70,13 @@ $config['routes'] = array(
     'admin/mission'             => '\Controller\Admin\Mission\Page',
 
 
+
+    'api/sport/selfInfo'       => '\Controller\Api\Sport\selfInfo',
+    'api/sport/signUp'       => '\Controller\Api\Sport\signUp',
+    'api/sport/scan'       => '\Controller\Api\Sport\Scan',
+
+
+
     'admin/news/delete'     => '\Controller\Admin\News\Delete',
     'admin/news/update'     => '\Controller\Admin\News\Update',
     'admin/news/localupdate'=> '\Controller\Admin\News\Localupdate',

@@ -14,8 +14,8 @@
             <thead>
             <tr>
                 <th width="20">Id</th>
-                <th width="100">团队编号</th>
-                <th width="100">团队名称</th>
+                <th width="100">队伍号</th>
+                <th width="100">队伍名称</th>
                 <th width="100">状态</th>
                 <th width="100">分配线路</th>
                 <th width="100">当前点标</th>
@@ -45,8 +45,8 @@
                 <?php endforeach; ?>
             <tr>
                 <th width="20">Id</th>
-                <th width="100">团队编号</th>
-                <th width="100">团队名称</th>
+                <th width="100">队伍号</th>
+                <th width="100">队伍名称</th>
                 <th width="100">状态</th>
                 <th width="100">分配线路</th>
                 <th width="100">当前点标</th>
