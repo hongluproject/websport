@@ -16,7 +16,7 @@ class Scan extends \Controller\Api
               if($type== 1){
 
                   // todo input databaase;
-                  echo json_encode(array('status'=>1,'message'=>'任务描述。这个你这次跳楼一百次'));
+                  echo json_encode(array('status'=>1,'message'=>'下面是任务','result'=>array('title'=>'任务描述。这个你这次跳楼一百次','url'=>'http://www.baidu.com')));
 
 
               }elseif($type == 2){
