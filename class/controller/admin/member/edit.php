@@ -21,14 +21,12 @@ class Edit extends \Controller\Admin\Member
 
     public function post($id)
     {
-
-
-
         $file_dir = $_FILES['memberExcel']['tmp_name'];
         if($file_dir){
             $db = \Model\Line::db();
             $table = 'ma_team';
             $db->delete('delete  from  `ma_team` ');
+            $db->delete('delete  from  `ma_member` ');
 
             //上传
          //   $file_dir =  SP . "public/assets/test.xls";
@@ -37,20 +35,44 @@ class Edit extends \Controller\Admin\Member
             unset($result[1]);
             unset($result[2]);
             unset($result[3]);
+
             foreach($result as $item){
+
+                 $param = array();
+                if(!$item[7]){
+                    continue;
+                }
+                $param['lineId']= $item[7];
+                $param['status']=  1;
+                $param['teamId']= $item[2];
+                $param['teamName']= $item[3];
+                $param['teamLeader']= $item[4];
+                $param['phone']= $item[6];
+
+                 if(substr($item[5],-1) == 1){
+                    //队长
+                    $team = new \Model\Team();
+                    $team->set($param);
+                    $team->save();
+                }
+            }
+
+              foreach($result as $key=>$item){
                 $param = array();
                 if(!$item[7]){
                     continue;
                 }
-                $team = new \Model\Team();
                 $param['lineId']= $item[7];
                 $param['status']=  1;
-                $param['teamId']= $item[5];
+                $param['userName']= $item[4];
+                $param['userId']= $item[5];
+                $param['teamId']= $item[2];
                 $param['teamName']= $item[3];
-                $param['teamLeader']= $item[4];
                 $param['phone']= $item[6];
-                $team->set($param);
-                $team->save();
+                //队员入库
+                $member = new \Model\Member();
+                $member->set($param);
+                $member->save();
             }
         }
         redirect('/admin/team');

@@ -1,6 +1,6 @@
 <?php
 
-namespace Controller\Admin\Member;
+namespace Controller\Admin\Team;
 
 class Delete extends \Controller\Admin\Team
 {

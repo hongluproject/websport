@@ -14,7 +14,7 @@ class Page extends \Controller\Admin\Member
         $where = array();
         $path = $this->getPath();
         $order = array('create_time' => 'desc');
-        $this->result = $members->fetchAsPage($where, $_GET['page'], 1, $order, $path);
+        $this->result = $members->fetchAsPage($where, $_GET['page'], 20, $order, $path);
     }
 
     public function getPath()
