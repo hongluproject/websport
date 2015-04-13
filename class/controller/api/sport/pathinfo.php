@@ -6,13 +6,21 @@ class Pathinfo extends \Controller\Api
     public function get()
     {
 
-        $pathInfo = array('status'=>1,'message'=>'OK','passurl'=>'http://www.baidu.com',
-                    'result'=>array(array('memberStatus'=>1,'message'=>'通关','passTime'=>date('Y-m-d H:i:s'),'address'=>'下关在哪里'),
-                    array('memberStatus'=>2,'message'=>'02','passTime'=>date('Y-m-d H:i:s'),'address'=>'下关在哪里1'),
-                    array('memberStatus'=>3,'message'=>'03','passTime'=>date('Y-m-d H:i:s'),'address'=>'下关在哪里12'),
-                    array('memberStatus'=>3,'message'=>'04','passTime'=>null,'address'=>'')),
-        );
-        echo   json_encode($pathInfo);
+
+        $phone = $_GET['phone'];
+
+
+        $siteModel = new \Model\Site();
+        $where = array('lineId'=>'03');
+        $sites = $siteModel->fetch($where, 1000);
+
+        $pathInfo = array();
+
+        foreach($sites as $item){
+            $pathInfo[$item->siteId] =  array('memberStatus'=>'3','passTime'=>null,'address'=>$item->position);
+        }
+
+        echo json_encode(array('status'=>1,'message'=>'OK','passurl'=>'http://www.baidu.com','result'=>$pathInfo));
     }
 
     public function post()
