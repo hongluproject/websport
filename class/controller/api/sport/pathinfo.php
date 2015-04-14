@@ -31,16 +31,16 @@ class Pathinfo extends \Controller\Api
                     end($passInfo);
                     $lastPassInfoKey = key($passInfo);
                     $nextKeyArray = list($lineId,$siteId) = explode('-',$lastPassInfoKey);
-                    if(is_array($passInfo)){
+                    if(!empty($passInfo)){
                         $nextSiteKey = $siteId+1;
                     }else{
                         $nextSiteKey = 0;
                     }
                     $pathInfo = array();
                     //路程.
-                    foreach ($sites as $item) {
-                        $pathInfo[$item->siteId] = array('memberStatus' => 3, 'passTime' => null, 'address' => '');
 
+                      foreach ($sites as $item) {
+                        $pathInfo[$item->siteId] = array('memberStatus' => 3, 'passTime' => null, 'address' => '');
                         if($nextSiteKey == $item->siteId){
                             $pathInfo[$nextSiteKey]['memberStatus']  =2;
                             $pathInfo[$nextSiteKey]['address'] = $item->position;
