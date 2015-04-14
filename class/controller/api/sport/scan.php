@@ -44,15 +44,31 @@ class Scan extends \Controller\Api
                                     echo json_encode(array('status' => 1, 'message' => '成绩已记录，不要重复签到哦', 'result' => array('type' => $type, 'isFinal' => false)));
                                 }
                             } else {
-                                $passInfo[$lineId . '-' . $siteId] = array('memberStatus' => 1, 'passTime' => date('Y-m-d H:i:s'));
-                                $teamInfo = \Model\Team::find($team->id);
-                                $param['pathInfo'] = json_encode($passInfo);
-                                $teamInfo->set($param);
-                                $teamInfo->save();
-                                if ($section == 3) {
-                                    echo json_encode(array('status' => 1, 'message' => '顺利通关', 'result' => array('type' => $type, 'isFinal' => true, 'passurl' => 'http://www.baidu.com')));
-                                } else {
-                                    echo json_encode(array('status' => 1, 'message' => '顺利通关', 'result' => array('type' => $type, 'isFinal' => false)));
+                                end($passInfo);
+                                $lastPassInfoKey = key($passInfo);
+                                list($nowLineId,$preSiteId) = explode('-',$lastPassInfoKey);
+                                if(is_array($passInfo)){
+                                    $nextSiteKey = $preSiteId+1;
+                                }else{
+                                    $nextSiteKey = 0;
+                                }
+                                if($nextSiteKey!=$siteId){
+                                    if ($section == 3) {
+                                        echo json_encode(array('status' => 2, 'message' => '请按路线顺序逐个站点签到哦', 'result' => array('type' => $type, 'isFinal' => true, 'passurl' => 'http://www.baidu.com')));
+                                    } else {
+                                        echo json_encode(array('status' => 2, 'message' => '请按路线顺序逐个站点签到哦', 'result' => array('type' => $type, 'isFinal' => false)));
+                                    }
+                                }else{
+                                    $passInfo[$lineId . '-' . $siteId] = array('memberStatus' => 1, 'passTime' => date('Y-m-d H:i:s'));
+                                    $teamInfo = \Model\Team::find($team->id);
+                                    $param['pathInfo'] = json_encode($passInfo);
+                                    $teamInfo->set($param);
+                                    $teamInfo->save();
+                                    if ($section == 3) {
+                                        echo json_encode(array('status' => 1, 'message' => '恭喜您已完成比赛', 'result' => array('type' => $type, 'isFinal' => true, 'passurl' => 'http://www.baidu.com')));
+                                    } else {
+                                        echo json_encode(array('status' => 1, 'message' => '签到成功', 'result' => array('type' => $type, 'isFinal' => false)));
+                                    }
                                 }
                             }
                         } elseif ($type == 1) {
@@ -60,7 +76,7 @@ class Scan extends \Controller\Api
                             if (array_key_exists($lineId . '-' . $siteId, $missionInfo)) {
                                 $missionInfoTitle = $missionInfo[$lineId . '-' . $siteId]['title'];
                                 $missionInfoUrl = $missionInfo[$lineId . '-' . $siteId]['url'];
-                                echo json_encode(array('status' => 1, 'message' => '已领取任务', 'result' => array('type' => $type, 'title' => $missionInfoTitle, 'url' => $missionInfoUrl)));
+                                echo json_encode(array('status' => 1, 'message' => '任务已领取,不要重复领取任务哦', 'result' => array('type' => $type, 'title' => $missionInfoTitle, 'url' => $missionInfoUrl)));
                             } else {
                                 //随机任务
                                 $siteModel = new \Model\Site();
@@ -74,7 +90,7 @@ class Scan extends \Controller\Api
                                 $param['missionInfo'] = json_encode($missionInfo);
                                 $teamInfo->set($param);
                                 $teamInfo->save();
-                                echo json_encode(array('status' => 1, 'message' => '下面是任务', 'result' => array('type' => $type, 'title' => $rendSiteMission, 'url' => $siteMission[$rendSiteMission])));
+                                echo json_encode(array('status' => 1, 'message' => '领取任务成功', 'result' => array('type' => $type, 'title' => $rendSiteMission, 'url' => $siteMission[$rendSiteMission])));
                             }
                         }
                     } else {
