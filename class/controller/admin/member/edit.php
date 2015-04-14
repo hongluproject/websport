@@ -21,28 +21,6 @@ class Edit extends \Controller\Admin\Member
 
     public function post($id)
     {
-
-        //所有线路
-        $linesModel = new \Model\Line();
-        $where = array();
-        $lines = $linesModel->fetch($where, 100);
-
-        //all lines;
-
-        foreach($lines as $item){
-            print_r($item->lineId);exit;
-        }
-
-
-        $siteModel = new \Model\Site();
-        $sites = $siteModel->fetch($where, 1000);
-
-
-        print_r($sites);exit;
-
-
-
-
         $file_dir = $_FILES['memberExcel']['tmp_name'];
         if($file_dir){
             $db = \Model\Line::db();
