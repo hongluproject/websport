@@ -42,7 +42,8 @@ class Pathinfo extends \Controller\Api
                         $pathInfo[$item->siteId] = array('memberStatus' => 3, 'passTime' => null, 'address' => '');
 
                         if($nextSiteKey == $item->siteId){
-                            $pathInfo[$nextSiteKey]['address'] = array('memberStatus' => 2, 'passTime' => null, 'address' => $item->position);
+                            $pathInfo[$nextSiteKey]['memberStatus']  =2;
+                            $pathInfo[$nextSiteKey]['address'] = array( 'passTime' => null, 'address' => $item->position);
                         }
                         if (array_key_exists($item->lineId . '-' . $item->siteId, $passInfo)) {
                             $pathInfo[$item->siteId]['memberStatus'] = $passInfo[$item->lineId . '-' . $item->siteId]['memberStatus'];
