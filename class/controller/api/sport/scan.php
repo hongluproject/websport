@@ -29,7 +29,14 @@ class Scan extends \Controller\Api
                         if ($type == 2) {
                             $passInfo =(array)json_decode($team[0]->pathInfo,true);
                             if (array_key_exists($lineId.'-'.$siteId, $passInfo)) {
-                                echo json_encode(array('status' => 1, 'message' => '已经扫描过关卡', 'result' => array('type' => $type, 'isFinal' => false)));
+
+                                if ($siteId != 8) {
+                                    echo json_encode(array('status' => 1, 'message' => '已经扫描过关卡', 'result' => array('type' => $type, 'isFinal' => false)));
+                                } else {
+                                    echo json_encode(array('status' => 1, 'message' => '已经扫描过关卡', 'result' => array('type' => $type, 'isFinal' => true, 'passurl' => 'http://www.baidu.com')));
+                                }
+
+
                             } else {
                                 $passInfo[$lineId.'-'.$siteId] = array('memberStatus' => 1, 'passTime' => date('Y-m-d H:i:s'));
                                 $teamInfo = \Model\Team::find($team[0]->id);
@@ -42,7 +49,6 @@ class Scan extends \Controller\Api
                                     echo json_encode(array('status' => 1, 'message' => '顺利通关', 'result' => array('type' => $type, 'isFinal' => true, 'passurl' => 'http://www.baidu.com')));
                                 }
                              }
-
                         } elseif ($type == 1) {
                             //todo insert db
                             echo json_encode(array('status' => 1, 'message' => '下面是任务', 'result' => array('type' => $type, 'title' => '任务描述。这个你这次跳楼一百次', 'url' => 'http://www.baidu.com')));
