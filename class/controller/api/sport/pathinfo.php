@@ -12,9 +12,7 @@ class Pathinfo extends \Controller\Api
         $member = $memberModel->fetch($where, 1);
 
 
-        $passInfo = array();
         if($member[0]){
-
             $lineId = $member[0]->lineId;
             $teamId = $member[0]->teamId;
             if ($teamId) {
@@ -27,10 +25,13 @@ class Pathinfo extends \Controller\Api
             }
         }
 
-        $passInfo  = json_decode($passInfo,true);
+
+
+        $passInfo  = (array)json_decode($passInfo,true);
         $where = array('lineId'=>$lineId);
         $sites = $siteModel->fetch($where, 1000);
         $pathInfo = array();
+
 
         foreach($sites as $item){
             $pathInfo[$item->lineId.'-'.$item->siteId] =  array('memberStatus'=>'3','passTime'=>null,'address'=>$item->position);
