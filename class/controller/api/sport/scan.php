@@ -59,14 +59,14 @@ class Scan extends \Controller\Api
                             $missionInfo = (array)json_decode($team->missionInfo, true);
                             if (array_key_exists($lineId . '-' . $siteId, $missionInfo)) {
                                 $missionInfoTitle = $missionInfo[$lineId . '-' . $siteId]['title'];
-                                $missionInfoUrl   = $missionInfo[$lineId . '-' . $siteId]['url'];
+                                $missionInfoUrl = $missionInfo[$lineId . '-' . $siteId]['url'];
                                 echo json_encode(array('status' => 1, 'message' => '已领取任务', 'result' => array('type' => $type, 'title' => $missionInfoTitle, 'url' => $missionInfoUrl)));
-                            }else{
+                            } else {
                                 //随机任务
                                 $siteModel = new \Model\Site();
-                                $where = array('siteId' => $siteId,'lineId'=>$lineId);
+                                $where = array('siteId' => $siteId, 'lineId' => $lineId);
                                 $site = $siteModel->find($where);
-                                $siteMission = json_decode($site->mission,true);
+                                $siteMission = json_decode($site->mission, true);
                                 $rendSiteMission = array_rand($siteMission);
                                 //录入个人任务
                                 $missionInfo[$lineId . '-' . $siteId] = array('title' => $rendSiteMission, 'url' => $siteMission[$rendSiteMission]);
