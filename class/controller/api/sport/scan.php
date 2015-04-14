@@ -35,8 +35,6 @@ class Scan extends \Controller\Api
                                 } else {
                                     echo json_encode(array('status' => 1, 'message' => '已经扫描过关卡', 'result' => array('type' => $type, 'isFinal' => true, 'passurl' => 'http://www.baidu.com')));
                                 }
-
-
                             } else {
                                 $passInfo[$lineId.'-'.$siteId] = array('memberStatus' => 1, 'passTime' => date('Y-m-d H:i:s'));
                                 $teamInfo = \Model\Team::find($team[0]->id);
