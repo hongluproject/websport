@@ -31,10 +31,10 @@ class Pathinfo extends \Controller\Api
         $pathInfo = array();
 
         foreach($sites as $item){
-            $pathInfo[$item->lineId.'-'.$item->siteId] =  array('memberStatus'=>'3','passTime'=>null,'address'=>$item->position);
+            $pathInfo[$item->siteId] =  array('memberStatus'=>'3','passTime'=>null,'address'=>$item->position);
             if(array_key_exists($item->lineId.'-'.$item->siteId,$passInfo)){
-                $pathInfo[$item->lineId.'-'.$item->siteId]['memberStatus'] =  $passInfo[$item->lineId.'-'.$item->siteId]['memberStatus'];
-                $pathInfo[$item->lineId.'-'.$item->siteId]['passTime'] =  $passInfo[$item->lineId.'-'.$item->siteId]['passTime'];
+                $pathInfo[$item->siteId]['memberStatus'] =  $passInfo[$item->lineId.'-'.$item->siteId]['memberStatus'];
+                $pathInfo[$item->siteId]['passTime'] =  $passInfo[$item->lineId.'-'.$item->siteId]['passTime'];
             }
         }
         echo json_encode(array('status'=>1,'message'=>'OK','passurl'=>'http://www.baidu.com','result'=>$pathInfo));
