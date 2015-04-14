@@ -11,7 +11,7 @@ class Scan extends \Controller\Api
         $lineId = $_GET['lineId'];
         $phone = $_GET['phone'];
         //所处段
-        $section  = $_GET['section '];
+        $section  = $_GET['section'];
         //1任务信息 2是 过关信息
         $type = $_GET['type'];
         if (!$type) {
@@ -39,9 +39,9 @@ class Scan extends \Controller\Api
                             $passInfo = (array)json_decode($team->pathInfo, true);
                             if (array_key_exists($lineId . '-' . $siteId, $passInfo)) {
                                 if ($section == 3) {
-                                    echo json_encode(array('status' => 1, 'message' => '已经扫描过关卡', 'result' => array('type' => $type, 'isFinal' => true, 'passurl' => 'http://www.baidu.com')));
+                                    echo json_encode(array('status' => 1, 'message' => '成绩已记录，不要重复签到哦', 'result' => array('type' => $type, 'isFinal' => true, 'passurl' => 'http://www.baidu.com')));
                                 } else {
-                                    echo json_encode(array('status' => 1, 'message' => '已经扫描过关卡', 'result' => array('type' => $type, 'isFinal' => false)));
+                                    echo json_encode(array('status' => 1, 'message' => '成绩已记录，不要重复签到哦', 'result' => array('type' => $type, 'isFinal' => false)));
                                 }
                             } else {
                                 $passInfo[$lineId . '-' . $siteId] = array('memberStatus' => 1, 'passTime' => date('Y-m-d H:i:s'));
