@@ -47,7 +47,7 @@ class Scan extends \Controller\Api
                                 end($passInfo);
                                 $lastPassInfoKey = key($passInfo);
                                 list($nowLineId,$preSiteId) = explode('-',$lastPassInfoKey);
-                                if(is_array($passInfo)){
+                                if(!empty($passInfo)){
                                     $nextSiteKey = $preSiteId+1;
                                 }else{
                                     $nextSiteKey = 0;
