@@ -11,6 +11,7 @@
                 <th width="20">Id</th>
                 <th width="100">点标号</th>
                 <th width="100">点标名称</th>
+                <th width="100">点标位置</th>
                 <th width="100">分配到线路</th>
                 <th width="100">位置信息</th>
                 <th width="100">通关方式</th>
@@ -30,6 +31,8 @@
                         <td><?php echo $item->id; ?></td>
                         <td><?php echo $item->siteId; ?></td>
                         <td><?php echo $item->siteName; ?></td>
+                        <td><?php  if($item->section ==1){echo '起点';}elseif($item->section == 3){echo '终点';}else{ echo '中间站点';}; ?></td>
+
                         <td><?php echo $item->lineId; ?></td>
                         <td><?php echo $item->position; ?></td>
                         <td><?php  if($item->passInfo ==2){echo '特殊性-任务书';}else{echo '一般性-直接通过';}; ?></td>
@@ -46,6 +49,7 @@
                 <th width="20">Id</th>
                 <th width="100">点标号</th>
                 <th width="100">点标名称</th>
+                <th width="100">点标位置</th>
                 <th width="100">分配到线路</th>
                 <th width="100">位置信息</th>
                 <th width="100">通关方式</th>

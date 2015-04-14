@@ -9,7 +9,6 @@ class Pathinfo extends \Controller\Api
         if (!$phone) {
             echo json_encode(array('status' => 2, 'message' => '没有用户信息'));
         }
-
         $memberModel = new \Model\Member();
         $where = array('phone' => $phone);
         $member = $memberModel->find($where);

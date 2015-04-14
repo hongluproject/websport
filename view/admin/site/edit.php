@@ -12,6 +12,15 @@
 
 
         <div class="control-group">
+            <label class="control-label">线路点位</label>
+            <div class="controls">
+                <input type="radio" name="section"   value="1"  <?php if($result->section == 1){ echo 'checked="true"';}?>>起点
+                <input type="radio" name="section"   value="2"  <?php if($result->section == 2){ echo 'checked="true"';}?>>中间线路
+                <input type="radio" name="section"   value="3"  <?php if($result->section == 3){ echo 'checked="true"';}?>>终点
+            </div>
+        </div>
+
+        <div class="control-group">
             <label class="control-label">点标名称</label>
             <div class="controls">
                 <input type="text" name="siteName"  class="span4" value="<?php echo $result->siteName; ?>"/>
@@ -32,13 +41,6 @@
         </div>
 
 
-        <div class="control-group">
-            <label class="control-label">位置信息</label>
-            <div class="controls">
-                <input type="text" name="position"  class="span4" value="<?php echo $result->position; ?>"/>
-                <span class="help-inline">必填</span>
-            </div>
-        </div>
 
 
         <div class="control-group">
