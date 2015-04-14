@@ -29,7 +29,7 @@ class Scan extends \Controller\Api
                         if ($type == 2) {
                             $passInfo =(array)json_decode($team[0]->pathInfo,true);
                             if (array_key_exists($lineId.'-'.$siteId, $passInfo)) {
-                                echo json_encode(array('status' => 2, 'message' => '已经扫描过关卡', 'result' => array('type' => $type, 'isFinal' => false)));
+                                echo json_encode(array('status' => 1, 'message' => '已经扫描过关卡', 'result' => array('type' => $type, 'isFinal' => false)));
                             } else {
                                 $passInfo[$lineId.'-'.$siteId] = array('memberStatus' => 1, 'passTime' => date('Y-m-d H:i:s'));
                                 $teamInfo = \Model\Team::find($team[0]->id);
