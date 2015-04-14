@@ -11,7 +11,8 @@ header("Cache-Control: no-cache, must-revalidate");
 //参数（与以前的服务器兼容）,即兼容HTTP1.0协议
 header("Pragma: no-cache");
 //输出MIME类型
-header("Content-type: application/json");
+header("Content-type: application/json;charset=utf-8");
+
 
 abstract class Api extends \Core\Controller
 {
