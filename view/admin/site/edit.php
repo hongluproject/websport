@@ -87,6 +87,13 @@
            <?php endforeach;?>
         </div>
 
+        <div class="control-group">
+            <label class="control-label">位置信息</label>
+            <div class="controls">
+                <input type="text" name="position"  class="span4" value="<?php echo $result->position; ?>"/>
+                <span class="help-inline">必填</span>
+            </div>
+        </div>
 
 
         <div class="control-group">
