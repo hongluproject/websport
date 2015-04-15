@@ -28,7 +28,7 @@
                         <td><?php echo $item->id; ?></td>
                         <td><?php echo $item->siteId; ?></td>
                         <td>
-                            <?php echo "http://sport.hoopeng.cn/api/sport/scan?type=2&lineId=".$item->lineId."&siteId=".$item->siteId.htmlspecialchars("&section=").$item->section."&md=".md5($result->lineId.'-'.$result->siteId)  ?>
+                            <?php echo "http://sport.hoopeng.cn/api/sport/scan?type=2&lineId=".$item->lineId."&siteId=".$item->siteId.htmlspecialchars("&section=").$item->section."&md=".md5($item->lineId.'-'.$item->siteId)  ?>
                         </td>
                         <td><?php echo $item->siteName; ?></td>
                         <td><?php  if($item->section ==1){echo '起点';}elseif($item->section == 3){echo '终点';}else{ echo '中间站点';}; ?></td>
