@@ -11,6 +11,14 @@
         </div>
 
 
+
+        <div class="control-group">
+            <label class="control-label">站点二维码URL</label>
+            <div class="controls">
+            <input type="text"  class="span8" value="http://sport.hoopeng.cn/api/sport/scan?type=2&lineId=<?php echo $result->lineId?>&siteId=<?php echo $result->siteId?>&section=<?php echo $result->section;?>&md=<?php echo md5($result->lineId.'-'.$result->siteId)?>"/>
+            </div>
+        </div>
+
         <div class="control-group">
             <label class="control-label">线路点位</label>
             <div class="controls">
