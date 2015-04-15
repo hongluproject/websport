@@ -39,6 +39,9 @@ class Edit extends \Controller\Admin\Site
                 echo "mission and mission result must be input";exit;
             }
 
+            if($data['address'] ){
+                echo "address  must be input";exit;
+            }
 
             if ($id) {
                 $site = \Model\Site::find($id);
