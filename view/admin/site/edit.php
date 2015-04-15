@@ -19,6 +19,17 @@
             </div>
         </div>
 
+
+        <div class="control-group">
+            <label class="control-label">站点任务书二维码</label>
+            <div class="controls">
+                <?php if($result->passInfo==2):?>
+                <input type="text"  class="span8" value="http://sport.hoopeng.cn/api/sport/scan?type=1&lineId=<?php echo $result->lineId?>&siteId=<?php echo $result->siteId?>&section=<?php echo $result->section;?>"/>
+                <?php endif;?>
+            </div>
+        </div>
+
+
         <div class="control-group">
             <label class="control-label">线路点位</label>
             <div class="controls">
