@@ -39,7 +39,7 @@ class Scan extends \Controller\Api
                             $passInfo = (array)json_decode($team->pathInfo, true);
                             if (array_key_exists($lineId . '-' . $siteId, $passInfo)) {
                                 if ($section == 3) {
-                                    echo json_encode(array('status' => 1, 'message' => '成绩已记录，不要重复签到哦', 'result' => array('type' => $type, 'isFinal' => true, 'passurl' => 'http://www.baidu.com')));
+                                    echo json_encode(array('status' => 1, 'message' => '成绩已记录，不要重复签到哦', 'result' => array('type' => $type, 'isFinal' => true, 'passurl' => 'http://sport.hoopeng.cn/sport/userinfo')));
                                 } else {
                                     echo json_encode(array('status' => 1, 'message' => '成绩已记录，不要重复签到哦', 'result' => array('type' => $type, 'isFinal' => false)));
                                 }
@@ -54,7 +54,7 @@ class Scan extends \Controller\Api
                                 }
                                 if($nextSiteKey!=$siteId){
                                     if ($section == 3) {
-                                        echo json_encode(array('status' => 2, 'message' => '请按路线顺序逐个站点签到哦', 'result' => array('type' => $type, 'isFinal' => true, 'passurl' => 'http://www.baidu.com')));
+                                        echo json_encode(array('status' => 2, 'message' => '请按路线顺序逐个站点签到哦', 'result' => array('type' => $type, 'isFinal' => true, 'passurl' => 'http://sport.hoopeng.cn/sport/userinfo')));
                                     } else {
                                         echo json_encode(array('status' => 2, 'message' => '请按路线顺序逐个站点签到哦', 'result' => array('type' => $type, 'isFinal' => false)));
                                     }
@@ -65,7 +65,7 @@ class Scan extends \Controller\Api
                                     $teamInfo->set($param);
                                     $teamInfo->save();
                                     if ($section == 3) {
-                                        echo json_encode(array('status' => 1, 'message' => '恭喜您已完成比赛', 'result' => array('type' => $type, 'isFinal' => true, 'passurl' => 'http://www.baidu.com')));
+                                        echo json_encode(array('status' => 1, 'message' => '恭喜您已完成比赛', 'result' => array('type' => $type, 'isFinal' => true, 'passurl' => 'http://sport.hoopeng.cn/sport/userinfo')));
                                     } else {
                                         echo json_encode(array('status' => 1, 'message' => '签到成功', 'result' => array('type' => $type, 'isFinal' => false)));
                                     }

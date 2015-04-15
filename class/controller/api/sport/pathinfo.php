@@ -51,7 +51,7 @@ class Pathinfo extends \Controller\Api
                             $pathInfo[$item->siteId]['address'] = $item->position;
                         }
                     }
-                    echo json_encode(array('status' => 1, 'message' => 'OK', 'passurl' => 'http://www.baidu.com', 'result' => $pathInfo));
+                    echo json_encode(array('status' => 1, 'message' => 'OK', 'passurl' => 'http://sport.hoopeng.cn/sport/userinfo', 'result' => $pathInfo));
 
                 } else {
                     echo json_encode(array('status' => 2, 'message' => '没有TEAM'));

@@ -45,7 +45,7 @@
 .mm_debug_tab li {
 }
 </style>
- 
+
 <a href="#" id="mm_debug_button" toggleString="Debug&#9650">Debug&#9660</a>
 <div id="mm_debug_container">
     <div id="mm_debug_nav">
