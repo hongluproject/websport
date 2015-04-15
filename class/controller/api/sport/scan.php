@@ -4,6 +4,7 @@ namespace Controller\Api\Sport;
 class Scan extends \Controller\Api
 {
     public function get()
+
     {
         //站点
         $siteId = $_GET['siteId'];

@@ -40,7 +40,7 @@ class Pathinfo extends \Controller\Api
                     //路程.
 
                       foreach ($sites as $item) {
-                        $pathInfo[$item->siteId] = array('memberStatus' => 3, 'passTime' => null, 'address' => '','siteName'=>$item->lineId.'-'.$item->siteId);
+                        $pathInfo[$item->siteId] = array('memberStatus' => 3, 'passTime' => '', 'address' => '','siteName'=>$item->lineId.'-'.$item->siteId);
                         if($nextSiteKey == $item->siteId){
                             $pathInfo[$nextSiteKey]['memberStatus']  =2;
                             $pathInfo[$nextSiteKey]['address'] = $item->position;
