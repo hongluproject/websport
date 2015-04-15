@@ -77,6 +77,15 @@ $config['routes'] = array(
 
 
 
+    'api/sport/scan'       => '\Controller\Api\Sport\Scan',
+    'api/sport/userinfo'       => '\Controller\Api\Sport\Userinfo',
+    'api/sport/pathinfo'       => '\Controller\Api\Sport\Pathinfo',
+
+
+    'sport/userinfo'       => '\Controller\Front\Sport\Userinfo',
+
+
+
     'admin/news/delete'     => '\Controller\Admin\News\Delete',
     'admin/news/update'     => '\Controller\Admin\News\Update',
     'admin/news/localupdate'=> '\Controller\Admin\News\Localupdate',

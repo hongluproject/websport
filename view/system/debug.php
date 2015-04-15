@@ -45,11 +45,7 @@
 .mm_debug_tab li {
 }
 </style>
-<script type="text/javascript">
-	if (typeof jQuery == 'undefined') {
-		document.write('<script' + ' type="text/javascript" src="' + 'https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"><\/script>');
-	}
-</script>
+ 
 <a href="#" id="mm_debug_button" toggleString="Debug&#9650">Debug&#9660</a>
 <div id="mm_debug_container">
     <div id="mm_debug_nav">
