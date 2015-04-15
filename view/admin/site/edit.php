@@ -87,6 +87,17 @@
            <?php endforeach;?>
         </div>
 
+
+
+        <div class="control-group">
+            <label class="control-label"> 任务书答案</label>
+            <div class="controls">
+                <input type="text"  name="missionResult"    class="span6" value="<?php echo $result->missionResult; ?>"/>
+            </div>
+        </div>
+
+
+
         <div class="control-group">
             <label class="control-label"> 点长</label>
             <div class="controls">

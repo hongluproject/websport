@@ -34,6 +34,12 @@ class Edit extends \Controller\Admin\Site
             $data['mission']  = json_encode($mission);
             unset($data['missionTitle']);
             unset($data['missionUrl']);
+
+            if($data['passInfo'] == 2&&(empty($mission)||!$data['missionResult'])){
+                echo "mission and mission result must be input";exit;
+            }
+
+
             if ($id) {
                 $site = \Model\Site::find($id);
                 $before_line = \Model\Line::find(array('lineId'=>$site->lineId));
