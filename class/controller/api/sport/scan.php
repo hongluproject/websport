@@ -80,7 +80,7 @@ class Scan extends \Controller\Api
                             if (array_key_exists($lineId . '-' . $siteId, $missionInfo)) {
                                 $missionInfoTitle = $missionInfo[$lineId . '-' . $siteId]['title'];
                                 $missionInfoUrl = $missionInfo[$lineId . '-' . $siteId]['url'];
-                                echo json_encode(array('status' => 1, 'message' => '任务已领取,不要重复领取任务哦', 'result' => array('type' => $type, 'title' => $missionInfoTitle, 'url' => $missionInfoUrl)));
+                                echo json_encode(array('status' => 1, 'message' => '领取任务成功', 'result' => array('type' => $type, 'title' => $missionInfoTitle, 'url' => $missionInfoUrl)));
                             } else {
                                 //随机任务
                                 $siteModel = new \Model\Site();
