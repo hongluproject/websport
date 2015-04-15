@@ -39,7 +39,7 @@ class Edit extends \Controller\Admin\Site
                 echo "mission and mission result must be input";exit;
             }
 
-            if(!$data['address'] ){
+            if(!$data['position'] ){
                 echo "address  must be input";exit;
             }
 
