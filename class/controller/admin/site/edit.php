@@ -31,19 +31,16 @@ class Edit extends \Controller\Admin\Site
             }
 
 
-
-            $siteModel = new \Model\Site();
+            /*$siteModel = new \Model\Site();
             $where = array('lineId' => $_POST['lineId']);
             $sites = $siteModel->fetch($where, 1000);
-
             $selfLine = array();
             foreach ($sites as $item) {
                 $selfLine[$item->siteId] = $item->siteId;
-
             }
             if (array_key_exists($_POST['siteId'], $selfLine)) {
                 echo "error line input";exit;
-            }
+            }*/
 
             $data['mission'] = json_encode($mission);
             unset($data['missionTitle']);
