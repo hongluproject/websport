@@ -12,7 +12,7 @@ class Scan extends \Controller\Api
         $lineId = $_GET['lineId'];
         $phone = $_GET['phone'];
         //所处段
-        $section  = $_GET['section'];
+        $section = $_GET['section'];
         //1任务信息 2是 过关信息
         $type = $_GET['type'];
         if (!$type) {
@@ -36,65 +36,66 @@ class Scan extends \Controller\Api
                     $team = $teamModel->find($where);
                     //找到team
                     if ($team) {
-                        if($team->lineId!=$lineId){
-                            echo json_encode(array('status' => 2, 'message' => '不要跨站扫描，您的路线是线路'.$lineId, 'result' => array('type' => $type, 'isFinal' => false)));
-                        }
-                        if ($type == 2) {
-                            $passInfo = (array)json_decode($team->pathInfo, true);
-                            if (array_key_exists($lineId . '-' . $siteId, $passInfo)) {
-                                if ($section == 3) {
-                                    echo json_encode(array('status' => 1, 'message' => '成绩已记录，不要重复签到哦', 'result' => array('type' => $type, 'isFinal' => true, 'passurl' => 'http://sport.hoopeng.cn/sport/userinfo')));
-                                } else {
-                                    echo json_encode(array('status' => 1, 'message' => '成绩已记录，不要重复签到哦', 'result' => array('type' => $type, 'isFinal' => false)));
-                                }
-                            } else {
-                                end($passInfo);
-                                $lastPassInfoKey = key($passInfo);
-                                list($nowLineId,$preSiteId) = explode('-',$lastPassInfoKey);
-                                if(!empty($passInfo)){
-                                    $nextSiteKey = $preSiteId+1;
-                                }else{
-                                    $nextSiteKey = 0;
-                                }
-                                if($nextSiteKey!=$siteId){
+                        if ($team->lineId != $lineId) {
+                            echo json_encode(array('status' => 2, 'message' => '不要跨站扫描，您的路线是线路' . $lineId, 'result' => array('type' => $type, 'isFinal' => false)));
+                        } else {
+                            if ($type == 2) {
+                                $passInfo = (array)json_decode($team->pathInfo, true);
+                                if (array_key_exists($lineId . '-' . $siteId, $passInfo)) {
                                     if ($section == 3) {
-                                        echo json_encode(array('status' => 2, 'message' => '请按路线顺序逐个站点签到哦', 'result' => array('type' => $type, 'isFinal' => true, 'passurl' => 'http://sport.hoopeng.cn/sport/userinfo')));
+                                        echo json_encode(array('status' => 1, 'message' => '成绩已记录，不要重复签到哦', 'result' => array('type' => $type, 'isFinal' => true, 'passurl' => 'http://sport.hoopeng.cn/sport/userinfo')));
                                     } else {
-                                        echo json_encode(array('status' => 2, 'message' => '请按路线顺序逐个站点签到哦', 'result' => array('type' => $type, 'isFinal' => false)));
+                                        echo json_encode(array('status' => 1, 'message' => '成绩已记录，不要重复签到哦', 'result' => array('type' => $type, 'isFinal' => false)));
                                     }
-                                }else{
-                                    $passInfo[$lineId . '-' . $siteId] = array('memberStatus' => 1, 'passTime' => date('Y-m-d H:i:s'));
+                                } else {
+                                    end($passInfo);
+                                    $lastPassInfoKey = key($passInfo);
+                                    list($nowLineId, $preSiteId) = explode('-', $lastPassInfoKey);
+                                    if (!empty($passInfo)) {
+                                        $nextSiteKey = $preSiteId + 1;
+                                    } else {
+                                        $nextSiteKey = 0;
+                                    }
+                                    if ($nextSiteKey != $siteId) {
+                                        if ($section == 3) {
+                                            echo json_encode(array('status' => 2, 'message' => '请按路线顺序逐个站点签到哦', 'result' => array('type' => $type, 'isFinal' => true, 'passurl' => 'http://sport.hoopeng.cn/sport/userinfo')));
+                                        } else {
+                                            echo json_encode(array('status' => 2, 'message' => '请按路线顺序逐个站点签到哦', 'result' => array('type' => $type, 'isFinal' => false)));
+                                        }
+                                    } else {
+                                        $passInfo[$lineId . '-' . $siteId] = array('memberStatus' => 1, 'passTime' => date('Y-m-d H:i:s'));
+                                        $teamInfo = \Model\Team::find($team->id);
+                                        $param['pathInfo'] = json_encode($passInfo);
+                                        $teamInfo->set($param);
+                                        $teamInfo->save();
+                                        if ($section == 3) {
+                                            echo json_encode(array('status' => 1, 'message' => '恭喜您已完成比赛', 'result' => array('type' => $type, 'isFinal' => true, 'passurl' => 'http://sport.hoopeng.cn/sport/userinfo')));
+                                        } else {
+                                            echo json_encode(array('status' => 1, 'message' => '签到成功', 'result' => array('type' => $type, 'isFinal' => false)));
+                                        }
+                                    }
+                                }
+                            } elseif ($type == 1) {
+                                $missionInfo = (array)json_decode($team->missionInfo, true);
+                                if (array_key_exists($lineId . '-' . $siteId, $missionInfo)) {
+                                    $missionInfoTitle = $missionInfo[$lineId . '-' . $siteId]['title'];
+                                    $missionInfoUrl = $missionInfo[$lineId . '-' . $siteId]['url'];
+                                    echo json_encode(array('status' => 1, 'message' => '领取任务成功', 'result' => array('type' => $type, 'title' => $missionInfoTitle, 'url' => $missionInfoUrl)));
+                                } else {
+                                    //随机任务
+                                    $siteModel = new \Model\Site();
+                                    $where = array('siteId' => $siteId, 'lineId' => $lineId);
+                                    $site = $siteModel->find($where);
+                                    $siteMission = json_decode($site->mission, true);
+                                    $rendSiteMission = array_rand($siteMission);
+                                    //录入个人任务
+                                    $missionInfo[$lineId . '-' . $siteId] = array('title' => $rendSiteMission, 'url' => $siteMission[$rendSiteMission]);
                                     $teamInfo = \Model\Team::find($team->id);
-                                    $param['pathInfo'] = json_encode($passInfo);
+                                    $param['missionInfo'] = json_encode($missionInfo);
                                     $teamInfo->set($param);
                                     $teamInfo->save();
-                                    if ($section == 3) {
-                                        echo json_encode(array('status' => 1, 'message' => '恭喜您已完成比赛', 'result' => array('type' => $type, 'isFinal' => true, 'passurl' => 'http://sport.hoopeng.cn/sport/userinfo')));
-                                    } else {
-                                        echo json_encode(array('status' => 1, 'message' => '签到成功', 'result' => array('type' => $type, 'isFinal' => false)));
-                                    }
+                                    echo json_encode(array('status' => 1, 'message' => '领取任务成功', 'result' => array('type' => $type, 'title' => $rendSiteMission, 'url' => $siteMission[$rendSiteMission])));
                                 }
-                            }
-                        } elseif ($type == 1) {
-                            $missionInfo = (array)json_decode($team->missionInfo, true);
-                            if (array_key_exists($lineId . '-' . $siteId, $missionInfo)) {
-                                $missionInfoTitle = $missionInfo[$lineId . '-' . $siteId]['title'];
-                                $missionInfoUrl = $missionInfo[$lineId . '-' . $siteId]['url'];
-                                echo json_encode(array('status' => 1, 'message' => '领取任务成功', 'result' => array('type' => $type, 'title' => $missionInfoTitle, 'url' => $missionInfoUrl)));
-                            } else {
-                                //随机任务
-                                $siteModel = new \Model\Site();
-                                $where = array('siteId' => $siteId, 'lineId' => $lineId);
-                                $site = $siteModel->find($where);
-                                $siteMission = json_decode($site->mission, true);
-                                $rendSiteMission = array_rand($siteMission);
-                                //录入个人任务
-                                $missionInfo[$lineId . '-' . $siteId] = array('title' => $rendSiteMission, 'url' => $siteMission[$rendSiteMission]);
-                                $teamInfo = \Model\Team::find($team->id);
-                                $param['missionInfo'] = json_encode($missionInfo);
-                                $teamInfo->set($param);
-                                $teamInfo->save();
-                                echo json_encode(array('status' => 1, 'message' => '领取任务成功', 'result' => array('type' => $type, 'title' => $rendSiteMission, 'url' => $siteMission[$rendSiteMission])));
                             }
                         }
                     } else {

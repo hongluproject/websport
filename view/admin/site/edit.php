@@ -5,27 +5,8 @@
         <div class="control-group">
             <label class="control-label">点标号</label>
             <div class="controls">
-                <input type="text" name="siteId"  class="span2" value="<?php echo $result->siteId; ?>"/>
+                <input type="text" name="siteId"  class="span2" id="ilove" value="<?php echo $result->siteId; ?>"/>
                 <span class="help-inline">必填</span>
-            </div>
-        </div>
-
-
-
-        <div class="control-group">
-            <label class="control-label">站点二维码URL</label>
-            <div class="controls">
-            <input type="text"  class="span8" value="http://sport.hoopeng.cn/api/sport/scan?type=2&lineId=<?php echo $result->lineId?>&siteId=<?php echo $result->siteId?>&section=<?php echo $result->section;?>&md=<?php echo md5($result->lineId.'-'.$result->siteId)?>"/>
-            </div>
-        </div>
-
-
-        <div class="control-group">
-            <label class="control-label">站点任务书二维码</label>
-            <div class="controls">
-                <?php if($result->passInfo==2):?>
-                <input type="text"  class="span8" value="http://sport.hoopeng.cn/api/sport/scan?type=1&lineId=<?php echo $result->lineId?>&siteId=<?php echo $result->siteId?>&section=<?php echo $result->section;?>"/>
-                <?php endif;?>
             </div>
         </div>
 
@@ -33,7 +14,7 @@
         <div class="control-group">
             <label class="control-label">线路点位</label>
             <div class="controls">
-                <input type="radio" name="section"   value="1"  <?php if($result->section == 1){ echo 'checked="true"';}?>>起点
+                <input type="radio" name="section"   value="1"  <?php if($result->section == 1){ echo 'checked="true"';}?> id="startSite">起点
                 <input type="radio" name="section"   value="2"  <?php if($result->section == 2){ echo 'checked="true"';}?>>中间线路
                 <input type="radio" name="section"   value="3"  <?php if($result->section == 3){ echo 'checked="true"';}?>>终点
             </div>
@@ -87,6 +68,15 @@
            <?php endforeach;?>
         </div>
 
+
+        <div class="control-group"  style="display: none;" id="missionResult">
+            <label class="control-label"> 任务书答案</label>
+            <div class="controls">
+                <input type="text"  name="missionResult"    class="span6" value="<?php echo $result->missionResult; ?>"/>
+            </div>
+        </div>
+
+
         <div class="control-group">
             <label class="control-label">位置信息</label>
             <div class="controls">
@@ -96,12 +86,6 @@
         </div>
 
 
-        <div class="control-group">
-            <label class="control-label"> 任务书答案</label>
-            <div class="controls">
-                <input type="text"  name="missionResult"    class="span6" value="<?php echo $result->missionResult; ?>"/>
-            </div>
-        </div>
 
 
 
@@ -126,6 +110,29 @@
             <button type="submit" class="btn btn-info btn-large">提交</button>
             <button type="button" class="btn back">取消</button>
         </div>
+
+
+
+        <div class="control-group">
+            <label class="control-label">站点二维码URL</label>
+            <div class="controls">
+                <input type="text"  class="span8"   value="http://sport.hoopeng.cn/api/sport/scan?type=2&lineId=<?php echo $result->lineId?>&siteId=<?php echo $result->siteId?>&section=<?php echo $result->section;?>&md=<?php echo md5($result->lineId.'-'.$result->siteId)?>"/>
+                <span class="help-inline" style="color: #ff0000">系统,不可修改</span>
+            </div>
+
+        </div>
+
+
+        <div class="control-group">
+            <label class="control-label">站点任务书二维码</label>
+            <div class="controls">
+                <?php if($result->passInfo==2):?>
+                    <input type="text"  class="span8"  value="http://sport.hoopeng.cn/api/sport/scan?type=1&lineId=<?php echo $result->lineId?>&siteId=<?php echo $result->siteId?>&section=<?php echo $result->section;?>"/>
+                    <span class="help-inline" style="color: #ff0000">系统,不可修改</span>
+                <?php endif;?>
+
+            </div>
+        </div>
     </form>
 </div>
 
@@ -143,13 +150,19 @@
 　　})
 
 
+    $("#startSite").click(function(){
+        $("#ilove").val(0);
+
+    })
     //删除任务书
     $("#passInfo").change(function(){
         if($(this).val()==1){
             $("#missionList").html('');
             $("#missionShow").hide();
+            $("#missionResult").hide();
         }else if ($(this).val()==2){
             $("#missionShow").show();
+            $("#missionResult").show();
         }
     })
 
