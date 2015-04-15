@@ -36,6 +36,9 @@ class Scan extends \Controller\Api
                     $team = $teamModel->find($where);
                     //找到team
                     if ($team) {
+                        if($team->lineId!=$lineId){
+                            echo json_encode(array('status' => 2, 'message' => '不要跨站扫描，您的路线是线路'.$lineId, 'result' => array('type' => $type, 'isFinal' => false)));
+                        }
                         if ($type == 2) {
                             $passInfo = (array)json_decode($team->pathInfo, true);
                             if (array_key_exists($lineId . '-' . $siteId, $passInfo)) {
