@@ -9,9 +9,9 @@ class Userinfo extends \Controller\Api
         $members = $memberModel->fetch(array());
 
         $apiMembers = array();
-        foreach ($members as $item){
-            $apiMembers[]['phone'] = $item->phone;
-            $apiMembers[]['username'] = $item->username;
+        foreach ($members as $key=>$item){
+            $apiMembers[$key]['phone'] = $item->phone;
+            $apiMembers[$key]['username'] = $item->username;
         }
 
         echo json_encode($apiMembers);
