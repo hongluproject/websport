@@ -41,8 +41,6 @@
         </div>
 
 
-
-
         <div class="control-group">
             <label class="control-label">通关方式</label>
             <div class="controls">
@@ -92,9 +90,17 @@
         <div class="control-group">
             <label class="control-label"> 点长</label>
             <div class="controls">
-                <input type="text"  name="siteManager"   disabled class="span2" value="<?php echo $result->siteManager; ?>"/>
+                <input type="text"  name="siteManager"   readonly="true" class="span2" value="<?php echo $result->siteManager ?>"/>
              </div>
         </div>
+
+        <div class="control-group">
+            <label class="control-label"> 点长姓名</label>
+            <div class="controls">
+                <input type="text"  name="siteManagerName"    class="span4" value="<?php echo $result->siteManagerName;?>"/>
+            </div>
+        </div>
+
 
         <div class="control-group">
             <label class="control-label">联系电话</label>

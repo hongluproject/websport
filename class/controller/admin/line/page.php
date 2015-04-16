@@ -8,6 +8,12 @@ class Page extends \Controller\Admin\Line
 
     public function get()
     {
+        $db = \Model\Line::db();
+        $fetchLineSiteCount = $db->fetch('select count(*) as siteCount,lineId from `ma_site`  group by `lineId`');
+        $countLine = array();
+        foreach ($fetchLineSiteCount as $item) {
+            $this->countLine[$item->lineId] = $item->siteCount;
+        }
         $lines = new \Model\Line();
         $where = array();
         $path = $this->getPath();

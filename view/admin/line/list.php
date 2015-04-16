@@ -22,7 +22,7 @@
                         <td><?php echo $item->id; ?></td>
                         <td><?php echo $item->lineId; ?></td>
                         <td><?php echo $item->lineName; ?></td>
-                        <td> <?php echo $item->siteNum."站" ?> &nbsp;&nbsp;<a href="http://sport.hoopeng.cn/admin/site/<?php echo $item->lineId?>" target="_blank">点击查看</a></td>
+                        <td> <?php echo $countLine[$item->lineId];?> &nbsp;&nbsp;<a href="http://sport.hoopeng.cn/admin/site/<?php echo $item->lineId?>" target="_blank">点击查看</a></td>
                         <td><?php echo $item->lineManager; ?></td>
                         <td>
                             <a href="/admin/line/edit/<?php echo $item->id; ?>" target="_blank"><i class="icon-ok" alt="更新" title="更新"></i></a>&nbsp;&nbsp;&nbsp;

@@ -23,13 +23,14 @@ class Edit extends \Controller\Admin\Site
 
     public function post($id)
     {
-        try {
+
+
+         try {
             $data = $_POST;
             $mission = array();
             if ($data['passInfo'] == 2) {
                 $mission = array_combine($_POST['missionTitle'], $_POST['missionUrl']);
             }
-
 
             /*$siteModel = new \Model\Site();
             $where = array('lineId' => $_POST['lineId']);
@@ -62,25 +63,30 @@ class Edit extends \Controller\Admin\Site
                 exit;
             }
 
-            if ($id) {
-                $site = \Model\Site::find($id);
-                $before_line = \Model\Line::find(array('lineId' => $site->lineId));
-                $before_line->set(array('siteNum' => $before_line->siteNum - 1));
-                $before_line->save();
+             $data['siteManager'] = $siteManager = $_POST['siteManager']?$_POST['siteManager']:$_POST['lineId'].'-'.$_POST['siteId'];
 
-                $after_line = \Model\Line::find(array('lineId' => $data['lineId']));
-                $after_line->set(array('siteNum' => $after_line->siteNum + 1));
-                $after_line->save();
+              $user = \Model\User::find(array('username' => $siteManager));
+             if(empty($user)){
+                    $user = new \Model\User();
+                    $userName =  $siteManager;
+                    $userPassword = substr(md5($siteManager),0,6);
+                    $param['username'] = $userName;
+                    $param['password'] = md5($userPassword);
+                    $param['level'] = 2;
+                    $param['status'] = 1;
+
+                 $user->set($param);
+                    $user->save();
+             }
+
+             if ($id) {
+                $site = \Model\Site::find($id);
                 $site->set($data);
                 $site->save();
             } else {
                 $site = new \Model\Site();
                 $site->set($data);
                 $site->save();
-                $line = \Model\Line::find(array('lineId' => $data['lineId']));
-                $line->set(array('siteNum' => $line->siteNum + 1));
-                $line->save();
-
             }
         } catch (\Exception $e) {
             echo $e->getMessage();
