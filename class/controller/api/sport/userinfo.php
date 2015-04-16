@@ -11,11 +11,11 @@ class Userinfo extends \Controller\Api
         $apiMembers = array();
         foreach ($members as $item){
             $apiMembers[]['phone'] = $item->phone;
-            $apiMembers[]['username'] = $item->phone;
+            $apiMembers[]['username'] = $item->username;
         }
 
         echo json_encode($apiMembers);
-  
+
 
     }
 
