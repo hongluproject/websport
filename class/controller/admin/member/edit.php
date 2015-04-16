@@ -35,20 +35,17 @@ class Edit extends \Controller\Admin\Member
             unset($result[1]);
             unset($result[2]);
             unset($result[3]);
-
             foreach($result as $item){
-
                 $param = array();
                 if(!$item[7]){
                     continue;
                 }
-                $param['lineId']= $item[7];
+                $param['lineId']= trim($item[7]);
                 $param['status']=  1;
-                $param['teamId']= $item[2];
-                $param['teamName']= $item[3];
-                $param['teamLeader']= $item[4];
-                $param['phone']= $item[6];
-
+                $param['teamId']= trim($item[2]);
+                $param['teamName']= trim($item[3]);
+                $param['teamLeader']= trim($item[4]);
+                $param['phone']= trim($item[6]);
                 if(substr($item[5],-1) == 1){
                     //队长
                     $team = new \Model\Team();
