@@ -11,7 +11,7 @@ class Page extends \Controller\Admin\Line
         $lines = new \Model\Line();
         $where = array();
         $path = $this->getPath();
-        $order = array('create_time' => 'desc');
+        $order = array('lineId' => 'asc');
         $this->result = $lines->fetchAsPage($where, $_GET['page'], 10, $order, $path);
     }
 

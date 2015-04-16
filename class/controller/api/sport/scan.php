@@ -37,7 +37,7 @@ class Scan extends \Controller\Api
                     //找到team
                     if ($team) {
                         if ($team->lineId != $lineId) {
-                            echo json_encode(array('status' => 2, 'message' => '不要跨站扫描，您的路线是线路' . $lineId, 'result' => array('type' => $type, 'isFinal' => false)));
+                            echo json_encode(array('status' => 2, 'message' => '您扫错线路了哦，您的路线是线路' . $team->lineId, 'result' => array('type' => $type, 'isFinal' => false)));
                         } else {
                             if ($type == 2) {
                                 $passInfo = (array)json_decode($team->pathInfo, true);

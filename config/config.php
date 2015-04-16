@@ -74,6 +74,7 @@ $config['routes'] = array(
     'api/sport/scan'       => '\Controller\Api\Sport\Scan',
     'api/sport/userinfo'       => '\Controller\Api\Sport\Userinfo',
     'api/sport/pathinfo'       => '\Controller\Api\Sport\Pathinfo',
+    'api/sport/userinfo'       => '\Controller\Api\Sport\Userinfo',
 
 
 

@@ -18,7 +18,7 @@ class Page extends \Controller\Admin\Site
             $where = array();
         }
         $path = $this->getPath();
-        $order = array('create_time' => 'desc');
+        $order = array('lineId' => 'asc','siteId'=>'asc');
         $this->result = $site->fetchAsPage($where, $_GET['page'], 10, $order, $path);
     }
 

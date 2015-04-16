@@ -16,6 +16,8 @@
                 <th width="20">Id</th>
                 <th width="100">队伍号</th>
                 <th width="100">队伍名称</th>
+                <th width="100">队长姓名</th>
+                <th width="100">手机号</th>
                 <th width="100">状态</th>
                 <th width="100">分配线路</th>
                 <th width="100">当前点标</th>
@@ -31,6 +33,8 @@
                         <td><?php echo $item->id; ?></td>
                         <td><?php echo $item->teamId; ?></td>
                         <td><?php echo $item->teamName; ?></td>
+                        <td><?php echo $item->teamLeader; ?></td>
+                        <td><?php echo $item->phone; ?></td>
                         <td><?php  if($item->status ==2){echo '弃权';}elseif($item->status==3){echo '取消成绩';}else{ echo "正常";} ?></td>
                         <td><?php echo $item->lineId; ?></td>
                         <td><?php echo $item->nowSite; ?></td>
@@ -47,6 +51,8 @@
                 <th width="20">Id</th>
                 <th width="100">队伍号</th>
                 <th width="100">队伍名称</th>
+                <th width="100">队长姓名</th>
+                <th width="100">手机号</th>
                 <th width="100">状态</th>
                 <th width="100">分配线路</th>
                 <th width="100">当前点标</th>
