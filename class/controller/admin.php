@@ -59,8 +59,41 @@ abstract class Admin extends \Core\Controller
             $this->redirect("/admin/session/login");
         } elseif ($this->_login && $this->user && $this->user->status != 1) {
             $this->showError("您好 {$this->user->name}:<br/>未激活的帐号无法登陆，请联系管理员激活您的帐号：<i style='color:#85ff94;'>{$this->user->username}</i>！", false);
+        }elseif ($this->_login){
+            if($this->user->level==2){
+                $this->nav =  array(array('首页','/admin'),'site'=>array('点标管理','/admin/site'));
+            }
+            if($this->user->level==1){
+                $this->nav =  array(array('首页','/admin'),'site'=>array('点标管理','/admin/site'),'line'=>array('线路管理','/admin/line'));
+            }
         }
     }
+
+
+
+
+
+    /*
+    if ($this->_login && !$this->user)
+    {
+    $this->showError("需要登陆才能继续！", '/admin/session/login');
+    }
+    elseif ($this->_login && $this->user && $this->user->status != 1)
+            {
+                $this->showError("您好 {$this->user->name}:<br/>未激活的帐号无法登陆，请联系管理员激活您的帐号：<i style='color:#f00;'>{$this->user->username}</i>！", false);
+            }
+
+            if ($this->_login && ("rafaelxu" == $this->user->data['username']||"solochen"==$this->user->data['username'])) {
+
+                $this->nav = array('business' => array('商务喇叭', '/admin/business'));
+
+            }
+            if ($this->_login && ("suaxu" == $this->user->data['username'])) {
+                $this->nav = array_merge($this->nav,array('business' => array('商务喇叭', '/admin/business')));
+            }
+
+        */
+
 
 
     /**

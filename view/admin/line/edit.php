@@ -13,8 +13,6 @@
         </div>
 
 
-
-
         <div class="control-group">
             <label class="control-label">线路名称</label>
             <div class="controls">
@@ -22,7 +20,6 @@
                 <span class="help-inline">必填</span>
             </div>
         </div>
-
 
 <!--
 
@@ -40,12 +37,28 @@
         <div class="control-group">
             <label class="control-label">线长</label>
             <div class="controls">
-                <input type="text" name="lineManager"  class="span2" value="<?php echo $result->lineManager; ?>"/>
+                <input type="text" name="lineManager"   readonly="true" class="span2" value="<?php echo $result->lineManager; ?>"/>
                 <span class="help-inline">必填</span>
             </div>
         </div>
 
 
+        <div class="control-group">
+            <label class="control-label"> 点长姓名</label>
+            <div class="controls">
+                <input type="text"  name="lineManagerName"     class="span4" value="<?php echo $result->lineManagerName;?>"/>
+            </div>
+        </div>
+
+
+
+        <div class="control-group">
+            <label class="control-label">手机号</label>
+            <div class="controls">
+                <input type="text" name="phone"  class="span2" value="<?php echo $result->phone; ?>"/>
+                <span class="help-inline">必填</span>
+            </div>
+        </div>
 
 
         <div class="form-actions">

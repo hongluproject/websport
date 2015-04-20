@@ -11,15 +11,25 @@ class Page extends \Controller\Admin\Site
     public function get($id)
     {
         $site = new \Model\Site();
-        if ($id) {
-            $where = array('lineId' => $id);
-
+        $user = $this->user;
+        if ($user->admin != 1) {
+            list($userLineId, $userSiteId) = explode('-', $user->username);
+            if ($user->level == 1) {
+                $where = array('lineId' => $userLineId);
+            } elseif ($user->level == 2) {
+                $where = array('siteId' => $userSiteId,'lineId'=>$userLineId);
+            }
         } else {
-            $where = array();
+            if ($id) {
+                $where = array('lineId' => $id);
+            } else {
+                $where = array();
+            }
         }
+
         $path = $this->getPath();
-        $order = array('lineId' => 'asc','siteId'=>'asc');
-        $this->result = $site->fetchAsPage($where, $_GET['page'], 10, $order, $path);
+        $order = array('lineId' => 'asc', 'siteId' => 'asc');
+        $this->result = $site->fetchAsPage($where, $_GET['page'], 20, $order, $path);
     }
 
     public function getPath()

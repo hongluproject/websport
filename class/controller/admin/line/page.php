@@ -8,6 +8,8 @@ class Page extends \Controller\Admin\Line
 
     public function get()
     {
+
+        $user = $this->user;
         $db = \Model\Line::db();
         $fetchLineSiteCount = $db->fetch('select count(*) as siteCount,lineId from `ma_site`  group by `lineId`');
         $countLine = array();
@@ -18,6 +20,14 @@ class Page extends \Controller\Admin\Line
         $where = array();
         $path = $this->getPath();
         $order = array('lineId' => 'asc');
+
+        if($user->admin!=1){
+            if($user->level == 1){
+                $where = array('lineId'=>$user->username);
+            }else{
+                echo "no power to see list";
+            }
+        }
         $this->result = $lines->fetchAsPage($where, $_GET['page'], 10, $order, $path);
     }
 

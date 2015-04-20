@@ -5,7 +5,7 @@
         <div class="control-group">
             <label class="control-label">点标号</label>
             <div class="controls">
-                <input type="text" name="siteId"  class="span2" id="ilove" value="<?php echo $result->siteId; ?>"/>
+                <input type="text" name="siteId"  <?php if($user->level ==2){ echo 'readonly="true"';}?> class="span2" id="ilove" value="<?php echo $result->siteId; ?>"/>
                 <span class="help-inline">必填</span>
             </div>
         </div>
@@ -28,12 +28,13 @@
             </div>
         </div>
 
+
         <div class="control-group">
             <label class="control-label">分配线路</label>
             <div class="controls">
                 <select class="span3" id="status" name="lineId">
-
                     <?php foreach($lineList as $item):?>
+                        <?php if($user->admin!=1&&$result->lineId != $item->lineId){continue;}?>
                         <option value="<?php echo $item->lineId?>" <?php if($result->lineId == $item->lineId){ echo 'selected="selected"';}?> ><?php echo $item->lineName?></option>
                     <?php endforeach;?>
                 </select>
@@ -67,7 +68,7 @@
         </div>
 
 
-        <div class="control-group"  style="display: none;" id="missionResult">
+        <div class="control-group"    <?php if($result->passInfo == 1){ echo 'style="display: none;"';} ?>  id="missionResult">
             <label class="control-label"> 任务书答案</label>
             <div class="controls">
                 <input type="text"  name="missionResult"    class="span6" value="<?php echo $result->missionResult; ?>"/>
@@ -82,8 +83,6 @@
                 <span class="help-inline">必填</span>
             </div>
         </div>
-
-
 
 
 
@@ -150,6 +149,8 @@
     $("#addMission").click(function(){
         var html = '<div class="controls controls-row"><input class="span2"  placeholder="任务标题"  type="text" name="missionTitle[]"><input class="span4"  placeholder="任务H5链接"  type="text" name="missionUrl[]"><button class="btn btn-danger delete" type="button">删除<\/button><\/div>';
         $("#missionList").append(html);
+        $("#missionResult").show();
+
     });
     $(".delete").live("click",function(){
          $(this).parent().html("");

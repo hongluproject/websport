@@ -7,7 +7,7 @@
  */
 
 // Enable debug mode?
-$config['debug_mode'] = true;
+$config['debug_mode'] = false;
 /**
  * Database
  * This system uses PDO to connect to MySQL, SQLite, or PostgreSQL.

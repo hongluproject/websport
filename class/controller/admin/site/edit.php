@@ -24,7 +24,6 @@ class Edit extends \Controller\Admin\Site
     public function post($id)
     {
 
-
          try {
             $data = $_POST;
             $mission = array();
@@ -63,9 +62,14 @@ class Edit extends \Controller\Admin\Site
                 exit;
             }
 
-             $data['siteManager'] = $siteManager = $_POST['siteManager']?$_POST['siteManager']:$_POST['lineId'].'-'.$_POST['siteId'];
 
-              $user = \Model\User::find(array('username' => $siteManager));
+
+             if($this->user->admin == 1){
+                 $data['siteManager'] = $siteManager = $_POST['lineId'].'-'.$_POST['siteId'];
+
+                 $user = \Model\User::find(array('username' => $siteManager));
+              }
+
              if(empty($user)){
                     $user = new \Model\User();
                     $userName =  $siteManager;
@@ -74,8 +78,7 @@ class Edit extends \Controller\Admin\Site
                     $param['password'] = md5($userPassword);
                     $param['level'] = 2;
                     $param['status'] = 1;
-
-                 $user->set($param);
+                   $user->set($param);
                     $user->save();
              }
 
