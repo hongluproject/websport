@@ -24,7 +24,8 @@ abstract class Admin extends \Core\Controller
         'member' => array('成员管理', '/admin/member'),
         'team' => array('队伍管理', '/admin/team'),
         'line' => array('线路管理', '/admin/line'),
-/*        'signup' => array('报名管理', '/admin/signup'),*/
+        'record' => array('站点线路查看', '/admin/record'),
+        /*        'signup' => array('报名管理', '/admin/signup'),*/
         'site' => array('点标管理', '/admin/site'),
 /*        'mission' => array('任务管理', '/admin/mission'),*/
         'user' => array('用户管理', '/admin/user'),
@@ -52,6 +53,8 @@ abstract class Admin extends \Core\Controller
      */
     public function initialize($method)
     {
+
+
         session_start();
         \Core\Session::start();
         $this->user = \Logic\User::getLogged();
@@ -59,12 +62,17 @@ abstract class Admin extends \Core\Controller
             $this->redirect("/admin/session/login");
         } elseif ($this->_login && $this->user && $this->user->status != 1) {
             $this->showError("您好 {$this->user->name}:<br/>未激活的帐号无法登陆，请联系管理员激活您的帐号：<i style='color:#85ff94;'>{$this->user->username}</i>！", false);
+
         }elseif ($this->_login){
+            if($this->user->admin == 1){
+                 $this->nav['record']=array('站点线路查看','/admin/record/power');
+            }
+
             if($this->user->level==2){
-                $this->nav =  array(array('首页','/admin'),'site'=>array('点标管理','/admin/site'));
+                $this->nav =  array(array('首页','/admin'),'site'=>array('点标管理','/admin/site'),'record'=>array('站点线路查看','/admin/record/site'));
             }
             if($this->user->level==1){
-                $this->nav =  array(array('首页','/admin'),'site'=>array('点标管理','/admin/site'),'line'=>array('线路管理','/admin/line'));
+                $this->nav =  array(array('首页','/admin'),'site'=>array('点标管理','/admin/site'),'line'=>array('线路管理','/admin/line'),'record'=>array('站点线路查看','/admin/record/line'));
             }
         }
     }

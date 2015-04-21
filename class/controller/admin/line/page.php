@@ -25,7 +25,7 @@ class Page extends \Controller\Admin\Line
             if($user->level == 1){
                 $where = array('lineId'=>$user->username);
             }else{
-                echo "no power to see list";
+                echo "no power to see list";exit;
             }
         }
         $this->result = $lines->fetchAsPage($where, $_GET['page'], 10, $order, $path);

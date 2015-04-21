@@ -10,7 +10,6 @@ class Delete extends \Controller\Admin\Member
     {
         try
         {
-
             $result = new \Model\Member();
             $result->delete($id);
             redirect('/admin/member');

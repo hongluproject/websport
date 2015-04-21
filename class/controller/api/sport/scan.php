@@ -15,6 +15,7 @@ class Scan extends \Controller\Api
         $section = $_GET['section'];
         //1任务信息 2是 过关信息
         $type = $_GET['type'];
+        $nowTime = date('Y-m-d H:i:s');
         if (!$type) {
             echo json_encode(array('status' => 2, 'message' => '没有type'));
         } else if (!$phone) {
@@ -63,11 +64,34 @@ class Scan extends \Controller\Api
                                             echo json_encode(array('status' => 2, 'message' => '请按路线顺序逐个站点签到哦', 'result' => array('type' => $type, 'isFinal' => false)));
                                         }
                                     } else {
-                                        $passInfo[$lineId . '-' . $siteId] = array('memberStatus' => 1, 'passTime' => date('Y-m-d H:i:s'));
+                                        $passInfo[$lineId . '-' . $siteId] = array('memberStatus' => 1, 'passTime' => $nowTime);
                                         $teamInfo = \Model\Team::find($team->id);
                                         $param['pathInfo'] = json_encode($passInfo);
+                                        $param['nowSite'] = $siteId;
+                                        $param['passSiteNum'] = count($passInfo);
+                                        if($section ==1){
+                                            $param['startSignUp'] = $nowTime;
+                                        }elseif ($section == 3){
+                                            $param['endSignUp'] = $nowTime;
+                                            $param['isFinish'] = 1;
+                                            $param['useTime'] =strtotime($nowTime)-strtotime($teamInfo->startSignUp);
+                                        }
+                                        $param['lastSignUp'] = $nowTime;
                                         $teamInfo->set($param);
                                         $teamInfo->save();
+
+
+                                        $record = new \Model\Record();
+                                        $recordParam['siteId'] = $siteId;
+                                        $recordParam['lineId'] = $lineId;
+                                        $recordParam['teamName'] = $teamInfo->teamName;
+                                        $recordParam['phone'] = $teamInfo->phone;
+                                        $recordParam['teamId'] = $teamInfo->teamId;
+                                        $recordParam['SignUpTime'] = $nowTime;
+                                        $recordParam['lineSiteId'] = $lineId.'-'.$siteId;
+                                        $recordParam['status'] = $teamInfo->status;
+                                        $record->set($recordParam);
+                                        $record->save();
                                         if ($section == 3) {
                                             echo json_encode(array('status' => 1, 'message' => '恭喜您已完成比赛', 'result' => array('type' => $type, 'isFinal' => true, 'passurl' => 'http://sport.hoopeng.cn/sport/userinfo')));
                                         } else {

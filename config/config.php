@@ -69,12 +69,17 @@ $config['routes'] = array(
     'admin/mission/edit'     => '\Controller\Admin\Mission\Edit',
     'admin/mission'             => '\Controller\Admin\Mission\Page',
 
+    'admin/record/site'     => '\Controller\Admin\Record\Site',
+    'admin/record/line'     => '\Controller\Admin\Record\line',
+    'admin/record/power'     => '\Controller\Admin\Record\power',
+
+    'admin/record'     => '\Controller\Admin\Record\Site',
 
 
     'api/sport/scan'       => '\Controller\Api\Sport\Scan',
     'api/sport/userinfo'       => '\Controller\Api\Sport\Userinfo',
     'api/sport/pathinfo'       => '\Controller\Api\Sport\Pathinfo',
-    'api/sport/userinfo'       => '\Controller\Api\Sport\Userinfo',
+    'api/sport/userinfo'       => '\Controller\Api\Sport\Pathinfo',
 
 
 
