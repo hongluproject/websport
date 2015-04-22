@@ -5,7 +5,7 @@
         <li>团队总数：<?php echo $countNum = $teamNumber[0]->countNum?></li>
         <li>取消成绩：<?php echo $CancelTeamNumber = $teamNumber[0]->CancelTeamNumber? $teamNumber[0]->CancelTeamNumber:0?></li>
         <li>应到：<?php echo $countNum-$CancelTeamNumber;?></li>
-        <li>已完成本线路比赛：2</li>
+        <li>已完成本线路比赛：<?php echo $hasFinish[0]->countNum;?></li>
      </ul>
     <h4>每个站点签到情况：</h4>
     <div style="padding-bottom: 20px;border-top: 1px solid #DDD;">

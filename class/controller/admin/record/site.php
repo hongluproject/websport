@@ -16,15 +16,15 @@ class Site extends \Controller\Admin\Record
         $where = array('siteManager' => $user->username);
         $this->siteInfo = $siteModel->find($where);
 
-        //团队总数
+        //团队总数 DONE
         $db = \Model\Member::db();
         $this->teamNumber = $db->fetch('select count(*) as countNum from  `ma_team` where `lineId`='.$this->siteInfo->lineId);
 
-        //取消成绩
+        //取消成绩 DONE
         $this->CancelTeamNumber = $db->fetch('select count(*) as CancelCountNum from  `ma_team` where `lineId`="'.$this->siteInfo->lineId .'" AND status = 3');
-        //应到  减
-        //已签到
-        $this->receiveTeamNumber = $db->fetch('select count(*) as receiveTeamNumber from  `ma_record` WHERE `lineSiteId`="'.$user->username.'"');
+
+        //已签到 status =1的
+        $this->receiveTeamNumber = $db->fetch('select count(*) as receiveTeamNumber from  `ma_record` WHERE `lineSiteId`="'.$user->username.'" AND status = 1');
         $sign = new \Model\Record();
         $where = array('lineSiteId'=>$user->username);
         $path = $this->getPath();
@@ -38,7 +38,7 @@ class Site extends \Controller\Admin\Record
             $this->PreReceiveTeamNumber  = 0;
         }else{
             $preSiteId =$this->siteInfo->lineId.'-'.($this->siteInfo->siteId-1);
-             $this->PreReceiveTeamNumber = $db->fetch('select count(*) as PreReceiveTeamNumber from  `ma_record` WHERE `lineSiteId`="'.$preSiteId.'"');
+             $this->PreReceiveTeamNumber = $db->fetch('select count(*) as PreReceiveTeamNumber from  `ma_record` WHERE `lineSiteId`="'.$preSiteId.'" AND status = 1');
         }
 
     }

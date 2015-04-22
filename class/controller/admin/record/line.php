@@ -23,8 +23,16 @@ class Line extends \Controller\Admin\Record
         $this->teamNumber = $db->fetch('select count(*) as countNum from  `ma_team` where `lineId`='.$this->lineInfo->lineId);
 
 
+
+        //已完成线路
+        $this->hasFinish =  $db->fetch('select count(*) as countNum from  `ma_team` where `lineId`='.$this->lineInfo->lineId .' AND status =1 AND isFinish=1');
+
+
+
+
+        //status=3
          $this->lineSignUp = $db->fetch('select count(*) as signUpNum,siteId  from  `ma_record` where `lineId`="'.$this->lineInfo->lineId .'" group by siteId');
-        //应到  减
+
 
 
         //取消成绩

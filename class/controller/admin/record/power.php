@@ -17,8 +17,7 @@ class Power extends \Controller\Admin\Record
         $this->CancelTeamNumber = $db->fetch('select count(*) as CancelTeamNumber from  `ma_team` where status = 3');
 
         //各线路弃权总数
-        $db = \Model\Member::db();
-        $temp = $db->fetch('select `lineId`,count(*) as countNum from  `ma_team` where status =3 group by `lineId`');
+         $temp = $db->fetch('select `lineId`,count(*) as countNum from  `ma_team` where status =3 group by `lineId`');
 
         $dropGameTeamNum = array();
         foreach ($temp as $item) {
