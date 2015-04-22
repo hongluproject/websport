@@ -34,12 +34,13 @@
             <div class="controls">
                 <select class="span3" id="status" name="lineId">
                     <?php foreach($lineList as $item):?>
-                        <?php if($user->admin!=1&&$result->lineId != $item->lineId){continue;}?>
+                        <?php if($user->admin!=1&&$user->username != $item->lineId){continue;}?>
                         <option value="<?php echo $item->lineId?>" <?php if($result->lineId == $item->lineId){ echo 'selected="selected"';}?> ><?php echo $item->lineName?></option>
                     <?php endforeach;?>
                 </select>
             </div>
         </div>
+
 
 
         <div class="control-group">
