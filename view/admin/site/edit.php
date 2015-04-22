@@ -29,6 +29,10 @@
         </div>
 
 
+        <?php $user->admin =1;
+
+        ?>
+
         <div class="control-group">
             <label class="control-label">分配线路</label>
             <div class="controls">
@@ -69,7 +73,7 @@
         </div>
 
 
-        <div class="control-group"    <?php if($result->passInfo == 1){ echo 'style="display: none;"';} ?>  id="missionResult">
+        <div class="control-group"    <?php if($result->passInfo == 1|| empty($result->passInfo)){ echo 'style="display: none;"';} ?>  id="missionResult">
             <label class="control-label"> 任务书答案</label>
             <div class="controls">
                 <input type="text"  name="missionResult"    class="span6" value="<?php echo $result->missionResult; ?>"/>
