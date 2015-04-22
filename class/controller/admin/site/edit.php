@@ -64,12 +64,11 @@ class Edit extends \Controller\Admin\Site
 
 
 
-             if($this->user->admin == 1){
-                 $data['siteManager'] = $siteManager = $_POST['lineId'].'-'.$_POST['siteId'];
-
-                 $user = \Model\User::find(array('username' => $siteManager));
-              }
-
+             if($this->user->admin!=1&&$this->user->username !=$_POST['lineId']){
+                 echo "cannot edit other line";exit;
+             }
+             $data['siteManager'] = $siteManager = $_POST['lineId'].'-'.$_POST['siteId'];
+             $user = \Model\User::find(array('username' => $siteManager));
              if(empty($user)){
                     $user = new \Model\User();
                     $userName =  $siteManager;
@@ -82,6 +81,8 @@ class Edit extends \Controller\Admin\Site
                     $user->save();
              }
 
+             $data['lineId'] = trim($data['lineId']);
+             $data['siteId'] = trim($data['siteId']);
              if ($id) {
                 $site = \Model\Site::find($id);
                 $site->set($data);
