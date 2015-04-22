@@ -27,6 +27,7 @@ class Edit extends \Controller\Admin\Member
             $table = 'ma_team';
             $db->delete('delete  from  `ma_team` ');
             $db->delete('delete  from  `ma_member` ');
+            $db->delete('delete  from  `ma_record` ');
 
             //上传
             //   $file_dir =  SP . "public/assets/test.xls";
