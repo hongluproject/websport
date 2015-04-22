@@ -29,9 +29,6 @@
         </div>
 
 
-        <?php $user->admin =1;
-
-        ?>
 
         <div class="control-group">
             <label class="control-label">分配线路</label>
