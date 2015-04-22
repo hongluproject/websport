@@ -7,7 +7,7 @@
         <li>应到：<?php echo $countNum-$CancelTeamNumber;?></li>
         <li style="color: #008800">当前已签到：<?php echo $receiveTeamNumber[0]->receiveTeamNumber?></li>
         <?php if ($siteInfo->passInfo==2):?>
-        <li style="color: red"><a href="<?php echo $siteInfo->missionResult;?>" target="_blank"  style="color: #ff0000">任务书答案</a></li>
+            <a href="<?php echo $siteInfo->missionResult;?>" target="_blank"  > <button class="btn btn-success" type="button">任务书答案</button></a>
         <?php endif?>
     </ul>
 
