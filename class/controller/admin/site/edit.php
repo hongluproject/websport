@@ -63,7 +63,6 @@ class Edit extends \Controller\Admin\Site
             }
 
 
-
              if($this->user->admin!=1&&$this->user->username !=$_POST['lineId']){
                  echo "cannot edit other line";exit;
              }

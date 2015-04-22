@@ -12,8 +12,8 @@
                 <th width="100">点标号</th>
               <!--  <th width="100">二维码链接</th>
                 <th width="100">任务二维码链接</th>-->
-                <th width="100">点标名称</th>
                 <th width="100">点标位置</th>
+                <th width="100">点标名称</th>
                 <th width="100">分配到线路</th>
                 <th width="100">位置信息</th>
                 <th width="100">通关方式</th>
@@ -41,8 +41,8 @@
                         </td>-->
 
 
-                        <td><?php echo $item->siteName; ?></td>
                         <td><?php  if($item->section ==1){echo '起点';}elseif($item->section == 3){echo '终点';}else{ echo '中间站点';}; ?></td>
+                        <td><?php echo $item->siteName; ?></td>
 
                         <td><?php echo $item->lineId; ?></td>
                         <td><?php echo $item->position; ?></td>
@@ -61,8 +61,8 @@
                 <th width="100">点标号</th>
         <!--        <th width="100">二维码链接</th>
                 <th width="100">任务二维码链接</th>-->
-                <th width="100">点标名称</th>
                 <th width="100">点标位置</th>
+                <th width="100">点标名称</th>
                 <th width="100">分配到线路</th>
                 <th width="100">位置信息</th>
                 <th width="100">通关方式</th>

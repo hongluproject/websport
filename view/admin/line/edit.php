@@ -44,7 +44,7 @@
 
 
         <div class="control-group">
-            <label class="control-label"> 点长姓名</label>
+            <label class="control-label"> 线长姓名</label>
             <div class="controls">
                 <input type="text"  name="lineManagerName"     class="span4" value="<?php echo $result->lineManagerName;?>"/>
             </div>
