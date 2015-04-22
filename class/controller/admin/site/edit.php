@@ -62,10 +62,11 @@ class Edit extends \Controller\Admin\Site
                 exit;
             }
 
-
-             if($this->user->admin!=1&&$this->user->username !=$_POST['lineId']){
+             list($userLine,$userSite) = explode('-',$this->user->username);
+             if($this->user->admin!=1&&$this->user->username !=$_POST['lineId']&&$userLine!=$_POST['lineId']){
                  echo "cannot edit other line";exit;
              }
+
              $data['siteManager'] = $siteManager = $_POST['lineId'].'-'.$_POST['siteId'];
              $user = \Model\User::find(array('username' => $siteManager));
              if(empty($user)){
