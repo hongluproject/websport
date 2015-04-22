@@ -37,6 +37,7 @@ class Edit extends \Controller\Admin\Line
             $user->save();
         }
 
+        $data['lineId'] = trim($data['lineId']);
         if ($id) {
             $line = \Model\Line::find($id);
             $line->set($data);
