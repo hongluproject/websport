@@ -16,6 +16,7 @@ class Site extends \Controller\Admin\Record
         $where = array('siteManager' => $user->username);
         $this->siteInfo = $siteModel->find($where);
 
+
         //团队总数 DONE
         $db = \Model\Member::db();
         $this->teamNumber = $db->fetch('select count(*) as countNum from  `ma_team` where `lineId`='.$this->siteInfo->lineId);
