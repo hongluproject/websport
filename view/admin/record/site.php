@@ -6,10 +6,10 @@
         <li>取消成绩：<?php echo $CancelTeamNumber = $teamNumber[0]->CancelTeamNumber? $teamNumber[0]->CancelTeamNumber:0?></li>
         <li>应到：<?php echo $countNum-$CancelTeamNumber;?></li>
         <li style="color: #008800">当前已签到：<?php echo $receiveTeamNumber[0]->receiveTeamNumber?></li>
-        <?php if ($siteInfo->passInfo==2):?>
-            <a href="<?php echo $siteInfo->missionResult;?>" target="_blank"  > <button class="btn btn-success" type="button">任务书答案</button><-----------点我点我点我</a>
-        <?php endif?>
-    </ul>
+
+        <a href="#" target="_blank"  > <button class="btn btn-success" type="button">任务书答案</button><-----------<?php  echo $siteInfo->missionResult;?>------------></a>
+
+      </ul>
 
 
     <?php  if($siteInfo->siteId==0 ){?>

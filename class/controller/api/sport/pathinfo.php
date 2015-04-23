@@ -43,12 +43,12 @@ class Pathinfo extends \Controller\Api
                         $pathInfo[$item->siteId] = array('memberStatus' => 3, 'passTime' => '', 'address' => '','siteName'=>$item->lineId.'-'.$item->siteId);
                         if($nextSiteKey == $item->siteId){
                             $pathInfo[$nextSiteKey]['memberStatus']  =2;
-                            $pathInfo[$nextSiteKey]['address'] = $item->position;
+                            $pathInfo[$nextSiteKey]['address'] = $item->position.$item->mission;
                         }
                         if (array_key_exists($item->lineId . '-' . $item->siteId, $passInfo)) {
                             $pathInfo[$item->siteId]['memberStatus'] = $passInfo[$item->lineId . '-' . $item->siteId]['memberStatus'];
                             $pathInfo[$item->siteId]['passTime'] = $passInfo[$item->lineId . '-' . $item->siteId]['passTime'];
-                            $pathInfo[$item->siteId]['address'] = $item->position;
+                            $pathInfo[$item->siteId]['address'] = $item->position.$item->mission;
                         }
                     }
                     echo json_encode(array('status' => 1, 'message' => 'OK', 'passurl' => 'http://sport.hoopeng.cn/sport/userinfo', 'result' => $pathInfo));
