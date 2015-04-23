@@ -49,7 +49,6 @@
 
                 <select class="span3" id="status" name="status">
                     <option value="1" <?php if($result->status == 1){ echo 'selected="selected"';}?> >正常</option>
-                    <option value="2" <?php if($result->status == 2){ echo 'selected="selected"';}?> >弃权</option>
                     <option value="3" <?php if($result->status == 3){ echo 'selected="selected"';}?> >取消成绩</option>
                 </select>
                 <span class="help-inline">必填</span>
