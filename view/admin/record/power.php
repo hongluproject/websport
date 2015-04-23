@@ -2,7 +2,7 @@
     <h3>总览</h3>
     <ul class="inline">
         <li>团队数：<?php echo $countNum = $teamNumber[0]->countNum?></li>
-        <li>弃权：<?php echo $CancelTeamNumber = $CancelTeamNumber[0]->CancelTeamNumber? $CancelTeamNumber[0]->CancelTeamNumber:0?></li>
+        <li>取消成绩：<?php echo $CancelTeamNumber = $CancelTeamNumber[0]->CancelTeamNumber? $CancelTeamNumber[0]->CancelTeamNumber:0?></li>
         <li>应到：<?php echo $countNum-$CancelTeamNumber;?></li>
     </ul>
 
@@ -13,7 +13,7 @@
         <tr>
             <th>线路</th>
             <th>团队总数</th>
-            <th>弃权</th>
+            <th>取消成绩</th>
             <th>应到</th>
             <th>已完成比赛</th>
         </tr>

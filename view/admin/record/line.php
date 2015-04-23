@@ -3,7 +3,7 @@
     <h3>路线<?php echo $lineInfo->lineId?>(<?php echo $lineInfo->lineName?>)</h3>
     <ul class="inline">
         <li>团队总数：<?php echo $countNum = $teamNumber[0]->countNum?></li>
-        <li>取消成绩：<?php echo $CancelTeamNumber = $teamNumber[0]->CancelTeamNumber? $teamNumber[0]->CancelTeamNumber:0?></li>
+        <li>取消成绩：<?php echo $CancelTeamNumber = $cancel[0]->CancelCountNum? $cancel[0]->CancelCountNum:0?></li>
         <li>应到：<?php echo $countNum-$CancelTeamNumber;?></li>
         <li>已完成本线路比赛：<?php echo $hasFinish[0]->countNum;?></li>
      </ul>

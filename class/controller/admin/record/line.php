@@ -36,7 +36,7 @@ class Line extends \Controller\Admin\Record
 
 
         //取消成绩
-        $this->CancelTeamNumber = $db->fetch('select count(*) as CancelCountNum from  `ma_team` where `lineId`="'.$this->lineInfo->lineId .'" AND status = 3');
+        $this->cancel = $db->fetch('select count(*) as CancelCountNum from  `ma_team` where `lineId`="'.$this->lineInfo->lineId .'" AND status = 3');
 
 
         $teamSignUp = new \Model\Team();
