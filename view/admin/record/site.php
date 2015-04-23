@@ -7,7 +7,7 @@
         <li>应到：<?php echo $countNum-$CancelTeamNumber;?></li>
         <li style="color: #008800">当前已签到：<?php echo $receiveTeamNumber[0]->receiveTeamNumber?></li>
 
-         <button class="btn btn-success" type="button" id="MissionBt">点我展开任务书再点就缩起来了</button>
+         <button class="btn btn-success" type="button" id="MissionBt">任务书答案(再次点击收起)</button>
 
         <div id="showMission" style="display: none;">
          <?php  echo $siteInfo->missionResult;?>
