@@ -7,8 +7,11 @@
         <li>应到：<?php echo $countNum-$CancelTeamNumber;?></li>
         <li style="color: #008800">当前已签到：<?php echo $receiveTeamNumber[0]->receiveTeamNumber?></li>
 
-        <a href="#" target="_blank"  > <button class="btn btn-success" type="button">任务书答案</button><-----------<?php  echo $siteInfo->missionResult;?>------------></a>
+         <button class="btn btn-success" type="button" id="MissionBt">点我展开任务书再点就缩起来了</button>
 
+        <div id="showMission" style="display: none;">
+         <?php  echo $siteInfo->missionResult;?>
+        </div>
       </ul>
 
 
@@ -47,3 +50,16 @@
         </tbody>
     </table>
 </div>
+
+<script language="javascript">
+    $("#MissionBt").click(function(){
+         if($("#showMission").is(":hidden")){
+            $("#showMission").show('slow');
+        }else{
+            $("#showMission").hide('slow');
+        }
+
+
+    })
+
+ </script>
