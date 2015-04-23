@@ -45,13 +45,21 @@
 
 
 
+        <div class="control-group">
+            <label class="control-label">位置信息</label>
+
+            <div class="controls">
+
+                <textarea name="position" placeholder="【点标地址】"><?php echo $result->position; ?></textarea>
+                <span class="help-inline">必填</span>
+            </div>
+        </div>
 
         <div class="control-group" >
-            <label class="control-label"> 任务书标题</label>
+            <label class="control-label"> 任务书</label>
             <div class="controls">
-            <textarea name="mission" ><?php echo $result->mission; ?></textarea>
+            <textarea name="mission" placeholder="【任务书】"><?php echo $result->mission; ?></textarea>
             </div>
-
         </div>
 
 
@@ -63,14 +71,6 @@
         </div>
 
 
-        <div class="control-group">
-            <label class="control-label">位置信息</label>
-            <div class="controls">
-
-                <textarea name="position" ><?php echo $result->position; ?></textarea>
-                <span class="help-inline">必填</span>
-            </div>
-        </div>
 
 
 
