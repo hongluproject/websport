@@ -28,10 +28,7 @@ class Edit extends \Controller\Admin\Site
 
          try {
             $data = $_POST;
-            $mission = array();
-            if ($data['passInfo'] == 2) {
-                $mission = array_combine($_POST['missionTitle'], $_POST['missionUrl']);
-            }
+
 
             /*$siteModel = new \Model\Site();
             $where = array('lineId' => $_POST['lineId']);
@@ -44,14 +41,6 @@ class Edit extends \Controller\Admin\Site
                 echo "error line input";exit;
             }*/
 
-            $data['mission'] = json_encode($mission);
-            unset($data['missionTitle']);
-            unset($data['missionUrl']);
-
-            if ($data['passInfo'] == 2 && (empty($mission) || !$data['missionResult'])) {
-                echo "mission and mission result must be input";
-                exit;
-            }
 
             if (!$data['position']) {
                 echo "address  must be input";

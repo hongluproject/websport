@@ -16,8 +16,7 @@
                 <th width="100">点标名称</th>
                 <th width="100">分配到线路</th>
                 <th width="100">位置信息</th>
-                <th width="100">通关方式</th>
-                <th width="100">任务书</th>
+                 <th width="100">任务书</th>
                 <th width="100">点长</th>
                 <th width="50">操作</th>
             </tr>
@@ -46,8 +45,7 @@
 
                         <td><?php echo $item->lineId; ?></td>
                         <td><?php echo $item->position; ?></td>
-                        <td><?php  if($item->passInfo ==2){echo '特殊性-任务书';}else{echo '一般性-直接通过';}; ?></td>
-                        <td><?php  foreach(json_decode($item->mission,true) as $key => $temp){ echo $key."#";}; ?></td>
+                         <td><?php  echo $item->mission; ?></td>
                         <td><?php echo $item->siteManager; ?></td>
                         <td>
                             <a href="/admin/site/edit/<?php echo $item->id; ?>" target="_blank"><i class="icon-ok" alt="更新" title="更新"></i></a>&nbsp;&nbsp;&nbsp;
@@ -65,8 +63,7 @@
                 <th width="100">点标名称</th>
                 <th width="100">分配到线路</th>
                 <th width="100">位置信息</th>
-                <th width="100">通关方式</th>
-                <th width="100">任务书</th>
+                 <th width="100">任务书</th>
                 <th width="100">点长</th>
                 <th width="50">操作</th>
             </tr>
