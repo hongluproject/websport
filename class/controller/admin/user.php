@@ -9,6 +9,7 @@ class User extends \Controller\Admin
         '_h1' => array('用户管理'),
         'user.list'   => array('用户列表', '/admin/user/list'),
     	'user.add'   => array('添加用户', '/admin/user/add'),
+        'user.download'   => array('导出登协管理员', '/admin/user/download'),
     );
 
     public function get()

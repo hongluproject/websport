@@ -56,84 +56,32 @@ $config['routes'] = array(
     'admin/signup/edit'     => '\Controller\Admin\Signup\Edit',
     'admin/signup'             => '\Controller\Admin\Signup\Page',
 
-
     //团队
     'admin/team/delete'     => '\Controller\Admin\Team\Delete',
     'admin/team/edit'     => '\Controller\Admin\Team\Edit',
     'admin/team'             => '\Controller\Admin\Team\Page',
-
-
-
     //任务
     'admin/mission/delete'     => '\Controller\Admin\Mission\Delete',
     'admin/mission/edit'     => '\Controller\Admin\Mission\Edit',
     'admin/mission'             => '\Controller\Admin\Mission\Page',
-
     'admin/record/site'     => '\Controller\Admin\Record\Site',
     'admin/record/line'     => '\Controller\Admin\Record\line',
     'admin/record/power'     => '\Controller\Admin\Record\power',
-
     'admin/record'     => '\Controller\Admin\Record\Site',
-
-
     'api/sport/scan'       => '\Controller\Api\Sport\Scan',
     'api/sport/userinfo'       => '\Controller\Api\Sport\Userinfo',
     'api/sport/pathinfo'       => '\Controller\Api\Sport\Pathinfo',
     'api/sport/userinfo'       => '\Controller\Api\Sport\Pathinfo',
-
-
-
     'api/sport/scan'       => '\Controller\Api\Sport\Scan',
     'api/sport/userinfo'       => '\Controller\Api\Sport\Userinfo',
     'api/sport/pathinfo'       => '\Controller\Api\Sport\Pathinfo',
-
-
     'sport/userinfo'       => '\Controller\Front\Sport\Userinfo',
-
-
-
-    'admin/news/delete'     => '\Controller\Admin\News\Delete',
-    'admin/news/update'     => '\Controller\Admin\News\Update',
-    'admin/news/localupdate'=> '\Controller\Admin\News\Localupdate',
-    'admin/news/local'      => '\Controller\Admin\News\Local',
-    'admin/news/map'      => '\Controller\Admin\News\Map',
-    'admin/news/tongjinews'      => '\Controller\Admin\News\Tongjinews',
-    'admin/news/tongji'      => '\Controller\Admin\News\Tongji',
-    'admin/news'             => '\Controller\Admin\News\Page',
-    'admin/tag/create'      => '\Controller\Admin\Tag\Create',
-    'admin/tag/delete'      => '\Controller\Admin\Tag\Delete',
-    'admin/tag/update'      => '\Controller\Admin\Tag\Update',
-    'admin/tag/menucreate'      => '\Controller\Admin\Tag\Menucreate',
-    'admin/tag'              => '\Controller\Admin\Tag\Page',
-    'admin/area/delete'     => '\Controller\Admin\Area\Delete',
-    'admin/area/edit'     => '\Controller\Admin\Area\Edit',
-    'admin/area'             => '\Controller\Admin\Area\Page',
-    'admin/cate/delete'     => '\Controller\Admin\Cate\Delete',
-    'admin/cate/edit'       => '\Controller\Admin\Cate\Edit',
-    'admin/cate'             => '\Controller\Admin\Cate\Page',
-    'admin/fetch/edit'      => '\Controller\Admin\Fetch\Edit',
-    'admin/fetch/create'    => '\Controller\Admin\Fetch\Create',
-    'admin/fetch/zixunfetch'    => '\Controller\Admin\Fetch\Zixunfetch',
-    'admin/fetch'            => '\Controller\Admin\Fetch',
-    'admin/area'             => '\Controller\Admin\Area\Page',
-    'admin/recommend/edit'     => '\Controller\Admin\Recommend\Edit',
-    'admin/recommend'     => '\Controller\Admin\Recommend\Page',
-    'api/imageupload'       => '\Controller\Api\Imageupload',
-    'api/ping/refund'       => '\Controller\Api\Ping\Refund',
-    'api/ping/ping'       => '\Controller\Api\Ping\Ping',
-    'api/ping/notify'       => '\Controller\Api\Ping\Notify',
-    'api/ping/retrieve'       => '\Controller\Api\Ping\Retrieve',
     'admin/session/login'     => '\Controller\Admin\Session\Login',
     'admin/session/logout'    => '\Controller\Admin\Session\Logout',
-    'admin/avosuser/edit'      => '\Controller\Admin\Avosuser\Edit',
-    'admin/avosuser'              => '\Controller\Admin\Avosuser\Page',
-    'admin/clan/create'      => '\Controller\Admin\Clan\Create',
-    'admin/clan/delete'      => '\Controller\Admin\Clan\Delete',
-    'admin/clan/update'      => '\Controller\Admin\Clan\Update',
-    'admin/clan'              => '\Controller\Admin\Clan\Page',
     'admin/user/quick'        => '\Controller\Admin\User\Quick',
     'admin/user/add'          => '\Controller\Admin\User\Add',
     'admin/user/page'         => '\Controller\Admin\User\Page',
+    'admin/user/download'         => '\Controller\Admin\User\Download',
     'admin/user'              => '\Controller\Admin\User\Page',
     'admin'                   => '\Controller\Admin\Index',
 );
