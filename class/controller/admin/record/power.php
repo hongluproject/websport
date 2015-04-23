@@ -19,7 +19,8 @@ class Power extends \Controller\Admin\Record
         //各线路弃权总数
          $temp = $db->fetch('select `lineId`,count(*) as countNum from  `ma_team` where status =3 group by `lineId`');
 
-        $dropGameTeamNum = array();
+
+         $dropGameTeamNum = array();
         foreach ($temp as $item) {
             $dropGameTeamNum[$item->lineId] = array('lineId' => $item->lineId, 'dropGameTeamNum' => $item->countNum);
         }

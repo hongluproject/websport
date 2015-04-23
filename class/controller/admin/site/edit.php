@@ -24,6 +24,8 @@ class Edit extends \Controller\Admin\Site
     public function post($id)
     {
 
+
+        
          try {
             $data = $_POST;
             $mission = array();

@@ -82,7 +82,10 @@
         <div class="control-group">
             <label class="control-label">位置信息</label>
             <div class="controls">
-                <input type="text" name="position"  class="span4" value="<?php echo $result->position; ?>"/>
+
+                <textarea name="position" >
+                    <?php echo $result->position; ?>
+                </textarea>
                 <span class="help-inline">必填</span>
             </div>
         </div>
