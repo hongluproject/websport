@@ -82,6 +82,7 @@ $config['routes'] = array(
     'admin/user/add'          => '\Controller\Admin\User\Add',
     'admin/user/page'         => '\Controller\Admin\User\Page',
     'admin/user/download'         => '\Controller\Admin\User\Download',
+    'admin/user/message'         => '\Controller\Admin\User\Message',
     'admin/user'              => '\Controller\Admin\User\Page',
     'admin'                   => '\Controller\Admin\Index',
 );
