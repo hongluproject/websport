@@ -81,12 +81,10 @@
 
 
         <div class="control-group">
-            <label class="control-label">位置信息</label>
+            <label class="control-label">位置信息和文字任务书信息</label>
             <div class="controls">
 
-                <textarea name="position" >
-                    <?php echo $result->position; ?>
-                </textarea>
+                <textarea name="position" ><?php echo $result->position; ?></textarea>
                 <span class="help-inline">必填</span>
             </div>
         </div>

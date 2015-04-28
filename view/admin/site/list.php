@@ -45,7 +45,7 @@
                         <td><?php echo $item->siteName; ?></td>
 
                         <td><?php echo $item->lineId; ?></td>
-                        <td><?php echo $item->position; ?></td>
+                        <td   title="<?php echo $item->position;?>"><?php echo  mb_substr($item->position,0,30); ?></td>
 
                         <td><?php  if($item->passInfo ==2){echo '特殊性-任务书';}else{echo '一般性-直接通过';}; ?></td>
                         <td><?php  foreach(json_decode($item->mission,true) as $key => $temp){ echo $key."#";}; ?></td>
