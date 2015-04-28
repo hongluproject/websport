@@ -7,13 +7,10 @@
         <li>应到：<?php echo $countNum-$CancelTeamNumber;?></li>
         <li style="color: #008800">当前已签到：<?php echo $receiveTeamNumber[0]->receiveTeamNumber?></li>
 
-         <button class="btn btn-success" type="button" id="MissionBt">任务书答案(再次点击收起)</button>
-
-        <div id="showMission" style="display: none;">
-         <?php  echo $siteInfo->missionResult;?>
-        </div>
-      </ul>
-
+        <?php if ($siteInfo->passInfo==2):?>
+            <a href="<?php echo $siteInfo->missionResult;?>" target="_blank"  > <button class="btn btn-success" type="button">任务书答案</button><-----------点我点我点我</a>
+        <?php endif?>
+    </ul>
 
     <?php  if($siteInfo->siteId==0 ){?>
     <h4>上一站签到情况： 本站点是起点</h4>

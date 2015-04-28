@@ -24,22 +24,32 @@ class Edit extends \Controller\Admin\Site
     public function post($id)
     {
 
-
-
          try {
-            $data = $_POST;
+             $data = $_POST;
+             $mission = array();
+             if ($data['passInfo'] == 2) {
+                 $mission = array_combine($_POST['missionTitle'], $_POST['missionUrl']);
+             }
 
+             /*$siteModel = new \Model\Site();
+             $where = array('lineId' => $_POST['lineId']);
+             $sites = $siteModel->fetch($where, 1000);
+             $selfLine = array();
+             foreach ($sites as $item) {
+                 $selfLine[$item->siteId] = $item->siteId;
+             }
+             if (array_key_exists($_POST['siteId'], $selfLine)) {
+                 echo "error line input";exit;
+             }*/
 
-            /*$siteModel = new \Model\Site();
-            $where = array('lineId' => $_POST['lineId']);
-            $sites = $siteModel->fetch($where, 1000);
-            $selfLine = array();
-            foreach ($sites as $item) {
-                $selfLine[$item->siteId] = $item->siteId;
-            }
-            if (array_key_exists($_POST['siteId'], $selfLine)) {
-                echo "error line input";exit;
-            }*/
+             $data['mission'] = json_encode($mission);
+             unset($data['missionTitle']);
+             unset($data['missionUrl']);
+
+             if ($data['passInfo'] == 2 && (empty($mission) || !$data['missionResult'])) {
+                 echo "mission and mission result must be input";
+                 exit;
+             }
 
 
             if (!$data['position']) {

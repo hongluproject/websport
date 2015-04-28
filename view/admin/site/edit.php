@@ -45,33 +45,51 @@
 
 
 
+
         <div class="control-group">
-            <label class="control-label">位置信息</label>
-
+            <label class="control-label">通关方式</label>
             <div class="controls">
-
-                <textarea name="position" placeholder="【点标地址】"><?php echo $result->position; ?></textarea>
+                <select class="span3" id="passInfo" name="passInfo">
+                    <option value="1" <?php if($result->passInfo == 1){ echo 'selected="selected"';}?> >一般性-直接通过</option>
+                    <option value="2" <?php if($result->passInfo == 2){ echo 'selected="selected"';}?>>特殊性-任务书</option>
+                </select>
                 <span class="help-inline">必填</span>
             </div>
         </div>
 
-        <div class="control-group" >
-            <label class="control-label"> 任务书</label>
+        <div class="control-group"  id="missionShow" <?php if($result->passInfo!=2): ?>style="display: none;" <?php endif;?>>
+            <label class="control-label">任务书</label>
             <div class="controls">
-            <textarea name="mission" placeholder="【任务书】"><?php echo $result->mission; ?></textarea>
+                <button class="btn btn-primary" type="button" id="addMission">新增任务书</button>
+            </div>
+        </div>
+
+
+        <div class="control-group" id="missionList">
+            <?php  $mission = json_decode($result->mission,true);foreach($mission as $key=>$item):?>
+                <div class="controls controls-row"><input  placeholder="任务标题" class="span2"  type="text" name="missionTitle[]" value="<?php echo $key?>"><input class="span4"  placeholder="任务H5链接" type="text" name="missionUrl[]" value="<?php echo $item;?>"><button class="btn btn-danger delete" type="button">删除</button></div>
+            <?php endforeach;?>
+        </div>
+
+
+        <div class="control-group"    <?php if($result->passInfo == 1|| empty($result->passInfo)){ echo 'style="display: none;"';} ?>  id="missionResult">
+            <label class="control-label"> 任务书答案</label>
+            <div class="controls">
+                <input type="text"  name="missionResult"    class="span6" value="<?php echo $result->missionResult; ?>"/>
             </div>
         </div>
 
 
         <div class="control-group">
-            <label class="control-label"> 任务书答案</label>
+            <label class="control-label">位置信息</label>
             <div class="controls">
-            <textarea name="missionResult" ><?php echo $result->missionResult; ?></textarea>
+
+                <textarea name="position" >
+                    <?php echo $result->position; ?>
+                </textarea>
+                <span class="help-inline">必填</span>
             </div>
         </div>
-
-
-
 
 
         <div class="control-group">
@@ -116,6 +134,16 @@
         </div>
 
 
+        <div class="control-group">
+            <label class="control-label">站点任务书二维码</label>
+            <div class="controls">
+                <?php if($result->passInfo==2):?>
+                    <input type="text"  class="span8"  value="http://sport.hoopeng.cn/api/sport/scan?type=1&lineId=<?php echo $result->lineId?>&siteId=<?php echo $result->siteId?>&section=<?php echo $result->section;?>"/>
+                    <span class="help-inline" style="color: #ff0000">系统,不可修改</span>
+                <?php endif;?>
+
+            </div>
+        </div>
     </form>
 </div>
 
@@ -123,13 +151,33 @@
 <script language="javascript">
 
 
+    //添加任务书
+    $("#addMission").click(function(){
+        var html = '<div class="controls controls-row"><input class="span2"  placeholder="任务标题"  type="text" name="missionTitle[]"><input class="span4"  placeholder="任务H5链接"  type="text" name="missionUrl[]"><button class="btn btn-danger delete" type="button">删除<\/button><\/div>';
+        $("#missionList").append(html);
+        $("#missionResult").show();
+
+    });
+    $(".delete").live("click",function(){
+        $(this).parent().html("");
+　　})
 
 
     $("#startSite").click(function(){
         $("#ilove").val(0);
 
     })
-
+    //删除任务书
+    $("#passInfo").change(function(){
+        if($(this).val()==1){
+            $("#missionList").html('');
+            $("#missionShow").hide();
+            $("#missionResult").hide();
+        }else if ($(this).val()==2){
+            $("#missionShow").show();
+            $("#missionResult").show();
+        }
+    })
 
 
 </script>
