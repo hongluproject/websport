@@ -72,8 +72,8 @@
         </div>
 
 
-        <div class="control-group"    <?php if($result->passInfo == 1|| empty($result->passInfo)){ echo 'style="display: none;"';} ?>  id="missionResult">
-            <label class="control-label"> 任务书答案</label>
+        <div class="control-group"    <?php if($result->passInfo == 1|| empty($result->passInfo)){ echo 'style="display: blcok;"';} ?>  >
+            <label class="control-label"> 点长工作书</label>
             <div class="controls">
                 <input type="text"  name="missionResult"    class="span6" value="<?php echo $result->missionResult; ?>"/>
             </div>
@@ -155,7 +155,6 @@
     $("#addMission").click(function(){
         var html = '<div class="controls controls-row"><input class="span2"  placeholder="任务标题"  type="text" name="missionTitle[]"><input class="span4"  placeholder="任务H5链接"  type="text" name="missionUrl[]"><button class="btn btn-danger delete" type="button">删除<\/button><\/div>';
         $("#missionList").append(html);
-        $("#missionResult").show();
 
     });
     $(".delete").live("click",function(){
@@ -172,11 +171,9 @@
         if($(this).val()==1){
             $("#missionList").html('');
             $("#missionShow").hide();
-            $("#missionResult").hide();
-        }else if ($(this).val()==2){
+         }else if ($(this).val()==2){
             $("#missionShow").show();
-            $("#missionResult").show();
-        }
+         }
     })
 
 
