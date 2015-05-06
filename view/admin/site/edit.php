@@ -7,7 +7,7 @@
             <div class="controls">
                 <input type="text" name="siteId"  <?php if($user->level ==2){ echo 'readonly="true"';}?> class="span2" id="ilove" value="<?php echo $result->siteId; ?>"/>
                 <span class="help-inline">必填</span>
-                <span class="help-inline" style="color: #ff0000">点标号各位示例：起点站为0，中间点标从1开始计数，例如1，2，3等，终点为最后一个中间点标号数字加1</span>
+                <span class="help-inline" style="color: #ff0000">点标号格式示例：起点站为0，中间点标从1开始计数，例如1，2，3等，终点为最后一个中间点标号数字加1</span>
             </div>
         </div>
 
