@@ -68,6 +68,11 @@ class Edit extends \Controller\Admin\Site
                  echo "cannot edit other line";exit;
              }
 
+             if($this->user->level==2){
+                 echo "cannot edit site info";exit;
+             }
+
+
              $data['siteManager'] = $siteManager = $_POST['lineId'].'-'.$_POST['siteId'];
              $user = \Model\User::find(array('username' => $siteManager));
              if(empty($user)){

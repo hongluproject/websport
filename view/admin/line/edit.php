@@ -9,6 +9,8 @@
             <div class="controls">
                 <input type="text" name="lineId"  class="span2" value="<?php echo $result->lineId; ?>"/>
                 <span class="help-inline">必填</span>
+                <span class="help-inline" style="color: #ff0000">线路号格式为两位数字，例如1号线路为01，14号线路为14</span>
+
             </div>
         </div>
 

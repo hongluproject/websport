@@ -7,6 +7,7 @@
             <div class="controls">
                 <input type="text" name="siteId"  <?php if($user->level ==2){ echo 'readonly="true"';}?> class="span2" id="ilove" value="<?php echo $result->siteId; ?>"/>
                 <span class="help-inline">必填</span>
+                <span class="help-inline" style="color: #ff0000">点标号各位示例：起点站为0，中间点标从1开始计数，例如1，2，3等，终点为最后一个中间点标号数字加1</span>
             </div>
         </div>
 
@@ -15,7 +16,7 @@
             <label class="control-label">线路点位</label>
             <div class="controls">
                 <input type="radio" name="section"   value="1"  <?php if($result->section == 1){ echo 'checked="true"';}?> id="startSite">起点
-                <input type="radio" name="section"   value="2"  <?php if($result->section == 2){ echo 'checked="true"';}?>>中间线路
+                <input type="radio" name="section"   value="2"  <?php if($result->section == 2){ echo 'checked="true"';}?>>中间点标
                 <input type="radio" name="section"   value="3"  <?php if($result->section == 3){ echo 'checked="true"';}?>>终点
             </div>
         </div>
@@ -58,7 +59,7 @@
         </div>
 
         <div class="control-group"  id="missionShow" <?php if($result->passInfo!=2): ?>style="display: none;" <?php endif;?>>
-            <label class="control-label">任务书</label>
+            <label class="control-label">本站任务书</label>
             <div class="controls">
                 <button class="btn btn-primary" type="button" id="addMission">新增任务书</button>
             </div>
@@ -81,7 +82,7 @@
 
 
         <div class="control-group">
-            <label class="control-label">位置信息和文字任务书信息</label>
+            <label class="control-label">本站位置信息信息任务书</label>
             <div class="controls">
 
                 <textarea name="position" ><?php echo $result->position; ?></textarea>
@@ -123,7 +124,7 @@
 
 
         <div class="control-group">
-            <label class="control-label">站点二维码URL</label>
+            <label class="control-label">本站通关二维码</label>
             <div class="controls">
                 <input type="text"  class="span8"   value="http://sport.hoopeng.cn/api/sport/scan?type=2&lineId=<?php echo $result->lineId?>&siteId=<?php echo $result->siteId?>&section=<?php echo $result->section;?>&md=<?php echo md5($result->lineId.'-'.$result->siteId)?>"/>
                 <span class="help-inline" style="color: #ff0000">系统,不可修改</span>
@@ -133,7 +134,7 @@
 
 
         <div class="control-group">
-            <label class="control-label">站点任务书二维码</label>
+            <label class="control-label">本站特殊二维码</label>
             <div class="controls">
                 <?php if($result->passInfo==2):?>
                     <input type="text"  class="span8"  value="http://sport.hoopeng.cn/api/sport/scan?type=1&lineId=<?php echo $result->lineId?>&siteId=<?php echo $result->siteId?>&section=<?php echo $result->section;?>"/>
