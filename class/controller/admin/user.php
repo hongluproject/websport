@@ -25,7 +25,7 @@ class User extends \Controller\Admin
         session_start();
         \Core\Session::start();
         $this->user = \Logic\User::getLogged();
-        if($this->user->username=='szy'){
+        if($this->user->username=='zeyu'){
 
             $this->menu = array(
                 '_h1' => array('用户管理'),
