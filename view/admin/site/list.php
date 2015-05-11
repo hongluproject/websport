@@ -52,8 +52,13 @@
                         <td><?php echo $item->siteManager; ?></td>
                         <td>
                             <a href="/admin/site/edit/<?php echo $item->id; ?>" target="_blank"><i class="icon-ok" alt="更新" title="更新"></i></a>&nbsp;&nbsp;&nbsp;
-<!--                            <a href="/admin/site/delete/<?php /*echo $item->id; */?>" class="delete"><i class="icon-remove" alt="删除" title="删除"></i></a>&nbsp;&nbsp;&nbsp;
--->                        </td>
+
+
+                        <?php if($this->user->admin == 1):?>
+                        <a href="/admin/site/delete/<?php  echo $item->id; ?>" class="delete"><i class="icon-remove" alt="删除" title="删除"></i></a>&nbsp;&nbsp;&nbsp;
+                        <?php endif;?>
+
+                        </td>
                     </tr>
 
                 <?php endforeach; ?>
