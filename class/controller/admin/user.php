@@ -18,4 +18,20 @@ class User extends \Controller\Admin
     {
 
     }
+
+
+
+    public  function __construct(){
+        session_start();
+        \Core\Session::start();
+        $this->user = \Logic\User::getLogged();
+        if($this->user->username=='szy'){
+
+            $this->menu = array(
+                '_h1' => array('用户管理'),
+                 'user.download'   => array('导出登协管理员', '/admin/user/download'),
+            );
+        }
+
+    }
 }
