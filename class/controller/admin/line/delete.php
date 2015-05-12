@@ -10,8 +10,15 @@ class Delete extends \Controller\Admin\Line
     {
         try
         {
-            $result = new \Model\Line();
-            $result->delete($id);
+            $result = \Model\Line::find($id);
+            $lineId= $result->lineId;
+            $db = \Model\Line::db();
+            $db->delete('delete  from  `ma_site` where `lineId`='.$lineId);
+            $db->delete('delete  from  `ma_team` where `lineId`='.$lineId);
+            $db->delete('delete  from  `ma_record` where `lineId`='.$lineId);
+
+            $modelLine = new \Model\Line();
+            $modelLine->delete($id);
             redirect('/admin/line');
         }
         catch (\Exception $e)
