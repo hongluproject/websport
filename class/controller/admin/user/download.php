@@ -45,9 +45,9 @@ class Download extends \Controller\Admin\User
         foreach ($userArray as $key => $item) {
             $userName = 'A' . ($key + 2);
             $userPass = 'B' . ($key + 2);
-            $objPHPExcel->setActiveSheetIndex(0)
-                ->setCellValue($userName, $item->username)
-                ->setCellValue($userPass, substr(md5($item->username),0,6));
+            $objPHPExcel->setActiveSheetIndex(0) ->setCellValue($userPass, substr(md5($item->username),0,6));
+            $objPHPExcel->setActiveSheetIndex()->setCellValueExplicit($userName,$item->username,\PHPExcel_Cell_DataType::TYPE_STRING);
+
         }
 
 // Rename worksheet
