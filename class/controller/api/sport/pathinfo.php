@@ -38,21 +38,23 @@ class Pathinfo extends \Controller\Api
                     }
                     $pathInfo = array();
                     //路程.
-
-                      foreach ($sites as $item) {
-                        $pathInfo[$item->siteId] = array('memberStatus' => 3, 'passTime' => '', 'address' => '','siteName'=>$item->lineId.'-'.$item->siteId);
-                        if($nextSiteKey == $item->siteId){
-                            $pathInfo[$nextSiteKey]['memberStatus']  =2;
-                            $pathInfo[$nextSiteKey]['address'] = $item->position;
+                    if(empty($sites)){
+                        echo json_encode(array('status' => 2, 'message' => '站点没有建立'));
+                    }else{
+                        foreach ($sites as $item) {
+                            $pathInfo[$item->siteId] = array('memberStatus' => 3, 'passTime' => '', 'address' => '','siteName'=>$item->lineId.'-'.$item->siteId);
+                            if($nextSiteKey == $item->siteId){
+                                $pathInfo[$nextSiteKey]['memberStatus']  =2;
+                                $pathInfo[$nextSiteKey]['address'] = $item->position;
+                            }
+                            if (array_key_exists($item->lineId . '-' . $item->siteId, $passInfo)) {
+                                $pathInfo[$item->siteId]['memberStatus'] = $passInfo[$item->lineId . '-' . $item->siteId]['memberStatus'];
+                                $pathInfo[$item->siteId]['passTime'] = $passInfo[$item->lineId . '-' . $item->siteId]['passTime'];
+                                $pathInfo[$item->siteId]['address'] = $item->position;
+                            }
                         }
-                        if (array_key_exists($item->lineId . '-' . $item->siteId, $passInfo)) {
-                            $pathInfo[$item->siteId]['memberStatus'] = $passInfo[$item->lineId . '-' . $item->siteId]['memberStatus'];
-                            $pathInfo[$item->siteId]['passTime'] = $passInfo[$item->lineId . '-' . $item->siteId]['passTime'];
-                            $pathInfo[$item->siteId]['address'] = $item->position;
-                        }
+                        echo json_encode(array('status' => 1, 'message' => 'OK', 'passurl' => 'http://sport.hoopeng.cn/sport/userinfo', 'result' => $pathInfo));
                     }
-                    echo json_encode(array('status' => 1, 'message' => 'OK', 'passurl' => 'http://sport.hoopeng.cn/sport/userinfo', 'result' => $pathInfo));
-
                 } else {
                     echo json_encode(array('status' => 2, 'message' => '没有TEAM'));
                 }
@@ -60,7 +62,7 @@ class Pathinfo extends \Controller\Api
                 echo json_encode(array('status' => 2, 'message' => '没有TEAM'));
             }
         } else {
-            echo json_encode(array('status' => 2, 'message' => '没有此用户'));
+            echo json_encode(array('status' => 2, 'message' => '您没有报名此活动'));
         }
     }
 
