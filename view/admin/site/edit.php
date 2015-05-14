@@ -82,7 +82,7 @@
 
 
         <div class="control-group">
-            <label class="control-label">本站位置信息信息任务书</label>
+            <label class="control-label">本站位置和任务书信息</label>
             <div class="controls">
 
                 <textarea name="position" ><?php echo $result->position; ?></textarea>
