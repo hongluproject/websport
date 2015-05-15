@@ -9,8 +9,13 @@ class Userinfo extends \Controller\Front
     public function get()
     {
 
+        $result = \Model\Team::find(array('phone'=>$_GET['phone']));
+        if($result->data){
+            $teamName = $result->data['teamName'];
+            $teamId = $result->data['teamId'];
+        }
 
-        $this->result  = $_GET['phone'];
+        $this->result = \Model\Member::fetch(array('teamId'=>$teamId));
 
     }
 
