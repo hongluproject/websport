@@ -17,9 +17,10 @@
         .conbox ul{ padding-top:96px; padding-left:40px; overflow:hidden}
         .conbox li{ height:28px; float:left; width:80px; margin-left:40px; overflow:hidden; margin-bottom:4px;}
         .conbox li input{ background:none; border:0 none; float:left; line-height:28px; color:#333; }
+        .body_bg{background:url(../../assets/img/bg.png) repeat;}
     </style>
 </head>
-<body style="background-color: #ffffff">
+<body  class="body_bg">
 <div class="img_box">
     <img src="../../assets/img/bg2.jpg">
 </div>
