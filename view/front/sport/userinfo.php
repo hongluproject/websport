@@ -6,8 +6,8 @@
     <title></title>
     <style>
         *{ margin:0px; padding:0px;}
-        .img_box{ width:100%;}
-        .img_box img{ width:100%; vertical-align:top}
+        .img_box{ width:320px;height: 219px; margin:0 auto}
+        .img_box img{ width:312px;height: 219px; vertical-align:top;margin:0 auto}
         .conbox{ width:320px;  height:303px; background:url(../../assets/img/bg1.jpg) no-repeat; background-size:cover; margin:0 auto}
         .input1{ padding:80px 32px 0 100px;  }
         .input1 input{ width:100%; background:#fff; height:25px; border:0 none; background:none;  color:#333; }
