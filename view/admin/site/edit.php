@@ -85,7 +85,7 @@
             <label class="control-label">本站位置和任务书信息</label>
             <div class="controls">
 
-                <textarea name="position" ><?php echo $result->position; ?></textarea>
+                <textarea name="position"  style="height: 250px;width: 550px;"><?php echo $result->position; ?></textarea>
                 <span class="help-inline">必填</span>
             </div>
         </div>
