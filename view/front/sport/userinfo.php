@@ -19,7 +19,7 @@
         .conbox li input{ background:none; border:0 none; float:left; line-height:28px; color:#333; }
     </style>
 </head>
-<body>
+<body style="background-color: #ffffff">
 <div class="img_box">
     <img src="../../assets/img/bg2.jpg">
 </div>
