@@ -27,11 +27,11 @@
 <!--类容 s-->
 <div class="conbox">
     <div class="input1">
-        <input type="text" value="<?php echo $result[0]->teamName?>">
+        <input type="text"  readonly="true" value="<?php echo $result[0]->teamName?>">
     </div>
     <ul>
         <?php foreach($result as $item):?>
-        <li><input type="text" value="<?php echo $item->username?>"></li>
+        <li><input type="text" readonly="true"  value="<?php echo $item->username?>"></li>
         <?php endforeach?>
     </ul>
 </div>
