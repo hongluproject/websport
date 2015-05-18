@@ -10,16 +10,8 @@ class Delete extends \Controller\Admin\Site
     {
         try
         {
-
-
-            $site = \Model\Site::find($id);
-            $before_line = \Model\Line::find(array('lineId'=>$site->lineId));
-            $before_line->set(array('siteNum'=>$before_line->siteNum-1));
-            $before_line->save();
-
             $result = new \Model\Site();
             $result->delete($id);
-
 
             redirect('/admin/site');
         }
