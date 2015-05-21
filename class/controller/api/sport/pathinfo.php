@@ -53,6 +53,7 @@ class Pathinfo extends \Controller\Api
                                 $pathInfo[$item->siteId]['address'] = $item->position;
                             }
                         }
+                        ksort($pathInfo);
                         echo json_encode(array('status' => 1, 'message' => 'OK', 'passurl' => 'http://sport.hoopeng.cn/sport/userinfo', 'result' => $pathInfo));
                     }
                 } else {
