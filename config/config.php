@@ -42,6 +42,7 @@ $config['routes'] = array(
     //报名
     'admin/line/delete'     => '\Controller\Admin\Line\Delete',
     'admin/line/edit'     => '\Controller\Admin\Line\Edit',
+    'admin/line/xu'     => '\Controller\Admin\Line\Xu',
     'admin/line'             => '\Controller\Admin\Line\Page',
 
 

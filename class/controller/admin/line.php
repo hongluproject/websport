@@ -11,6 +11,7 @@ class Line extends \Controller\Admin
         '_h1'           => array('线路'),
         'line.list'   => array('线路列表', '/admin/line'),
         'line.edit'   => array('新建线路', '/admin/line/edit'),
+        'line.xu'   => array('线路二维码', '/admin/line/xu'),
     );
 
     public function get()
