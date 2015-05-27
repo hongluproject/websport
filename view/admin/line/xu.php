@@ -4,9 +4,9 @@
 <table class="table table-bordered table-striped">
     <thead>
     <tr>
-        <th width="100">站点名</th>
+        <th width="100">站点编号</th>
+        <th width="100">本站通关二维码</th>
         <th width="100">本站特殊二维码</th>
-        <th width="100">特殊二维码</th>
 
     </tr>
     </thead>
@@ -21,9 +21,9 @@
     <?php endforeach;?>
 
     <tr>
-        <th width="100">站点名</th>
+        <th width="100">站点编号</th>
+        <th width="100">本站通关二维码</th>
         <th width="100">本站特殊二维码</th>
-        <th width="100">特殊二维码</th>
 
     </tr>
     </tbody>
