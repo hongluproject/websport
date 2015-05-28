@@ -41,12 +41,18 @@ class Edit extends \Controller\Admin\Member
                 if(!$item[7]){
                     continue;
                 }
-                $param['lineId']= trim($item[7]);
+
+                if(strlen($item[6])!=11&&$item[6]!=''){
+                    $item[6] = preg_replace("/(\s|\&nbsp\;|　|\xc2\xa0)/","",$item[6]);
+                }
+                $item[7] = preg_replace("/(\s|\&nbsp\;|　|\xc2\xa0)/","",$item[7]);
+                $item[2] = preg_replace("/(\s|\&nbsp\;|　|\xc2\xa0)/","",$item[2]);
+                $param['lineId']= $item[7];
                 $param['status']=  1;
-                $param['teamId']= trim($item[2]);
-                $param['teamName']= trim($item[3]);
-                $param['teamLeader']= trim($item[4]);
-                $param['phone']= trim($item[6]);
+                $param['teamId']= $item[2];
+                $param['teamName']= $item[3];
+                $param['teamLeader']= $item[4];
+                $param['phone']= $item[6];
                 if(substr($item[5],-1) == 1){
                     //队长
                     $team = new \Model\Team();
@@ -60,6 +66,12 @@ class Edit extends \Controller\Admin\Member
                 if(!$item[7]){
                     continue;
                 }
+
+                if(strlen($item[6])!=11&&$item[6]!=''){
+                    $item[6] = preg_replace("/(\s|\&nbsp\;|　|\xc2\xa0)/","",$item[6]);
+                }
+                $item[7] = preg_replace("/(\s|\&nbsp\;|　|\xc2\xa0)/","",$item[7]);
+                $item[2] = preg_replace("/(\s|\&nbsp\;|　|\xc2\xa0)/","",$item[2]);
                 $param['lineId']= $item[7];
                 $param['status']=  1;
                 $param['userName']= $item[4];
