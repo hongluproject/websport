@@ -37,9 +37,38 @@
 </div>
 <!--类容 e-->
 <div class="img_box">
-    <img src="../../assets/img/bg3.jpg">
+    <img src="../../assets/img/bg3.png">
+   <a href="javascript:doClient();"> <img src="../../assets/img/zhengshu.png"></a>
+
 </div>
 </body>
+
+
+<script language="javascript">
+    function doClient() {
+        if (navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)) {
+            var loadDateTime = new Date();
+            window.setTimeout(function() {
+                var timeOutDateTime = new Date();
+                if (timeOutDateTime - loadDateTime < 2000) {
+                    window.location = "http://a.app.qq.com/o/simple.jsp?pkgname=com.honglu.sahala";
+                } else {
+                    window.close();
+                }
+            }, 25);
+        } else if (navigator.userAgent.match(/android/i)) {
+            var state = null;
+            try {
+                window.location = "http://a.app.qq.com/o/simple.jsp?pkgname=com.honglu.sahala";
+            } catch (e) {}
+            if (state) {
+                window.close();
+            } else {
+                window.location = "http://a.app.qq.com/o/simple.jsp?pkgname=com.honglu.sahala";
+            }
+        }
+    }
+</script>
 </html>
 
 
