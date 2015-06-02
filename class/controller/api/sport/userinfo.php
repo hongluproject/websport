@@ -13,12 +13,12 @@ class Userinfo extends \Controller\Api
                 if($item->phone =='')
                     continue;
                 if(substr($item->userId,-1) == 1){
-                    $type = 'leader';
+                    $isLeader = true;
                 }else{
-                    $type = 'members';
+                    $isLeader = false;
                 }
 
-                $apiMembers[$item->teamId][$type][] = array('phone'=>$item->phone,'username'=>$item->username,'teamName'=>$item->teamName);
+                $apiMembers[$item->teamId][] = array('phone'=>$item->phone,'username'=>$item->username,'teamName'=>$item->teamName,'leader'=>$isLeader);
 
 /*
                 $apiMembers[$item->teamId][$type]['phone'][] = $item->phone;
