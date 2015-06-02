@@ -10,6 +10,11 @@ class Delete extends \Controller\Admin\Site
     {
         try
         {
+
+            $user = $this->user;
+            if($user->admin!=1){
+                echo "cannot delete  site";exit;
+            }
             $result = new \Model\Site();
             $result->delete($id);
 

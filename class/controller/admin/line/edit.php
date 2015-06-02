@@ -20,8 +20,8 @@ class Edit extends \Controller\Admin\Line
         $data = $_POST;
 
         $user = $this->user;
-        if($user->admin!=1&&$user->username !=$_POST['lineId']){
-            echo "cannot edit other line";exit;
+        if($user->admin!=1){
+            echo "cannot edit  line";exit;
         }
         $data['lineManager'] = $lineManager = $_POST['lineId'];
         $user = \Model\User::find(array('username' => $lineManager));

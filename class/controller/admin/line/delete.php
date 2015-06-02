@@ -10,6 +10,12 @@ class Delete extends \Controller\Admin\Line
     {
         try
         {
+
+
+            $user = $this->user;
+            if($user->admin!=1){
+                echo "cannot delete  line";exit;
+            }
             $result = \Model\Line::find($id);
             $lineId= $result->lineId;
             $db = \Model\Line::db();

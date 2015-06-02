@@ -25,6 +25,12 @@ class Edit extends \Controller\Admin\Site
     {
 
          try {
+
+
+             $user = $this->user;
+             if($user->admin!=1){
+                 echo "cannot edit  site";exit;
+             }
              $data = $_POST;
              $mission = array();
              if ($data['passInfo'] == 2) {
