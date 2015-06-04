@@ -10,6 +10,16 @@ class Note extends \Controller\Front
     {
         $db = \Model\Member::db();
         $this->noteResult = $db->fetch('select * from sport_note order by count desc');
+        $ip = $this->GetIP();
+        $isNote = $db->fetch('select * from sport_record  where ip = "'.$ip.'"');
+        if(!empty($isNote)){
+            //已投
+            $this->isSubmit = 1;
+        }else{
+            //未投
+            $this->isSubmit = 2;
+        }
+
     }
 
     public function post()

@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui" />
     <script src="/assets/js/jquery.min.js" type="text/javascript"></script>
+    <script src="    http://api.imsahala.com/js/common.js?2015040101" type="text/javascript"></script>
     <title>投票</title>
     <style>
         @charset "utf-8";body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legend,button,input,textarea,th,td{margin:0;padding:0}
@@ -120,8 +121,21 @@
             vertical-align: middle;
             cursor: pointer;
             border-radius: 7px;
-            background: none repeat scroll 0% 0% #36cad8;
         }
+
+
+       .has_note{
+            color: #FFF;
+            background: none repeat scroll 0% 0% #cccccc;
+
+        }
+
+        .no_note{
+            background: none repeat scroll 0% 0% #36cad8;
+
+        }
+
+
 
         .share {max-width: 640px;margin:0 auto}
 
@@ -133,12 +147,22 @@
 <div class="share">
     <div class="ui-resp-pics2 ui-100x56 cf top" >
         <ul class="chart-list">
+
+            <?php if($isSubmit == 1){
+                $hover = 'has_note';
+
+            } else {
+                $hover = 'no_note';
+            }
+
+            ?>
+
             <?php foreach($noteResult as $key=>$item):?>
             <li>
                 <div class="num"><?php echo $key+1;?></div>
                 <div class="img"> <img src="<?php echo $item->imageUrl?>"  ></div>
                 <div class="intro"><p class="title"><?php echo $item->title?></p><p class="note" >票数　<em id="<?php echo $item->objectId;?>_count"><?php echo $item->count?></em></p></div>
-                <div class="toupiao"  ><a href="javaScript:void(0)" class="btn" id="<?php echo $item->objectId;?>_addnote" rel="<?php echo $item->objectId;?>">投票</a></div>
+                <div class="toupiao"  ><a href="javaScript:void(0)" class="btn <?php echo $hover;?>" id="<?php echo $item->objectId;?>_addnote" rel="<?php echo $item->objectId;?>">投票</a></div>
             </li>
             <?php endforeach;?>
 
@@ -150,8 +174,38 @@
 
 
 <script language="javascript">
+
+
+    //document.cookie  = 'submitNote=1';
     $(function(){
+        var strcookie=document.cookie;
+        var arrcookie=strcookie.split("; ");
+        var submitNote;
+        for(var i=0;i<arrcookie.length;i++){
+            var arr=arrcookie[i].split("=");
+            if("submitNote"==arr[0]){
+                submitNote=arr[1];
+                break;
+            }
+        }
+
+        if(submitNote == 1){
+            $(function(){
+                $("ul li").each(function(){
+                    $(this).find('.btn').attr('class','btn has_note');
+                })
+            })
+        }
+
         $(".btn").click(function(){
+
+            if (!isInHoopeng()) {
+                alert("请下载撒哈拉在APP内打开");return;
+            }
+
+            if(submitNote == 1){
+                alert("不能重复投票");return;
+            }
             var love = $(this);
             var id = love.attr("rel"); //对应id
             $.ajax({
@@ -162,7 +216,13 @@
                 success:function(data){
                     if(data.status==2){
                         var count =   1+parseInt($("#"+id+"_count").html());
-                        $("#"+id+"_count").html(count)
+                        $("#"+id+"_count").html(count);
+                        $(function(){
+                            $("ul li").each(function(){
+                                $(this).find('.btn').attr('class','btn has_note');
+                            })
+                        })
+                        document.cookie  = 'submitNote=1';
                         alert(data.message);
                     }else{
                         alert(data.message);
