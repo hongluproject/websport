@@ -77,6 +77,7 @@ $config['routes'] = array(
     'api/sport/userinfo'       => '\Controller\Api\Sport\Userinfo',
     'api/sport/pathinfo'       => '\Controller\Api\Sport\Pathinfo',
     'sport/userinfo'       => '\Controller\Front\Sport\Userinfo',
+    'sport/note'       => '\Controller\Front\Sport\Note',
     'admin/session/login'     => '\Controller\Admin\Session\Login',
     'admin/session/logout'    => '\Controller\Admin\Session\Logout',
     'admin/user/quick'        => '\Controller\Admin\User\Quick',
