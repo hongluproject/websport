@@ -133,8 +133,7 @@
 
        .has_note{
             color: #FFF;
-            background: none repeat scroll 0% 0% #cccccc;
-
+ 
         }
         .no_note{
             background: none repeat scroll 0% 0% #36cad8;
@@ -150,7 +149,7 @@
             right: 0px;
             margin-left: auto;
             margin-right: auto;
-            background-image: url(/images/download-bg.png);
+            background-image: url(http://api.imsahala.com/images/download-bg.png);
             height: 60px;
             background-repeat: repeat-x;
             opacity: 0.9;
