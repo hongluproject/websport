@@ -190,7 +190,7 @@ foreach($isNote as $item){
 <div class="download" id="downloadDiv" style="display: none;"><a href="javascript:doClient();" style="float:left;max-width:150px;margin-left: 1px">
         <img src="http://api.imsahala.com/images/download1.png"></a>
     <a href="javascript:doClient();" style="float:right;max-width:135px;">
-        <img src="http://api.imsahala.com/images/download1.png"></a>
+        <img src="http://api.imsahala.com/images/download2.png"></a>
 </div>
 
 </body>
