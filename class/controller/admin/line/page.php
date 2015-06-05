@@ -21,11 +21,6 @@ class Page extends \Controller\Admin\Line
         $path = $this->getPath();
         $order = array('lineId' => 'asc');
 
-
-
-
-        
-
         if($user->admin!=1){
             if($user->level == 1){
                 $where = array('lineId'=>$user->username);
