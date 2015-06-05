@@ -110,7 +110,6 @@
 
         .chart-list li  .btn:hover {
             color: #FFF;
-            background: none repeat scroll 0% 0% #cccccc;
         }
 
         .chart-list li  .btn {
@@ -133,7 +132,8 @@
 
        .has_note{
             color: #FFF;
- 
+            background: none repeat scroll 0% 0% #cccccc;
+
         }
         .no_note{
             background: none repeat scroll 0% 0% #36cad8;
