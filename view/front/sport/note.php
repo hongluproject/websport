@@ -150,7 +150,7 @@
             right: 0px;
             margin-left: auto;
             margin-right: auto;
-            background-image: url(/images/download-bg.png);
+            background-image: url(http://api.imsahala.com/images/download-bg.png);
             height: 60px;
             background-repeat: repeat-x;
             opacity: 0.9;
@@ -189,7 +189,7 @@ foreach($isNote as $item){
 
 <div class="download" id="downloadDiv" style="display: none;"><a href="javascript:doClient();" style="float:left;max-width:150px;margin-left: 1px">
         <img src="http://api.imsahala.com/images/download1.png"></a>
-    <a href="javascript:doClient();" style="float:right;max-width:89px;">
+    <a href="javascript:doClient();" style="float:right;max-width:140px;">
         <img src="http://api.imsahala.com/images/download1.png"></a>
 </div>
 
