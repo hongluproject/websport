@@ -176,7 +176,7 @@ foreach($isNote as $item){
             <?php foreach($noteResult as $key=>$item):?>
             <li>
                 <div class="num"><?php echo $key+1;?></div>
-                <div class="img"> <img src="<?php echo $item->imageUrl?>" onclick="javascript:doFilter('jumpInfo','clan', '<?php echo $item->objectId?>', '<?php echo $item->title?>');"></div>
+                <div class="img"> <img src="<?php echo $item->imageUrl?$item->imageUrl:'http://hoopeng.qiniudn.com/list.png';?>" onclick="javascript:doFilter('jumpInfo','clan', '<?php echo $item->objectId?>', '<?php echo $item->title?>');"></div>
                 <div class="intro"><p class="title"><a href="#" onclick="javascript:doFilter('jumpInfo','clan', '<?php echo $item->objectId?>', '<?php echo $item->title?>');"><?php echo $item->title?></a></p><p class="note" >票数　<em id="<?php echo $item->objectId;?>_count"><?php echo $item->count?></em></p></div>
                 <div class="toupiao"  ><a href="javaScript:void(0)" class="btn <?php   echo  in_array($item->objectId,$newArr)?'has_note':'no_note';?>" id="<?php echo $item->objectId;?>_addnote" rel="<?php echo $item->objectId;?>">投票</a></div>
             </li>
