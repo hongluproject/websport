@@ -11,14 +11,8 @@ class Note extends \Controller\Front
         $db = \Model\Member::db();
         $this->noteResult = $db->fetch('select * from sport_note order by count desc');
         $ip = $this->GetIP();
-        $isNote = $db->fetch('select * from sport_record  where ip = "'.$ip.'"');
-        if(!empty($isNote)){
-            //已投
-            $this->isSubmit = 1;
-        }else{
-            //未投
-            $this->isSubmit = 2;
-        }
+        $this->isNote = $db->fetch('select * from sport_record  where ip = "'.$ip.'"');
+
 
     }
 
@@ -29,7 +23,7 @@ class Note extends \Controller\Front
         $ip =$this->GetIP();
         $id= $_POST['id'];
         $db = \Model\Member::db();
-        $this->searchResult = $db->fetch('select * from sport_record  where ip = "'.$ip.'"');
+        $this->searchResult = $db->fetch('select * from sport_record  where ip = "'.$ip.'" and objectId = "'.$id.'"');
         if(!$this->searchResult){
             $db = \Model\Line::db();
             $db->insert('sport_record',array('ip'=>$ip,'objectId'=>$_POST['id']));

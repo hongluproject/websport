@@ -97,13 +97,10 @@
         }
 
 
-
-
         .chart-list li  .btn:hover {
             color: #FFF;
             background: none repeat scroll 0% 0% #cccccc;
         }
-
 
         .chart-list li  .btn {
             display: inline-block;
@@ -123,19 +120,15 @@
             border-radius: 7px;
         }
 
-
        .has_note{
             color: #FFF;
             background: none repeat scroll 0% 0% #cccccc;
 
         }
-
         .no_note{
             background: none repeat scroll 0% 0% #36cad8;
 
         }
-
-
 
         .share {max-width: 640px;margin:0 auto}
 
@@ -144,25 +137,23 @@
 </head>
 <body >
 
+<?php
+$newArr = array();
+foreach($isNote as $item){
+    $newArr[] = $item->objectId;
+}
+?>
+
+
 <div class="share">
     <div class="ui-resp-pics2 ui-100x56 cf top" >
         <ul class="chart-list">
-
-            <?php if($isSubmit == 1){
-                $hover = 'has_note';
-
-            } else {
-                $hover = 'no_note';
-            }
-
-            ?>
-
             <?php foreach($noteResult as $key=>$item):?>
             <li>
                 <div class="num"><?php echo $key+1;?></div>
                 <div class="img"> <img src="<?php echo $item->imageUrl?>"  ></div>
                 <div class="intro"><p class="title"><?php echo $item->title?></p><p class="note" >票数　<em id="<?php echo $item->objectId;?>_count"><?php echo $item->count?></em></p></div>
-                <div class="toupiao"  ><a href="javaScript:void(0)" class="btn <?php echo $hover;?>" id="<?php echo $item->objectId;?>_addnote" rel="<?php echo $item->objectId;?>">投票</a></div>
+                <div class="toupiao"  ><a href="javaScript:void(0)" class="btn <?php   echo  in_array($item->objectId,$newArr)?'has_note':'no_note';?>" id="<?php echo $item->objectId;?>_addnote" rel="<?php echo $item->objectId;?>">投票</a></div>
             </li>
             <?php endforeach;?>
 
@@ -175,9 +166,8 @@
 
 <script language="javascript">
 
-
-    //document.cookie  = 'submitNote=1';
     $(function(){
+/*
         var strcookie=document.cookie;
         var arrcookie=strcookie.split("; ");
         var submitNote;
@@ -188,7 +178,6 @@
                 break;
             }
         }
-
         if(submitNote == 1){
             $(function(){
                 $("ul li").each(function(){
@@ -196,16 +185,13 @@
                 })
             })
         }
+*/
 
         $(".btn").click(function(){
-
             if (!isInHoopeng()) {
-                alert("请下载撒哈拉在APP内打开");return;
+              //  alert("请下载撒哈拉在APP内打开");return;
             }
 
-            if(submitNote == 1){
-                alert("不能重复投票");return;
-            }
             var love = $(this);
             var id = love.attr("rel"); //对应id
             $.ajax({
@@ -217,12 +203,7 @@
                     if(data.status==2){
                         var count =   1+parseInt($("#"+id+"_count").html());
                         $("#"+id+"_count").html(count);
-                        $(function(){
-                            $("ul li").each(function(){
-                                $(this).find('.btn').attr('class','btn has_note');
-                            })
-                        })
-                        document.cookie  = 'submitNote=1';
+                        $("#"+id+"_addnote").attr('class','btn has_note');
                         alert(data.message);
                     }else{
                         alert(data.message);
