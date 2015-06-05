@@ -21,6 +21,10 @@ class Note extends \Controller\Front
         header("Content-type: application/json");
         $status = array('status'=>1,'message'=>'OK');
         $ip =$this->GetIP();
+        if($ip =="unknown"){
+            $status['message'] ='不能重复投票';
+            json_encode($status);exit;
+        }
         $id= $_POST['id'];
         $db = \Model\Member::db();
         $this->searchResult = $db->fetch('select * from sport_record  where ip = "'.$ip.'" and objectId = "'.$id.'"');
