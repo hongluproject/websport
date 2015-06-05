@@ -142,7 +142,22 @@
         }
 
         .share {max-width: 640px;margin:0 auto}
+        .download {
+            position: fixed;
+            bottom: 0px;
+            max-width: 700px;
+            left: 0px;
+            right: 0px;
+            margin-left: auto;
+            margin-right: auto;
+            background-image: url(/images/download-bg.png);
+            height: 60px;
+            background-repeat: repeat-x;
+            opacity: 0.9;
+        }
 
+        .download img{max-height:55px;margin:0 auto;padding-top: 0px;padding-bottom: 0px}
+        .download a{margin-left:10px;margin-right:10px;padding-top: 3px;padding-bottom: 0px}
 
     </style>
 </head>
@@ -172,6 +187,12 @@ foreach($isNote as $item){
     </div>
 </div>
 
+<div class="download" id="downloadDiv" style="display: none;"><a href="javascript:doClient();" style="float:left;max-width:150px;margin-left: 1px">
+        <img src="http://api.imsahala.com/images/download1.png"></a>
+    <a href="javascript:doClient();" style="float:right;max-width:89px;">
+        <img src="http://api.imsahala.com/images/download1.png"></a>
+</div>
+
 </body>
 
 
@@ -198,9 +219,15 @@ foreach($isNote as $item){
         }
 */
 
+
+
+        if (!isInHoopeng()) {
+            $('#downloadDiv').css('display', 'block');
+        }
+
         $(".btn").click(function(){
             if (!isInHoopeng()) {
-              //  alert("请下载撒哈拉在APP内打开");return;
+                alert("请下载撒哈拉在APP内打开");return;
             }
 
             var love = $(this);
