@@ -145,7 +145,7 @@
         .download {
             position: fixed;
             bottom: 0px;
-            max-width: 700px;
+            max-width: 640px;
             left: 0px;
             right: 0px;
             margin-left: auto;
