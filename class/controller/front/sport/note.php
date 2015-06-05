@@ -9,7 +9,7 @@ class Note extends \Controller\Front
     public function get()
     {
         $db = \Model\Member::db();
-        $this->noteResult = $db->fetch('select * from sport_note order by count desc');
+        $this->noteResult = $db->fetch('select * from sport_note order by count asc');
         $ip = $this->GetIP();
         $this->isNote = $db->fetch('select * from sport_record  where ip = "'.$ip.'"');
 
