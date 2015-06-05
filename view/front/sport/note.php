@@ -15,6 +15,17 @@
         table{border-collapse:collapse;border-spacing:0}
         i,b,s,em{font-style:normal}
         del{font-family:'\5b8b\4f53'}.clear{*zoom:1}
+
+         a{
+             color: #888;
+             text-decoration:none;
+
+         }
+
+         a:active{
+             color:#888;
+
+         }
         .cf:after {
             clear: both;
         }
@@ -152,7 +163,7 @@ foreach($isNote as $item){
             <li>
                 <div class="num"><?php echo $key+1;?></div>
                 <div class="img"> <img src="<?php echo $item->imageUrl?>"  ></div>
-                <div class="intro"><p class="title"><?php echo $item->title?></p><p class="note" >票数　<em id="<?php echo $item->objectId;?>_count"><?php echo $item->count?></em></p></div>
+                <div class="intro"><p class="title"><a href="#" onclick="javascript:doFilter('jumpInfo','clan', '555af096e4b0761734483813', '<?php echo $item->title?>');"><?php echo $item->title?></a></p><p class="note" >票数　<em id="<?php echo $item->objectId;?>_count"><?php echo $item->count?></em></p></div>
                 <div class="toupiao"  ><a href="javaScript:void(0)" class="btn <?php   echo  in_array($item->objectId,$newArr)?'has_note':'no_note';?>" id="<?php echo $item->objectId;?>_addnote" rel="<?php echo $item->objectId;?>">投票</a></div>
             </li>
             <?php endforeach;?>
