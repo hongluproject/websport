@@ -13,6 +13,7 @@ class Note extends \Controller\Front
 
         $clanOjbectId = array();
 
+        
         foreach($this->noteResult as $item){
             $clanOjbectId[] = $item->objectId;
         }
