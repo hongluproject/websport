@@ -10,6 +10,37 @@ class Note extends \Controller\Front
     {
         $db = \Model\Member::db();
         $this->noteResult = $db->fetch('select * from sport_note order by count desc');
+
+        $clanOjbectId = array();
+
+        foreach($this->noteResult as $item){
+            $clanOjbectId[] = $item->objectId;
+        }
+        $acurl = new \Utils\Acurl();
+        $where = array("objectId"=>array('$in'=>$clanOjbectId));
+        $where = json_encode($where);
+
+        $keys = 'icon,title,objectId';
+        $result = $acurl->setOption(array('method' => 'get', 'class' => 'Clan', 'keys'=>$keys,'where'=>$where,'limit' => 1000))->getCurlResult();
+
+        $result = json_decode($result,true);
+        $clanArr  = array();
+
+        if(is_array($result['results'])){
+            foreach($result['results'] as $item){
+                $clanArr[$item['objectId']] = array('title'=>$item['title'],'image'=>$item['icon']);
+            }
+
+        }
+
+        foreach($this->noteResult as &$item){
+            if(!$clanArr[$item->objectId]){
+                $item->suaxu = array('title'=>'撒哈拉部落','image'=>'http://hoopeng.qiniudn.com/list.png');
+            }else{
+                $item->suaxu  = $clanArr[$item->objectId];
+            }
+        }
+
         $ip = $this->GetIP();
         $this->isNote = $db->fetch('select * from sport_record  where ip = "'.$ip.'"');
 
@@ -59,7 +90,6 @@ class Note extends \Controller\Front
         return($ip);
     }
 }
-
 
 
 
