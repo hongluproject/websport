@@ -8,32 +8,36 @@ class Note extends \Controller\Front
 
     public function get()
     {
+		
+
+		//获取数据库内数据		
         $db = \Model\Member::db();
         $this->noteResult = $db->fetch('select * from sport_note order by count desc');
 
-        $clanOjbectId = array();
-
-        
+		//本地部落ID，
+        $clanOjbectId = $clanArr  = array();        
         foreach($this->noteResult as $item){
             $clanOjbectId[] = $item->objectId;
-        }
-        $acurl = new \Utils\Acurl();
-        $where = array("objectId"=>array('$in'=>$clanOjbectId));
-        $where = json_encode($where);
-
-        $keys = 'icon,title,objectId';
-        $result = $acurl->setOption(array('method' => 'get', 'class' => 'Clan', 'keys'=>$keys,'where'=>$where,'limit' => 1000))->getCurlResult();
-
-        $result = json_decode($result,true);
-        $clanArr  = array();
-
-        if(is_array($result['results'])){
-            foreach($result['results'] as $item){
-                $clanArr[$item['objectId']] = array('title'=>$item['title'],'image'=>$item['icon']);
+        }    	
+		
+				
+		//取到全量
+	    $acurl = new \Utils\Acurl();                   
+        $result = json_decode($this->getClanFunction(array('clanIds'=>$clanOjbectId),'getCityClanNames'),true);
+					
+		
+        if(is_array($result['result'])){
+            foreach($result['result'] as $item){
+				//分析数据本地没有则insert
+				if(!in_array($item['objectId'],$clanOjbectId)){
+				    $db = \Model\Line::db();
+					$db->insert('sport_note',array('objectId'=>$item['objectId'],'count'=>0));			
+				}else{
+					$clanArr[$item['objectId']] = array('title'=>$item['clanName'],'image'=>$item['icon']);
+				}
             }
-
         }
-
+		
         foreach($this->noteResult as &$item){
             if(!$clanArr[$item->objectId]){
                 $item->suaxu = array('title'=>'撒哈拉部落','image'=>'http://hoopeng.qiniudn.com/list.png');
@@ -90,6 +94,25 @@ class Note extends \Controller\Front
             $ip = "unknown";
         return($ip);
     }
+	
+	
+	public function  getClanFunction($param,$function){
+        $curl_hander = curl_init();
+        curl_setopt($curl_hander, CURLOPT_SSL_VERIFYPEER, FALSE);
+        curl_setopt($curl_hander, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($curl_hander, CURLOPT_HEADER, 0);
+        $header[] = APP_ID;
+        $header[] = App_KEY;
+        $header[] = 'Content-Type: application/json';
+        curl_setopt($curl_hander, CURLOPT_HTTPHEADER, $header);
+        curl_setopt($curl_hander, CURLOPT_CONNECTTIMEOUT, 3);
+        curl_setopt($curl_hander, CURLOPT_CUSTOMREQUEST, "POST");
+        curl_setopt($curl_hander, CURLOPT_URL, 'https://leancloud.cn:443/1.1/functions/'.$function);
+        curl_setopt($curl_hander, CURLOPT_POSTFIELDS, json_encode($param)); //设置提交的字符串
+		$result = curl_exec($curl_hander);
+        return $result;
+}
+	
 }
 
 
