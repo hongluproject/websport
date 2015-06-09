@@ -8,8 +8,7 @@ class Note extends \Controller\Front
 
     public function get()
     {
-		
-
+        header("Max-Age: 36000");
 		//获取数据库内数据		
         $db = \Model\Member::db();
         $this->noteResult = $db->fetch('select * from sport_note order by count desc');

@@ -199,8 +199,8 @@ foreach($isNote as $item){
 
     $(function(){
 
-     /*   id = '556def58e4b005426cfac6ec';
-        document.cookie=  id+ "=hasnote";*/
+        /*   id = '556def58e4b005426cfac6ec';
+           document.cookie=  id+ "=hasnote";*/
         //初始化
         var strcookie=document.cookie;
         var arrcookie=strcookie.split("; ");
@@ -238,7 +238,6 @@ foreach($isNote as $item){
                         $("#"+id+"_count").html(count);
                         $("#"+id+"_addnote").attr('class','btn has_note');
                         document.cookie=  id+ "=hasnote";
-                        document.cookie= "Max-Age=3600000"
                         alert(data.message);
                     }else{
                         alert(data.message);
