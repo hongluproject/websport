@@ -178,7 +178,7 @@ foreach($isNote as $item){
                     <div class="num"><?php echo $key+1;?></div>
                     <div class="img"> <img src="<?php echo $item->suaxu['image']?$item->suaxu['image']."?imageView2/2/w/60/h/60":'http://hoopeng.qiniudn.com/list.png';?>" onclick="javascript:doFilter('jumpInfo','clan', '<?php echo $item->objectId?>', '<?php echo $item->suaxu['title']?>');"></div>
                     <div class="intro"><p class="title"><a href="#" onclick="javascript:doFilter('jumpInfo','clan', '<?php echo $item->objectId?>', '<?php echo $item->title?>');"><?php echo $item->suaxu['title']?></a></p><p class="note" >票数　<em id="<?php echo $item->objectId;?>_count"><?php echo $item->count?></em></p></div>
-                    <div class="toupiao"  ><a href="javaScript:void(0)" class="btn no_note" id="<?php echo $item->objectId;?>_addnote" rel="<?php echo $item->objectId;?>">投票</a></div>
+                    <div class="toupiao"  ><a href="javaScript:void(0)" class="btn <?php   echo  in_array($item->objectId,$newArr)?'has_note':'no_note';?>" id="<?php echo $item->objectId;?>_addnote" rel="<?php echo $item->objectId;?>">投票</a></div>
                 </li>
             <?php endforeach;?>
 
@@ -202,7 +202,7 @@ foreach($isNote as $item){
         /*   id = '556def58e4b005426cfac6ec';
            document.cookie=  id+ "=hasnote";*/
         //初始化
-        var strcookie=document.cookie;
+  /*      var strcookie=document.cookie;
         var arrcookie=strcookie.split("; ");
         for(var i=0;i<arrcookie.length;i++){
             var arr=arrcookie[i].split("=");
@@ -210,7 +210,7 @@ foreach($isNote as $item){
                 $("#"+arr[0]+"_addnote").attr('class','btn has_note');
             }
         }
-
+*/
 
         if (!isInHoopeng()) {
             $('#downloadDiv').css('display', 'block');
@@ -223,10 +223,6 @@ foreach($isNote as $item){
 
             var love = $(this);
             var id = love.attr("rel"); //对应id
-
-            if( $("#"+id+"_addnote").attr('class')=='btn has_note'){
-                alert('不能重复投票');return;
-            }
             $.ajax({
                 type:"POST",
                 url:"note.php",

@@ -8,7 +8,12 @@ class Note extends \Controller\Front
 
     public function get()
     {
-        header("Set-Cookie:expires=Thu, 01-Jan-2018 00:00:01 GMT; Max-Age=0;");
+
+
+        if(!$_COOKIE['noteNumber']){
+            setcookie('noteNumber',md5('Y-m-d H:i:s'.rand(1,1000000)),time()+60*60*24*30);
+        }
+
         //获取数据库内数据
         $db = \Model\Member::db();
         $this->noteResult = $db->fetch('select * from sport_note order by count desc');
@@ -45,8 +50,8 @@ class Note extends \Controller\Front
             }
         }
 
-        $ip = $this->GetIP();
-        $this->isNote = $db->fetch('select * from sport_record  where ip = "'.$ip.'"');
+      //  $ip = $this->GetIP();
+        $this->isNote = $db->fetch('select * from sport_record  where ip = "'.$_COOKIE['noteNumber'].'"');
 
 
     }
@@ -55,26 +60,16 @@ class Note extends \Controller\Front
     {
         header("Content-type: application/json");
         $status = array('status'=>1,'message'=>'OK');
-       /* $ip =$this->GetIP();
-        if($ip =="unknown"){
+        if(!$_COOKIE['noteNumber']){
             $status['message'] ='不能重复投票';
             json_encode($status);exit;
-        }*/
+        }
         $id= $_POST['id'];
-
         $db = \Model\Line::db();
-/*        $db->insert('sport_record',array('ip'=>$ip,'objectId'=>$_POST['id']));*/
-        $sportNoteResult =  $db->fetch('select * from sport_note where objectId  = "'.$id.'"');
-        $noteResultCount =  ++$sportNoteResult[0]->count;
-        $noteResultId = $sportNoteResult[0]->id;
-        $db->update('sport_note',array('count'=>$noteResultCount),array('id'=>$noteResultId));
-        $status['status'] =2;
-        $status['message'] ='投票成功';
-
-      /*  $this->searchResult = $db->fetch('select * from sport_record  where ip = "'.$ip.'" and objectId = "'.$id.'"');
+        $this->searchResult = $db->fetch('select * from sport_record  where ip = "'.$_COOKIE['noteNumber'].'" and objectId = "'.$id.'"');
         if(!$this->searchResult){
             $db = \Model\Line::db();
-            $db->insert('sport_record',array('ip'=>$ip,'objectId'=>$_POST['id']));
+            $db->insert('sport_record',array('ip'=>$_COOKIE['noteNumber'],'objectId'=>$_POST['id']));
             $sportNoteResult =  $db->fetch('select * from sport_note where objectId  = "'.$id.'"');
             $noteResultCount =  ++$sportNoteResult[0]->count;
             $noteResultId = $sportNoteResult[0]->id;
@@ -84,7 +79,7 @@ class Note extends \Controller\Front
         }else{
             $status['message'] ='不能重复投票';
 
-        }*/
+        }
         echo  json_encode($status);exit;
     }
 
