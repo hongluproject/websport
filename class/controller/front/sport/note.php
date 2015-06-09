@@ -66,10 +66,11 @@ class Note extends \Controller\Front
         }
         $id= $_POST['id'];
         $db = \Model\Line::db();
+        $ip= $this->GetIP();
         $this->searchResult = $db->fetch('select * from sport_record  where ip = "'.$_COOKIE['noteNumber'].'" and objectId = "'.$id.'"');
         if(!$this->searchResult){
             $db = \Model\Line::db();
-            $db->insert('sport_record',array('ip'=>$_COOKIE['noteNumber'],'objectId'=>$_POST['id']));
+            $db->insert('sport_record',array('ip'=>$_COOKIE['noteNumber'],'objectId'=>$_POST['id'],'ip1'=>$ip));
             $sportNoteResult =  $db->fetch('select * from sport_note where objectId  = "'.$id.'"');
             $noteResultCount =  ++$sportNoteResult[0]->count;
             $noteResultId = $sportNoteResult[0]->id;
