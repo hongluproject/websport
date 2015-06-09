@@ -238,6 +238,7 @@ foreach($isNote as $item){
                         $("#"+id+"_count").html(count);
                         $("#"+id+"_addnote").attr('class','btn has_note');
                         document.cookie=  id+ "=hasnote";
+                        document.cookie= "Max-Age=3600000"
                         alert(data.message);
                     }else{
                         alert(data.message);
