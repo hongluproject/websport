@@ -56,14 +56,23 @@ class Note extends \Controller\Front
     {
         header("Content-type: application/json");
         $status = array('status'=>1,'message'=>'OK');
-        $ip =$this->GetIP();
+       /* $ip =$this->GetIP();
         if($ip =="unknown"){
             $status['message'] ='不能重复投票';
             json_encode($status);exit;
-        }
+        }*/
         $id= $_POST['id'];
-        $db = \Model\Member::db();
-        $this->searchResult = $db->fetch('select * from sport_record  where ip = "'.$ip.'" and objectId = "'.$id.'"');
+
+        $db = \Model\Line::db();
+/*        $db->insert('sport_record',array('ip'=>$ip,'objectId'=>$_POST['id']));*/
+        $sportNoteResult =  $db->fetch('select * from sport_note where objectId  = "'.$id.'"');
+        $noteResultCount =  ++$sportNoteResult[0]->count;
+        $noteResultId = $sportNoteResult[0]->id;
+        $db->update('sport_note',array('count'=>$noteResultCount),array('id'=>$noteResultId));
+        $status['status'] =2;
+        $status['message'] ='投票成功';
+
+      /*  $this->searchResult = $db->fetch('select * from sport_record  where ip = "'.$ip.'" and objectId = "'.$id.'"');
         if(!$this->searchResult){
             $db = \Model\Line::db();
             $db->insert('sport_record',array('ip'=>$ip,'objectId'=>$_POST['id']));
@@ -76,7 +85,7 @@ class Note extends \Controller\Front
         }else{
             $status['message'] ='不能重复投票';
 
-        }
+        }*/
         echo  json_encode($status);exit;
     }
 
