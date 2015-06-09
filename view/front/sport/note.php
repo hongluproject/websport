@@ -218,7 +218,7 @@ foreach($isNote as $item){
 
         $(".btn").click(function(){
             if (!isInHoopeng()) {
-                alert("请下载撒哈拉在APP内打开");return;
+              //  alert("请下载撒哈拉在APP内打开");return;
             }
 
             var love = $(this);
