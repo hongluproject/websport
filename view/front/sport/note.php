@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui" />
     <script src="/assets/js/jquery.min.js" type="text/javascript"></script>
     <script src="    http://api.imsahala.com/js/common.js?2015040101" type="text/javascript"></script>
-    <title>投票</title>
+    <title>颜型当道-城市定向赛队伍颜型SHOW投票</title>
     <style>
         @charset "utf-8";body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legend,button,input,textarea,th,td{margin:0;padding:0}
         body,button,input,select,textarea{font:12px/1.5 'Microsoft Yahei','Lucida Grande',Arial,'\5b8b\4f53'}
@@ -161,7 +161,9 @@
     </style>
 </head>
 <body >
-
+<div id='wx_pic' style='margin:0 auto;display:none;'>
+    <img src='http://hoopeng.qiniudn.com/tags/201506052102514689.jpg?imageView2/1/w/320/h/320' />
+</div>
 <?php
 $newArr = array();
 foreach($isNote as $item){
