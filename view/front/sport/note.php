@@ -162,7 +162,7 @@
 </head>
 <body >
 <div id='wx_pic' style='margin:0 auto;display:none;'>
-    <img src='http://hoopeng.qiniudn.com/tags/201506052102514689.jpg?imageView2/1/w/320/h/320' />
+    <img src='http://hoopeng.qiniudn.com/tags/201506081151282229.jpg' />
 </div>
 <?php
 $newArr = array();
