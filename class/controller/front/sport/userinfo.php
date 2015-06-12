@@ -10,6 +10,13 @@ class Userinfo extends \Controller\Front
     {
 
         $result = \Model\Member::find(array('phone'=>$_GET['phone']));
+        if($result->data['lineId']==100){
+            $this->_tpl = 'front/sport/userinfo1';
+
+        }else{
+            $this->_tpl = 'front/sport/userinfo';
+        }
+
         if($result->data){
             $teamName = $result->data['teamName'];
             $teamId = $result->data['teamId'];
