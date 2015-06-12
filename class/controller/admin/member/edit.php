@@ -32,22 +32,24 @@ class Edit extends \Controller\Admin\Member
             unset($result[1]);
             foreach($result as $item){
                 $param = array();
-                if(!$item[7]){
+                if(!$item[2]){
                     continue;
                 }
-                if(strlen($item[6])!=11&&$item[6]!=''){
-                    $item[6] = preg_replace("/(\s|\&nbsp\;|　|\xc2\xa0)/","",$item[6]);
+                if(strlen($item[7])!=11&&$item[7]!=''){
+                    $item[7] = preg_replace("/(\s|\&nbsp\;|　|\xc2\xa0)/","",$item[7]);
                 }
-                $item[7] = preg_replace("/(\s|\&nbsp\;|　|\xc2\xa0)/","",$item[7]);
+                $item[6] = preg_replace("/(\s|\&nbsp\;|　|\xc2\xa0)/","",$item[6]);
+                $item[3] = preg_replace("/(\s|\&nbsp\;|　|\xc2\xa0)/","",$item[3]);
                 $item[2] = preg_replace("/(\s|\&nbsp\;|　|\xc2\xa0)/","",$item[2]);
-                $param['lineId']= $item[7];
+
+                $param['lineId']= $item[2];
                 $param['status']=  1;
-                $param['teamId']= $item[2];
-                $param['teamName']= $item[3];
-                $param['teamLeader']= $item[4];
-                $param['phone']= $item[6];
+                $param['teamId']= $item[3];
+                $param['teamName']= $item[4];
+                $param['teamLeader']= $item[5];
+                $param['phone']= $item[7];
                 $param['objectId']= $objectId;
-                if(substr($item[5],-1) == 1){
+                if(substr($item[6],-1) == 1){
                     //队长
                     $team = new \Model\Team();
                     $team->set($param);
@@ -55,23 +57,26 @@ class Edit extends \Controller\Admin\Member
                 }
             }
 
+
+
             foreach($result as $key=>$item){
                 $param = array();
-                if(!$item[7]){
+                if(!$item[2]){
                     continue;
                 }
-                if(strlen($item[6])!=11&&$item[6]!=''){
-                    $item[6] = preg_replace("/(\s|\&nbsp\;|　|\xc2\xa0)/","",$item[6]);
+                if(strlen($item[7])!=11&&$item[7]!=''){
+                    $item[7] = preg_replace("/(\s|\&nbsp\;|　|\xc2\xa0)/","",$item[7]);
                 }
-                $item[7] = preg_replace("/(\s|\&nbsp\;|　|\xc2\xa0)/","",$item[7]);
+                $item[6] = preg_replace("/(\s|\&nbsp\;|　|\xc2\xa0)/","",$item[6]);
+                $item[3] = preg_replace("/(\s|\&nbsp\;|　|\xc2\xa0)/","",$item[3]);
                 $item[2] = preg_replace("/(\s|\&nbsp\;|　|\xc2\xa0)/","",$item[2]);
-                $param['lineId']= $item[7];
+                $param['lineId']= $item[2];
                 $param['status']=  1;
-                $param['userName']= $item[4];
-                $param['userId']= $item[5];
-                $param['teamId']= $item[2];
-                $param['teamName']= $item[3];
-                $param['phone']= $item[6];
+                $param['teamName']= $item[4];
+                $param['userId']= $item[6];
+                $param['teamId']= $item[3];
+                $param['username']= $item[4];
+                $param['phone']= $item[7];
                 $param['objectId']= $objectId;
                 //队员入库
                 $member = new \Model\Member();
