@@ -30,8 +30,6 @@ class Edit extends \Controller\Admin\Member
             $result = $this->importExcel($file_dir);
             unset($result[0]);
             unset($result[1]);
-            unset($result[2]);
-            unset($result[3]);
             foreach($result as $item){
                 $param = array();
                 if(!$item[7]){
