@@ -14,7 +14,8 @@ $config['database'] = array(
     'default' => array(
         'dns'      => "mysql:host=10.10.78.24;port=3306;dbname=sporthoopeng",
         'username' => 'root',
-        'password' => 'Honglusahala20!%',
+        'password' => 'Honglusahala2015',
+
         'charset'  => 'utf8',
         'params'   => array()
     )
