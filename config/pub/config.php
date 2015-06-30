@@ -12,9 +12,9 @@ $config['domain'] =AVOS_PATH;
 
 $config['database'] = array(
     'default' => array(
-        'dns'      => "mysql:host=127.0.0.1;port=3306;dbname=sporthoopeng",
+        'dns'      => "mysql:host=10.10.78.24;port=3306;dbname=sporthoopeng",
         'username' => 'root',
-        'password' => '123456',
+        'password' => 'Honglusahala20!%',
         'charset'  => 'utf8',
         'params'   => array()
     )
